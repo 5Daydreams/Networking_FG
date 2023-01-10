@@ -13,11 +13,10 @@ public class PlayerCamera : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    public Transform playerTransform;
+    public Transform bodyTransform;
+    public Transform gunSocketTransform;
 
     public Alteruna.Avatar avatar;
-
-
 
     void Start()
     {
@@ -44,6 +43,7 @@ public class PlayerCamera : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, minClamp, maxClamp);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        playerTransform.rotation = Quaternion.Euler(0, yRotation, 0);
+        bodyTransform.transform.right = gameObject.transform.right;
+        //gunSocketTransform.forward = gameObject.transform.forward;
     }
 }

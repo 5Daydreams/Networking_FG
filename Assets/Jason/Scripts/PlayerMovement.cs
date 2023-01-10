@@ -30,9 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDirection;
 
-    Alteruna.RigidbodySynchronizable rb;
     [Header("Multiplayer")]
     public Alteruna.Avatar avatar;
+    RigidbodySynchronizable rb;
 
     [SerializeField]
     TextMeshProUGUI mText;
