@@ -2,12 +2,14 @@ using Alteruna;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
     public float groundDrag;
+    public float airDrag;
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
@@ -28,10 +30,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDirection;
 
-    //Rigidbody rb;
     Alteruna.RigidbodySynchronizable rb;
     [Header("Multiplayer")]
     public Alteruna.Avatar avatar;
+
+    [SerializeField]
+    TextMeshProUGUI mText;
 
     private void Start()
     {
@@ -39,13 +43,13 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         rb = GetComponent<RigidbodySynchronizable>();
-        //rb.freezeRotation = true;
     }
 
     private void Update()
     {
         if (!avatar.IsMe)
             return;
+        mText.text = "Speed: " + (int)rb.velocity.magnitude;
 
         Inputs();
         SpeedControl();
@@ -83,13 +87,12 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             rb.velocity += moveDirection.normalized * moveSpeed * Time.deltaTime;
-           // rb = groundDrag;
-          //  rbS.velocity = rb.velocity;
+            AddDrag(groundDrag);
         }
         else if (!isGrounded)
         { 
             rb.velocity += moveDirection.normalized * moveSpeed * airMultiplier * Time.deltaTime;
-           // rb.drag = 0;
+            AddDrag(airDrag);
         }
     }
 
@@ -128,5 +131,10 @@ public class PlayerMovement : MonoBehaviour
     void AddImpulse(Vector3 impulse)
     {
         rb.velocity += impulse;
+    }
+
+    void AddDrag(float drag)
+    {
+        rb.velocity *= (1 - Time.deltaTime * drag);
     }
 }
