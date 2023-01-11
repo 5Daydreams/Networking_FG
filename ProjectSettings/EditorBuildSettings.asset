@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Jason/Scenes/JasonMPscene.unity
     guid: fba4af559830443428cc77d97adc30ea
+  - enabled: 1
+    path: Assets/Scenes/JohannasScene.unity
+    guid: bf779a8c8285b4c4d92d93a54bd481cf
   m_configObjects: {}
