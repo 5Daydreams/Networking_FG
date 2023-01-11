@@ -493,12 +493,19 @@ MonoBehaviour:
   jumpForce: 7
   jumpCooldown: 0.25
   airMultiplier: 0.1
-  bodyTransform: {fileID: 2538953114544123422}
+  crouchSpeed: 35
+  croucingYscale: 0.5
+  slideForce: 200
+  maxSlideTime: 0.75
+  slideYScale: 0.5
   playerHeight: 2
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
+  maxSteepAngle: 40
+  bodyOrientation: {fileID: 2538953114544123422}
   avatar: {fileID: 3818068261183263210}
+  movementState: 0
   mText: {fileID: 5778323047171376877}
 --- !u!114 &3017413889455676530
 MonoBehaviour:
