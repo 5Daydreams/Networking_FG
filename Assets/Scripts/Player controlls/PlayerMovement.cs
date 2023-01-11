@@ -128,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity += Force * Time.deltaTime;
     }
+
     void AddImpulse(Vector3 impulse)
     {
         rb.velocity += impulse;
