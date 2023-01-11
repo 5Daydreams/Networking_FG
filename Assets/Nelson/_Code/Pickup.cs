@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Alteruna;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.VFX;
@@ -9,8 +8,18 @@ using UnityEngine.VFX;
 public class Pickup : MonoBehaviour
 {
     private Collider col;
+    
+    [SerializeField] private int _indexToSpawn = 0;
     [SerializeField] private UnityEvent _callback;
-    [SerializeField] private VisualEffectAsset _vfxAsset;
+
+    private Alteruna.Spawner spawner;
+    private Alteruna.Avatar avatar;
+
+    private void Awake()
+    {
+        spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Alteruna.Spawner>();
+        avatar = GetComponent<Alteruna.Avatar>();
+    }
 
     void Start()
     {
@@ -20,7 +29,10 @@ public class Pickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject cachedOther = other.gameObject;
-        Instantiate(_vfxAsset, cachedOther.transform);
+        
+        GameObject output = spawner.Spawn(_indexToSpawn, cachedOther.transform.position, cachedOther.transform.rotation);
+
+        output.transform.parent = cachedOther.transform;
 
         _callback.Invoke();
         Destroy(this.gameObject);
