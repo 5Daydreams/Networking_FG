@@ -505,18 +505,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4f23cfacf8a9549b9c36cc69b9db15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 70
+  walkSpeed: 7
   groundDrag: 7
   jumpForce: 7
+  jumpSpeed: 14
   jumpCooldown: 0.25
-  airMultiplier: 0.08
-  crouchSpeed: 35
+  crouchSpeed: 3.5
   croucingYscale: 0.5
-  slideSpeed: 400
+  maxGroundSlideSpeed: 20
+  maxSlopeSlideSpeed: 30
   slideForce: 200
   speedIncreaseMultiplier: 1.5
   steepIncreaseMultiplier: 2.5
-  maxSlideTime: 0.75
+  maxSlideTime: 1
   slideYScale: 0.5
   playerHeight: 2
   GroundMask:
