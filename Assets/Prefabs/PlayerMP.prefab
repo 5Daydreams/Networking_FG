@@ -512,7 +512,7 @@ MonoBehaviour:
   jumpCooldown: 0.25
   crouchSpeed: 3.5
   croucingYscale: 0.5
-  maxGroundSlideSpeed: 20
+  maxGroundSlideSpeed: 14
   maxSlopeSlideSpeed: 30
   slideForce: 200
   speedIncreaseMultiplier: 1.5

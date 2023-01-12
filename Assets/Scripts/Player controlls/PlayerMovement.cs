@@ -21,11 +21,12 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     bool readyToJump = true;
 
+    /*
     [Header("Crouching")]
     public float crouchSpeed;
     public float croucingYscale;
-    private float standingYscale;
     private KeyCode crouchKey = KeyCode.LeftControl;
+    */
 
     [Header("Sliding")]
     public float maxGroundSlideSpeed;
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public float steepIncreaseMultiplier;
     public float maxSlideTime;
     public float slideYScale;
+    private float standingYscale;
     private float slideTimer;
     private KeyCode slideKey = KeyCode.LeftControl;
     private bool isSliding;
@@ -137,11 +139,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(slideKey) && isSliding)
             StopSlide();
 
-        //Crouch
+        /*Crouch
         if (Input.GetKeyDown(crouchKey))
             Crouch();
         if (Input.GetKeyUp(crouchKey))
             transform.localScale = new Vector3(transform.localScale.x, standingYscale, transform.localScale.z);
+        */
     }
 
     private void StateHandeler()
@@ -161,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
             if (readyToJump)
                 desiredMovespeed = jumpSpeed;
         }
-        else if (Input.GetKey(crouchKey) && !isSliding)
+        /*else if (Input.GetKey(crouchKey) && !isSliding)
         {
             movementState = MovementState.crouching;
             if (isGrounded)
@@ -172,13 +175,16 @@ public class PlayerMovement : MonoBehaviour
             }
             else
                 desiredMovespeed = walkSpeed;
-        }
+        }*/
         else if (isGrounded)
         {
             movementState = MovementState.running;
             desiredMovespeed = walkSpeed;
-            StopAllCoroutines();
-            moveSpeed = desiredMovespeed;
+            if (horizontalInput == 0 && verticalInput == 0 )
+            {
+                StopAllCoroutines();
+                moveSpeed = desiredMovespeed;
+            }
         }
         else
         {
@@ -192,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = desiredMovespeed;
             StopAllCoroutines();
         }
-        else if (Mathf.Abs(desiredMovespeed - lastDesiredMovespeed) > 4 && moveSpeed != 0)
+        else if (Mathf.Abs(desiredMovespeed - lastDesiredMovespeed) > 1f && moveSpeed != 0)
         {
             StopAllCoroutines();
             StartCoroutine(LerpMoveSpeed());
@@ -214,7 +220,10 @@ public class PlayerMovement : MonoBehaviour
 
         while (time < difference)
         {
-            moveSpeed = Mathf.Lerp(startValue, desiredMovespeed, time / difference);
+            if (movementState == MovementState.running)
+                moveSpeed = Mathf.Lerp(startValue, desiredMovespeed, time / (difference * 0.1f));
+            else
+                moveSpeed = Mathf.Lerp(startValue, desiredMovespeed, time / (difference));
 
             if (OnSteep())
             {
@@ -308,12 +317,12 @@ public class PlayerMovement : MonoBehaviour
         Invoke(nameof(ResetJump), jumpCooldown);
     }
 
-    private void Crouch()
+    /*private void Crouch()
     {
         transform.localScale = new Vector3(transform.localScale.x, croucingYscale, transform.localScale.z);
         if (readyToJump && isGrounded)
             AddImpulse(Vector3.down * 5f);
-    }
+    }*/
 
     private void StartSlide()
     {
