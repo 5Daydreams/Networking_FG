@@ -186,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Set to base speed when we hit a wall
-        if (Mathf.Approximately(rb.velocity.magnitude, 0))
+        if (Mathf.Approximately(new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude, 0))
         {
             desiredMovespeed = walkSpeed;
             moveSpeed = desiredMovespeed;
@@ -195,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
         else if (Mathf.Abs(desiredMovespeed - lastDesiredMovespeed) > 4 && moveSpeed != 0)
         {
             StopAllCoroutines();
-            StartCoroutine(LerpMoveSpeedOne());
+            StartCoroutine(LerpMoveSpeed());
         }
         else
         {
@@ -205,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
         lastDesiredMovespeed = desiredMovespeed;
     }
 
-    private IEnumerator LerpMoveSpeedOne()
+    private IEnumerator LerpMoveSpeed()
     {
 
         float time = 0;
@@ -233,7 +233,8 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = desiredMovespeed;
     }
 
-    private IEnumerator LerpMoveSpeedTwo()
+    /*
+    private IEnumerator LerpMoveSpeedTest()
     {
         float time = 0;
         float difference = Mathf.Abs(desiredMovespeed - moveSpeed);
@@ -248,6 +249,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveSpeed = desiredMovespeed;
     }
+    */
 
     private void AdjustVelocity()
     {

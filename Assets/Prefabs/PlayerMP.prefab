@@ -516,7 +516,7 @@ MonoBehaviour:
   maxSlopeSlideSpeed: 30
   slideForce: 200
   speedIncreaseMultiplier: 1.5
-  steepIncreaseMultiplier: 2.5
+  steepIncreaseMultiplier: 3
   maxSlideTime: 1
   slideYScale: 0.5
   playerHeight: 2
