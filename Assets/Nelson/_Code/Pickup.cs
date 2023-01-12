@@ -4,21 +4,20 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.VFX;
 
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Collider), typeof(Spawner))]
 public class Pickup : MonoBehaviour
 {
+    private Alteruna.Spawner spawner;
     private Collider col;
 
     [SerializeField] private int _applyOnPlayerIndex = 0;
     [SerializeField] private int _onCollectedIndex = 0;
     [SerializeField] private float _pickupDuration = 5.0f;
     [SerializeField] private UnityEvent _callback;
-
-    private Alteruna.Spawner spawner;
-
+    
     private void Awake()
     {
-        spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Alteruna.Spawner>();
+        spawner = this.GetComponent<Alteruna.Spawner>();
     }
 
     void Start()
