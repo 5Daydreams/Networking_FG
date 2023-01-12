@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1838311883755435400}
   - component: {fileID: -7436619521662117357}
   m_Layer: 0
-  m_Name: Particles
+  m_Name: Red_Constant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

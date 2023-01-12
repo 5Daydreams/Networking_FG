@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5181954204635795611}
   - component: {fileID: 5181954204635795604}
   - component: {fileID: 5181954204635795605}
+  - component: {fileID: 8436637873089209007}
+  - component: {fileID: 5115126742505254244}
   m_Layer: 0
   m_Name: Pickup_Base
   m_TagString: Untagged
@@ -59,7 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a9465b7cfb22549aa96ba36e27c0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _indexToSpawn: 0
+  _applyOnPlayerIndex: 0
+  _onCollectedIndex: 1
+  _pickupDuration: 5
   _callback:
     m_PersistentCalls:
       m_Calls:
@@ -75,7 +79,42 @@ MonoBehaviour:
           m_StringArgument: Picked up Red
           m_BoolArgument: 0
         m_CallState: 2
-  _vfxAssetPrefab: {fileID: 5181954205240671214}
+  _debug: {fileID: 0}
+--- !u!114 &8436637873089209007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181954204635795610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1709514741, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a: f4990ee9-64b8-4bff-a75e-91bc5cbb2bbf
+--- !u!114 &5115126742505254244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181954204635795610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 29116766, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Multiplayer: {fileID: 0}
+  SpawnableObjects:
+  - {fileID: 7909357096569278701, guid: e8e085962a2e2974bb3cbcbfe4753e85, type: 3}
+  - {fileID: 7909357096569278701, guid: e2ecab3a3d77c824d82777139270bdfb, type: 3}
+  ObjectSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  ObjectDespawned:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5181954205092550632
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +145,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5181954205240671212}
+  - {fileID: 7236099056942429001}
   m_Father: {fileID: 5181954204635795611}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -160,7 +199,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &3038330763608861470
+--- !u!1001 &695920076472034235
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -169,7 +208,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7909357096569278701, guid: e8e085962a2e2974bb3cbcbfe4753e85, type: 3}
       propertyPath: m_Name
-      value: Particles
+      value: RedParticles
       objectReference: {fileID: 0}
     - target: {fileID: 7909357096569278706, guid: e8e085962a2e2974bb3cbcbfe4753e85, type: 3}
       propertyPath: m_RootOrder
@@ -217,13 +256,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e085962a2e2974bb3cbcbfe4753e85, type: 3}
---- !u!4 &5181954205240671212 stripped
+--- !u!4 &7236099056942429001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7909357096569278706, guid: e8e085962a2e2974bb3cbcbfe4753e85, type: 3}
-  m_PrefabInstance: {fileID: 3038330763608861470}
-  m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &5181954205240671214 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 7909357096569278704, guid: e8e085962a2e2974bb3cbcbfe4753e85, type: 3}
-  m_PrefabInstance: {fileID: 3038330763608861470}
+  m_PrefabInstance: {fileID: 695920076472034235}
   m_PrefabAsset: {fileID: 0}
