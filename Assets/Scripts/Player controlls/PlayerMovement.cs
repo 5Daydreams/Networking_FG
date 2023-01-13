@@ -111,12 +111,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!avatar.IsMe)
             return;
-        Debug.Log(moveSpeed);
 
         AdjustVelocity();
 
         speedText.text = "Speed: " + new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude.ToString("F1");
-        stateText.text = moveSpeed.ToString("F1");
+        stateText.text = movementState.ToString();
 
         if (isGrounded)
             AddDrag(groundDrag);
