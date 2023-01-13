@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.VFX;
 
 [RequireComponent(typeof(Collider), typeof(Spawner))]
-public class Pickup : MonoBehaviour
+public class PickupBox : MonoBehaviour
 {
     private Alteruna.Spawner spawner;
     private Collider col;
@@ -14,14 +14,10 @@ public class Pickup : MonoBehaviour
     [SerializeField] private int _onCollectedIndex = 0;
     [SerializeField] private float _pickupDuration = 5.0f;
     [SerializeField] private UnityEvent _callback;
-    
-    private void Awake()
+
+    private void Start()
     {
         spawner = this.GetComponent<Alteruna.Spawner>();
-    }
-
-    void Start()
-    {
         col = this.GetComponent<Collider>();
     }
 
