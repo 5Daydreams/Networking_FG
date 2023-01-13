@@ -1,9 +1,11 @@
 using UnityEngine;
 using Alteruna;
+using System.Collections.Generic;
+using System.Collections;
 
 public class PlayerHealth : AttributesSync
 {
-    [SynchronizableField] public int health = 100;
+    [SynchronizableField][SerializeField]private int health = 100;
     [SerializeField] private int damage = 20;
 
     [SerializeField] private LayerMask playerLayer;
@@ -14,8 +16,9 @@ public class PlayerHealth : AttributesSync
     [SerializeField] PlayerKDA playerkda;
 
     public Alteruna.Avatar avatar;
-    [HideInInspector]
-    public Alteruna.Avatar lastAvatarHit;
+    public Alteruna.Avatar previousDamageDealer;
+
+    public List<Alteruna.Avatar> damageDealers = new List<Alteruna.Avatar>();
 
     private void Start()
     {
@@ -32,15 +35,32 @@ public class PlayerHealth : AttributesSync
             GetTarget();
     }
 
+    public int GetHealt()
+    {
+        return health;
+    }
+
     void GetTarget()
     {
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, Mathf.Infinity, playerLayer))
         {
             PlayerHealth playerHit = hit.transform.GetComponentInChildren<PlayerHealth>();
+
+            //Add the player who hit befor to the assits.
+            if (playerHit.previousDamageDealer != null && avatar != playerHit.previousDamageDealer)
+            {
+                Debug.Log("ADD TO LIST");
+                playerHit.damageDealers.Add(previousDamageDealer);
+            }
+
+            playerHit.previousDamageDealer = avatar;
+            Debug.Log(playerHit.previousDamageDealer.GetInstanceID());
+
             playerHit.TakeDamage(damage);
-            playerHit.lastAvatarHit = avatar;
         }
     }
+
+
 
     public void TakeDamage(int damageTaken)
     {
@@ -55,10 +75,24 @@ public class PlayerHealth : AttributesSync
     [SynchronizableMethod]
     void Die()
     {
-        Debug.Log("Player Died");
         playerkda.AddDeath(1);
-        if (lastAvatarHit != null)
-            lastAvatarHit.GetComponentInChildren<PlayerKDA>().AddKill(1);
-        lastAvatarHit = null;
+
+        // if no dmg dealer, give no kills
+        if (previousDamageDealer != null)
+            previousDamageDealer.GetComponentInChildren<PlayerKDA>().AddKill(1);
+
+        for (int i = damageDealers.Count - 1; i > 0; i--)
+        {
+            damageDealers[i].GetComponentInChildren<PlayerKDA>().AddAssist(1);
+            damageDealers.RemoveAt(i);
+        }
+
+        previousDamageDealer = null;
+    }
+
+    [SynchronizableMethod]
+    void Spawn()
+    {
+
     }
 }
