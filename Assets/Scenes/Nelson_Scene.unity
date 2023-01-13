@@ -2360,7 +2360,7 @@ MonoBehaviour:
     Users: 
   MaxPlayers: 10
   SpawnAvatarOnJoin: 1
-  AvatarPrefab: {fileID: 3818068261183263210, guid: 30e5315cddfb59742940edc0f0cbd728, type: 3}
+  AvatarPrefab: {fileID: 3818068261183263210, guid: 685a620ba9b12044c8dd6127409bc1ee, type: 3}
   AvatarSpawnLocation: {fileID: 387938565}
   SpawnAvatarPerIndex: 1
   AvatarSpawnLocations:
@@ -2456,8 +2456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Multiplayer: {fileID: 1469603391}
   SpawnableObjects:
-  - {fileID: 7909357096569278701, guid: e8e085962a2e2974bb3cbcbfe4753e85, type: 3}
-  - {fileID: 7909357096569278701, guid: e2ecab3a3d77c824d82777139270bdfb, type: 3}
+  - {fileID: 378792108265994139, guid: 40f5366b81520b044a42e298fe12fb7d, type: 3}
   ObjectSpawned:
     m_PersistentCalls:
       m_Calls: []
