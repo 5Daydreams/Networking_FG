@@ -49,7 +49,6 @@ public class PlayerHealth : AttributesSync
         if (health <= 0)
         {
             BroadcastRemoteMethod("Die");
-            playerkda.AddDeath(1);
         }
     }
 
@@ -57,6 +56,9 @@ public class PlayerHealth : AttributesSync
     void Die()
     {
         Debug.Log("Player Died");
-        lastAvatarHit.GetComponentInChildren<PlayerKDA>().AddKill(1);
+        playerkda.AddDeath(1);
+        if (lastAvatarHit != null)
+            lastAvatarHit.GetComponentInChildren<PlayerKDA>().AddKill(1);
+        lastAvatarHit = null;
     }
 }
