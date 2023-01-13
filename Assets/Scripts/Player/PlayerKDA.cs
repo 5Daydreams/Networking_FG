@@ -1,8 +1,4 @@
 using Alteruna;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Alteruna;
 
 public class PlayerKDA : AttributesSync
 {

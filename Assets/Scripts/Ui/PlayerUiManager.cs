@@ -31,8 +31,8 @@ public class PlayerUiManager : MonoBehaviour
     {
         healthText.text = playerHealt.health.ToString();
 
-        killsText.text = "K: " + playerKDA.kills.ToString();
-        deathsText.text = "D: " + playerKDA.deaths.ToString();
-        assistText.text = "A: " + playerKDA.assist.ToString();
+        killsText.text = "K:" + playerKDA.kills.ToString();
+        deathsText.text = "D:" + playerKDA.deaths.ToString();
+        assistText.text = "A:" + playerKDA.assist.ToString();
     }
 }
