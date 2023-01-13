@@ -44,6 +44,24 @@ public class PlayerCamera : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         bodyTransform.transform.right = gameObject.transform.right;
-        //gunSocketTransform.forward = gameObject.transform.forward;
+
+        CursorLock();
+    }
+
+    void CursorLock()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
     }
 }

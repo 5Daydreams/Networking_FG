@@ -1,19 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Alteruna;
 
 public class PlayerHealth : AttributesSync
 {
     [SynchronizableField] public int health = 100;
-    [SerializeField] private int damage = 10;
-    public Alteruna.Avatar avatar;
+    [SerializeField] private int damage = 20;
 
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private int playerSelfLayer;
 
     [SerializeField] Camera camera;
+
+    [SerializeField] PlayerKDA playerkda;
+
+    public Alteruna.Avatar avatar;
+    [HideInInspector]
+    public Alteruna.Avatar lastAvatarHit;
 
     private void Start()
     {
@@ -34,8 +36,9 @@ public class PlayerHealth : AttributesSync
     {
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, Mathf.Infinity, playerLayer))
         {
-            PlayerHealth playerShoot = hit.transform.GetComponentInChildren<PlayerHealth>();
-            playerShoot.TakeDamage(damage);
+            PlayerHealth playerHit = hit.transform.GetComponentInChildren<PlayerHealth>();
+            playerHit.TakeDamage(damage);
+            playerHit.lastAvatarHit = avatar;
         }
     }
 
@@ -46,6 +49,7 @@ public class PlayerHealth : AttributesSync
         if (health <= 0)
         {
             BroadcastRemoteMethod("Die");
+            playerkda.AddDeath(1);
         }
     }
 
@@ -53,5 +57,6 @@ public class PlayerHealth : AttributesSync
     void Die()
     {
         Debug.Log("Player Died");
+        lastAvatarHit.GetComponentInChildren<PlayerKDA>().AddKill(1);
     }
 }
