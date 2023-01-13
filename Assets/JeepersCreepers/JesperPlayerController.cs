@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Alteruna;
 using UnityEngine;
 
-public class JesperPlayerController : MonoBehaviour
+public class JesperPlayerController : AttributesSync
 {
     private float movementSpeed = 10f;
     private Alteruna.Avatar avatar;
+    
+    [SynchronizableField]
+    public int team = -1;
+
+    [SynchronizableMethod]
+    public void SetMaterial(Material material) { GetComponent<MeshRenderer>().material = material; }
 
     void Start()
     {
