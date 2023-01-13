@@ -14,7 +14,7 @@ public class PlayerHealth : AttributesSync
     [SerializeField] PlayerKDA playerkda;
 
     public Alteruna.Avatar avatar;
-    //[HideInInspector]
+    [HideInInspector]
     public Alteruna.Avatar lastAvatarHit;
 
     private void Start()
@@ -58,6 +58,7 @@ public class PlayerHealth : AttributesSync
         Debug.Log("Player Died");
         playerkda.AddDeath(1);
         if (lastAvatarHit != null)
-        lastAvatarHit.GetComponentInChildren<PlayerKDA>().AddKill(1);
+            lastAvatarHit.GetComponentInChildren<PlayerKDA>().AddKill(1);
+        lastAvatarHit = null;
     }
 }
