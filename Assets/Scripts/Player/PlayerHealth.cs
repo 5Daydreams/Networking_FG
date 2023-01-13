@@ -14,7 +14,7 @@ public class PlayerHealth : AttributesSync
     [SerializeField] PlayerKDA playerkda;
 
     public Alteruna.Avatar avatar;
-    [HideInInspector]
+    //[HideInInspector]
     public Alteruna.Avatar lastAvatarHit;
 
     private void Start()
@@ -49,7 +49,6 @@ public class PlayerHealth : AttributesSync
         if (health <= 0)
         {
             BroadcastRemoteMethod("Die");
-            playerkda.AddDeath(1);
         }
     }
 
@@ -57,6 +56,8 @@ public class PlayerHealth : AttributesSync
     void Die()
     {
         Debug.Log("Player Died");
+        playerkda.AddDeath(1);
+        if (lastAvatarHit != null)
         lastAvatarHit.GetComponentInChildren<PlayerKDA>().AddKill(1);
     }
 }
