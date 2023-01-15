@@ -781,7 +781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 7
   groundDrag: 7
-  jumpForce: 7
+  jumpForce: 8
   jumpSpeed: 14
   jumpCooldown: 0.25
   maxGroundSlideSpeed: 14
@@ -1673,7 +1673,8 @@ MonoBehaviour:
   camera: {fileID: 579797559739742130}
   playerkda: {fileID: 2107959267115876722}
   avatar: {fileID: 3818068261183263210}
-  lastAvatarHit: {fileID: 0}
+  previousDamageDealer: {fileID: 0}
+  damageDealers: []
 --- !u!1 &7802891528766714885
 GameObject:
   m_ObjectHideFlags: 0

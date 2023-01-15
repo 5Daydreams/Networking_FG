@@ -16,6 +16,7 @@ public class PlayerHealth : AttributesSync
     [SerializeField] PlayerKDA playerkda;
 
     public Alteruna.Avatar avatar;
+    //[SynchronizableField]
     public Alteruna.Avatar previousDamageDealer;
 
     public List<Alteruna.Avatar> damageDealers = new List<Alteruna.Avatar>();
@@ -50,7 +51,7 @@ public class PlayerHealth : AttributesSync
             if (playerHit.previousDamageDealer != null && avatar != playerHit.previousDamageDealer)
             {
                 Debug.Log("ADD TO LIST");
-                playerHit.damageDealers.Add(previousDamageDealer);
+                playerHit.damageDealers.Add(playerHit.previousDamageDealer);
             }
 
             playerHit.previousDamageDealer = avatar;
