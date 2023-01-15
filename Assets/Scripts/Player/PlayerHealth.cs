@@ -2,6 +2,7 @@ using UnityEngine;
 using Alteruna;
 using System.Collections.Generic;
 using System.Collections;
+using Unity.Burst.CompilerServices;
 
 public class PlayerHealth : AttributesSync
 {
@@ -33,7 +34,7 @@ public class PlayerHealth : AttributesSync
             return;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            GetTarget();
+            Shoot();
     }
 
     public int GetHealt()
@@ -41,35 +42,32 @@ public class PlayerHealth : AttributesSync
         return health;
     }
 
-    void GetTarget()
+    //will be done in the weapon script later;
+    void Shoot()
     {
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, Mathf.Infinity, playerLayer))
         {
-            PlayerHealth playerHit = hit.transform.GetComponentInChildren<PlayerHealth>();
-
-            //Add the player who hit befor to the assits.
-            if (playerHit.previousDamageDealer != null && avatar != playerHit.previousDamageDealer)
-            {
-                Debug.Log("ADD TO LIST");
-                playerHit.damageDealers.Add(playerHit.previousDamageDealer);
-            }
-
-            playerHit.previousDamageDealer = avatar;
-            Debug.Log(playerHit.previousDamageDealer.GetInstanceID());
-
-            playerHit.TakeDamage(damage);
+            PlayerHealth playerHp = hit.transform.GetComponentInChildren<PlayerHealth>();
+            TakeDamage(damage, playerHp);
         }
     }
 
-
-
-    public void TakeDamage(int damageTaken)
+    public void TakeDamage(int damageTaken, PlayerHealth playerHitHp)
     {
-        health -= damageTaken;
-
-        if (health <= 0)
+        if (playerHitHp.previousDamageDealer != null && avatar != playerHitHp.previousDamageDealer)
         {
-            BroadcastRemoteMethod("Die");
+            Debug.Log("ADD TO LIST");
+            playerHitHp.damageDealers.Add(playerHitHp.previousDamageDealer);
+        }
+
+        playerHitHp.previousDamageDealer = avatar;
+        Debug.Log(playerHitHp.previousDamageDealer.GetInstanceID());
+
+        playerHitHp.health -= damageTaken;
+
+        if (playerHitHp.health <= 0)
+        {
+            playerHitHp.BroadcastRemoteMethod("Die");
         }
     }
 
