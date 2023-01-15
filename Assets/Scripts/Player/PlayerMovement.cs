@@ -98,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!avatar.IsMe)
             return;
-        ;
 
         GroundCheck();
 
@@ -162,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey(jumpKey))
         {
             movementState = MovementState.jumping;
-            if (readyToJump)
+            if (!readyToJump)
                 desiredMovespeed = jumpSpeed;
         }
         /*else if (Input.GetKey(crouchKey) && !isSliding)
@@ -277,12 +276,8 @@ public class PlayerMovement : MonoBehaviour
             if (rb.velocity.y > 0)
                 AddForce(Vector3.down * 8);
         }
-
-        else if (isGrounded)
+        else
             AddForce(moveDirection.normalized * moveSpeed * 10f);
-
-        else if (!isGrounded)
-            AddForce(moveDirection.normalized * jumpSpeed *10f);
 
         unityRb.useGravity = !OnSteep();
     }
