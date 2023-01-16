@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a8a594dfb56229948b75a3a00f871c94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
     RealtimeString: Realtime
   - Name: High
     NetLOD: 3
-    Frequency: 0
+    Frequency: 10
     Pending: 0
     LastUpdated: 0
     NeverString: Never
@@ -176,11 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b728804d538219749bb20b6b37e6906d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Multiplayer: {fileID: 0}
+  UID: {fileID: 0}
+  Reliability: 1
+  bulletSpeed: 10
   bulletMaxLength: 50
-  blastRadius: 2
-  explosionForce: 0.2
-  hitPoints: 100
   coll: {fileID: 0}
+  avatar: {fileID: 3818068261183263210, guid: be39553a473c0b541bce6e928710977f, type: 3}
 --- !u!54 &-2401335500057721295
 Rigidbody:
   m_ObjectHideFlags: 0
