@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Alteruna;
 using UnityEngine;
 
-public class RocketLaunchExplosion : MonoBehaviour
+public class RocketLaunchExplosion : AttributesSync
 {
     private Spawner spawner;
     private Alteruna.Avatar avatar;
@@ -43,13 +43,13 @@ public class RocketLaunchExplosion : MonoBehaviour
        
         if (other.CompareTag("RocketLauncherBullet"))
         {
-            DoExplosion(other.transform.position, blastRadius);
+           //DoExplosion(other.transform.position, blastRadius);
         }
     }
-    void AddExplosionForce(Vector3 explosionpoint)// , float upwardsModifier, ForceMode forceMode
+    public void AddExplosionForce()// , float upwardsModifier, ForceMode forceMode
     {
-        Vector3 upVelocity = new Vector3(0, 30, 0);
-        rigidbodySynchronizable.velocity += upVelocity * Time.deltaTime;
+        Vector3 upVelocity = new Vector3(0, 500, 0);
+        rigidbodySynchronizable.velocity += upVelocity;
     }
     public void DoExplosion(Vector3 explosionPoint, float radius) // spelaren pos, blasradious
     {
