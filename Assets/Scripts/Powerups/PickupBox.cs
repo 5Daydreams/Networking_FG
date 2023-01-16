@@ -14,6 +14,7 @@ public class PickupBox : MonoBehaviour
     [SerializeField] private int _onCollectedIndex = 0;
     [SerializeField] private float _pickupDuration = 5.0f;
     [SerializeField] private UnityEvent _callback;
+    [SerializeField] private string checkTag = "Player";
 
     private void Start()
     {

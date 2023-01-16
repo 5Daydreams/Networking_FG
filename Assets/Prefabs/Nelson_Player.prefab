@@ -437,6 +437,8 @@ GameObject:
   - component: {fileID: 3039676429089814024}
   - component: {fileID: 3818068261183263210}
   - component: {fileID: 2766679250532914480}
+  - component: {fileID: 6859230254726779757}
+  - component: {fileID: 2684344872504991221}
   m_Layer: 0
   m_Name: Nelson_Player
   m_TagString: Untagged
@@ -613,6 +615,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexToSpawn: 0
   GunPipe: {fileID: 9193710638593714777}
+--- !u!114 &6859230254726779757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538953114182484416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1639771573, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Avatar: {fileID: 3818068261183263210}
+  sprites: []
+  meshes:
+  - {fileID: 2538953114544123408}
+--- !u!114 &2684344872504991221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538953114182484416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3bd65f6d2b7d0468ea7d75a1a3e876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _teamColors:
+  - {r: 0.6037736, g: 0.28195086, b: 0.28195086, a: 1}
+  - {r: 0.28746888, g: 0.7169812, b: 0.32284045, a: 1}
+  - {r: 0.19335175, g: 0.19335175, b: 0.745283, a: 1}
+  - {r: 0.5943396, g: 0.53709525, b: 0.24951048, a: 1}
+  - {r: 0.362724, g: 0.24644002, b: 0.735849, a: 1}
+  _myTeam: 3
 --- !u!1 &2538953114544123423
 GameObject:
   m_ObjectHideFlags: 0

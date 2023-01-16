@@ -98,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!avatar.IsMe)
             return;
-        ;
 
         GroundCheck();
 
@@ -133,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
         //Slide
-        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput !=0) && isGrounded)
+        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput !=0))
             StartSlide();
         if (Input.GetKeyUp(slideKey) && isSliding)
             StopSlide();
@@ -152,15 +151,17 @@ public class PlayerMovement : MonoBehaviour
         {
             movementState = MovementState.sliding;
 
-            if (OnSteep() && rb.velocity.y < 0.1f)
+            if (OnSteep() && rb.velocity.y < 0.1f && isGrounded)
                 desiredMovespeed = maxSlopeSlideSpeed;
-            else
+            else if (isGrounded)
                 desiredMovespeed = maxGroundSlideSpeed;
+            else
+                desiredMovespeed = walkSpeed;
         }
         else if (Input.GetKey(jumpKey))
         {
             movementState = MovementState.jumping;
-            if (readyToJump)
+            if (!readyToJump)
                 desiredMovespeed = jumpSpeed;
         }
         /*else if (Input.GetKey(crouchKey) && !isSliding)
@@ -275,12 +276,8 @@ public class PlayerMovement : MonoBehaviour
             if (rb.velocity.y > 0)
                 AddForce(Vector3.down * 8);
         }
-
-        else if (isGrounded)
+        else
             AddForce(moveDirection.normalized * moveSpeed * 10f);
-
-        else if (!isGrounded)
-            AddForce(moveDirection.normalized * jumpSpeed *10f);
 
         unityRb.useGravity = !OnSteep();
     }
@@ -337,19 +334,20 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 inputDirection = bodyOrientation.forward * verticalInput + bodyOrientation.right * horizontalInput;
 
-        if (!OnSteep() || rb.velocity.y > -0.1f)
+        if (isGrounded)
         {
-            AddForce(inputDirection.normalized * slideForce);
-
-            if (isGrounded)
+            if (!OnSteep() || rb.velocity.y > -0.1f)
+            {
+                AddForce(inputDirection.normalized * slideForce);
                 slideTimer -= Time.deltaTime;
+            }
+            else
+            {
+                AddForce(GetSteepMoveDirection(inputDirection) * slideForce);
+            }
+            if (slideTimer <= 0)
+                StopSlide();
         }
-        else
-        {
-            AddForce(GetSteepMoveDirection(inputDirection) * slideForce);
-        }
-        if (slideTimer <= 0)
-            StopSlide();
     }
 
     private void StopSlide()
