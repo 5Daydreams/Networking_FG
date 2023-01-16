@@ -12,8 +12,7 @@ public class DespawnBehavior : MonoBehaviour
     private void OnEnable()
     {
         spawner = GameObject.FindWithTag("NetworkManager").GetComponent<Spawner>();
-
-        Debug.Log("Starting Countdown");
+        
         StartCoroutine(KillAfterSeconds(_lifetime));
     }
 
@@ -23,6 +22,5 @@ public class DespawnBehavior : MonoBehaviour
         spawner.Despawn(this.gameObject);
         yield return null;
         Destroy(this.gameObject);
-        Debug.Log("End Of Countdown");
     }
 }
