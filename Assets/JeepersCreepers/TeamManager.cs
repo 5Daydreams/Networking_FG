@@ -16,13 +16,15 @@ public class TeamManager : MonoBehaviour
     
     // 5 slots for players to join 
     // 0 if they're open 1 if they're closed
-    private int[] redTeam = { 0, 0, 0, 0, 0 };
-    private int[] blueTeam = { 0, 0, 0, 0, 0 };
+    //[SynchronizableField]
+    private int redTeam = 0;
+    //[SynchronizableField]
+    private int blueTeam = 0;
 
     private int playerTeam = -1;
     private int playerID = 0;
 
-    private ushort indx;
+    bool bSetColor = false;
 
     [SerializeField]
     private Button onJoinTeamRedButton;
@@ -32,9 +34,12 @@ public class TeamManager : MonoBehaviour
     public Material redMaterial;
     public Material blueMaterial;
 
-    Alteruna.Avatar avatar;
-    [SerializeField]
-    private GameObject player;
+    Alteruna.Avatar[] avatars;
+    Alteruna.Avatar[] tempAvatars;
+
+    public Alteruna.Avatar avatar;
+    public MeshRenderer renderer;
+    MeshRenderer[] epic = new MeshRenderer[1];
 
     private enum Team
     {
@@ -46,19 +51,42 @@ public class TeamManager : MonoBehaviour
 
     void Start()
     {
-        avatar = GetComponent<Alteruna.Avatar>();
-
+        if (_aump == null)
+        {
+            _aump = FindObjectOfType<Multiplayer>();
+            if (!_aump)
+            {
+                Debug.LogError("Unable to find a active object of type Multiplayer.");
+            }
+        }
         // Multiplayer setup
         if (_aump != null)
         {
             _aump.Disconnected.AddListener(HandleDisconnect);
             _aump.RoomLeft.AddListener(HandleRoomLeft);
         }
-
+        
         // Button setup
         onJoinTeamRedButton.onClick.AddListener(() => { JoinTeam((int)Team.red); });
         onJoinTeamBlueButton.onClick.AddListener(() => { JoinTeam((int)Team.blue); });
-        
+    }
+
+    private void Update()
+    {
+        // check teamsizes
+        // if one team is greater than the other
+        // hide button
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if(_aump != null && avatar.IsMe)
+            {
+                UniqueAvatarColor color = new UniqueAvatarColor();
+                epic[0] = renderer;
+                color.meshes = epic;
+                renderer.material = blueMaterial;
+                color.UpdateHue();
+            }
+        }
     }
 
     public void HandleDisconnect(Multiplayer multiplayer, Endpoint endPoint)
@@ -83,29 +111,42 @@ public class TeamManager : MonoBehaviour
         switch (team)
         {
             case (int)Team.red:
-                AssignTeam(redTeam);
+                AssignTeam(team);
+                // Set team color  
                 break;
+
             case (int)Team.blue:
-                AssignTeam(blueTeam);
+                AssignTeam(team);
                 break;
         }
     }
 
-    void AssignTeam(int[] team)
+    //[SynchronizableMethod]
+    void AssignTeam(int team)
     {
-        if (avatar.IsMe)
+        if (avatar)
         {
-            var mesh = avatar.GetComponent<MeshRenderer>();
-            mesh.material = redMaterial;
+            // Assign the team
+            switch (team)
+            {
+                // Assign to the red team
+                case (int)Team.red:
+                    // Set team ID
+                    
+                   //user.team = team;
+                   //user.SetMaterial(redMaterial);
 
+                    // increment team size
+                    redTeam++;
+                    break;
+
+                // Assign to the blue team
+                case (int)Team.blue:
+                    //user.team = team;
+                    //user.SetMaterial(blueMaterial);
+                    blueTeam++;
+                    break;
+            }
         }
-
-        //for (int i = 0; i < team.Length; i++)
-        //{
-        //    if (team[i] == 1) { return; }
-        //    // give color
-        //    // give team id?
-        //
-        //}
     }
 }

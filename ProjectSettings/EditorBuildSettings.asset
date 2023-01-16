@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Jason/Scenes/JasonMPscene.unity
-    guid: fba4af559830443428cc77d97adc30ea
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/JohannasScene.unity
     guid: bf779a8c8285b4c4d92d93a54bd481cf
+  - enabled: 0
+    path: Assets/Scenes/Nelson_Scene.unity
+    guid: 6c9ca983ae31a1949b459d6806a48e5e
+  - enabled: 1
+    path: Assets/Scenes/JasonMPscene.unity
+    guid: 334f1b18ee834dc4681b661095ed7310
   m_configObjects: {}
