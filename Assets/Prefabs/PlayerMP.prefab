@@ -1664,17 +1664,19 @@ MonoBehaviour:
   Multiplayer: {fileID: 0}
   UID: {fileID: 0}
   Reliability: 1
-  health: 100
   damage: 10
+  health: 100
+  spawnTimer: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
   playerSelfLayer: 8
-  camera: {fileID: 579797559739742130}
+  assistTimer: 0
   playerkda: {fileID: 2107959267115876722}
+  camera: {fileID: 579797559739742130}
   avatar: {fileID: 3818068261183263210}
   previousDamageDealer: {fileID: 0}
-  damageDealers: []
+  assistingPlayers: []
 --- !u!1 &7802891528766714885
 GameObject:
   m_ObjectHideFlags: 0

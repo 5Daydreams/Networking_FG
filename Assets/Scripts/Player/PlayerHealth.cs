@@ -6,26 +6,43 @@ using Unity.Burst.CompilerServices;
 
 public class PlayerHealth : AttributesSync
 {
-    [SynchronizableField][SerializeField]private int health = 100;
-    [SerializeField] private int damage = 20;
+    [SerializeField] private int damage = 20;// remove when in weapons script
 
+    [Header("Health")]
+    [SynchronizableField][SerializeField]private int health = 100;
+    private int baseHealth;
+
+    [Header("Spawn")]
+    public int spawnTimer;
+
+    [Header("Layers")]
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private int playerSelfLayer;
 
-    [SerializeField] Camera camera;
+    [Header("KDA")]
+    [SerializeField]private float assistTimer;
+    private float baseAssistTimer;
 
     [SerializeField] PlayerKDA playerkda;
 
-    public Alteruna.Avatar avatar;
-    //[SynchronizableField]
-    public Alteruna.Avatar previousDamageDealer;
+    [SerializeField] Camera camera;
 
-    public List<Alteruna.Avatar> damageDealers = new List<Alteruna.Avatar>();
+    public Alteruna.Avatar avatar;
+
+    //[SynchronizableField]
+    public GameObject previousDamageDealer;
+    //[SynchronizableField]
+    public List<GameObject> assistingPlayers = new List<GameObject>();
+
+    //public List<float> assisstTimers = new List<float>();
 
     private void Start()
     {
         if (avatar.IsMe)
             avatar.gameObject.layer = playerSelfLayer;
+
+        baseHealth = health;
+        baseAssistTimer = assistTimer;
     }
 
     private void Update()
@@ -57,10 +74,11 @@ public class PlayerHealth : AttributesSync
         if (playerHitHp.previousDamageDealer != null && avatar != playerHitHp.previousDamageDealer)
         {
             Debug.Log("ADD TO LIST");
-            playerHitHp.damageDealers.Add(playerHitHp.previousDamageDealer);
+            playerHitHp.assistingPlayers.Add(playerHitHp.previousDamageDealer.gameObject);
+            //assisstTimers.Add(assistTimer);
         }
 
-        playerHitHp.previousDamageDealer = avatar;
+        playerHitHp.previousDamageDealer = avatar.gameObject;
         Debug.Log(playerHitHp.previousDamageDealer.GetInstanceID());
 
         playerHitHp.health -= damageTaken;
@@ -80,18 +98,44 @@ public class PlayerHealth : AttributesSync
         if (previousDamageDealer != null)
             previousDamageDealer.GetComponentInChildren<PlayerKDA>().AddKill(1);
 
-        for (int i = damageDealers.Count - 1; i > 0; i--)
+        for (int i = assistingPlayers.Count - 1; i > 0; i--)
         {
-            damageDealers[i].GetComponentInChildren<PlayerKDA>().AddAssist(1);
-            damageDealers.RemoveAt(i);
+            assistingPlayers[i].GetComponentInChildren<PlayerKDA>().AddAssist(1);
+            assistingPlayers.RemoveAt(i);
         }
 
-        previousDamageDealer = null;
+        Spawn();
     }
 
     [SynchronizableMethod]
     void Spawn()
     {
+        ClearDamageDealers();
+        //Spawn timer
+        health = baseHealth;
+        //Respawn
+    }
 
+    void ClearDamageDealers()
+    {
+        previousDamageDealer = null;
+        assistingPlayers.Clear();
+    }
+
+    void AssistTimer()
+    {
+        assistTimer = baseAssistTimer;
+        assistTimer -= Time.deltaTime;
+
+        //remove assisting player from the bottom up
+        for (int i = assistingPlayers.Count - 1; i >= 0; i--)
+        {
+            if (assistTimer <= 0)
+            {
+                previousDamageDealer = null;
+                assistingPlayers.RemoveAt(i);
+                //remove assisting player from the bottom up
+            }
+        }
     }
 }
