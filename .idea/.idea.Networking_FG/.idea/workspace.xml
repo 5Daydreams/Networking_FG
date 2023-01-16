@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Nelson/VFX/Rocket_Projectile/RocketSmoke_Trail.vfx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Nelson/VFX/Rocket_Projectile/RocketSmoke_Trail.vfx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Debug/RocketLauncherBullet_Alternate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Debug/RocketLauncherBullet_Alternate.prefab" afterDir="false" />
-    </list>
+    <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,7 +88,7 @@
       <updated>1673429785009</updated>
       <workItem from="1673429792466" duration="12391000" />
       <workItem from="1673860668463" duration="1887000" />
-      <workItem from="1673872133111" duration="10966000" />
+      <workItem from="1673872133111" duration="11203000" />
     </task>
     <servers />
   </component>
