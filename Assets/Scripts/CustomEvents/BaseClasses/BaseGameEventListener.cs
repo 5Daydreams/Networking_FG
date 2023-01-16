@@ -17,10 +17,6 @@ namespace submodules.unity_spellbook._Code.CustomEvents.BaseEvent
                 return;
 
             GameEvent.RegisterListener(this);
-            // foreach (var singleEvent in GameEvent)
-            // {
-            //     singleEvent.RegisterListener(this);
-            // }
         }
 
         private void OnDisable()
@@ -28,21 +24,11 @@ namespace submodules.unity_spellbook._Code.CustomEvents.BaseEvent
             if (_gameEvent == null)
                 return;
             GameEvent.UnregisterListener(this);
-        
-            // foreach (var singleEvent in GameEvent)
-            // {
-            //     singleEvent.UnregisterListener(this);
-            // }
         }
 
         public void OnEventRaised(T item)
         {
             UnityEventResponse?.Invoke(item);
-        
-            // foreach (var response in UnityEventResponse)
-            // {
-            //     response?.Invoke(item);
-            // }
         }
     }
 

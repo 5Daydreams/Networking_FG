@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Nelson_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Nelson_Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncher.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncher.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomEvents/BaseClasses/BaseGameEventListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomEvents/BaseClasses/BaseGameEventListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,11 +15,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/6b/6177eabc/AttributesSync.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/6f/f324971c/UniqueAvatarColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/8d/b5e28132/Spawner.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/da/4cd4b750/TransformSynchronizable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746c126b0b54f3b834845974d1a9190159000/f0/348f3604/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/53/d8087623/Avatar.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/ec/77e91de1/CommunicationBridge.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Nelson/_Code/RocketEffectsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Nelson/_Code/TeamColorChoose.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DebugTools/EventDebug.cs" root0="FORCE_HIGHLIGHTING" />
@@ -43,7 +37,6 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "rider.run.widget.enabled.cache": "false",
     "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
@@ -95,6 +88,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673429785009</updated>
       <workItem from="1673429792466" duration="12391000" />
+      <workItem from="1673860668463" duration="1887000" />
     </task>
     <servers />
   </component>
