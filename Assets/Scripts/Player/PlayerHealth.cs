@@ -30,19 +30,20 @@ public class PlayerHealth : AttributesSync
     public Alteruna.Avatar avatar;
 
     //[SynchronizableField]
-    public GameObject previousDamageDealer;
+    public Alteruna.Avatar previousDamageDealer;
     //[SynchronizableField]
-    public List<GameObject> assistingPlayers = new List<GameObject>();
+    public List<Alteruna.Avatar> assistingPlayers = new List<Alteruna.Avatar>();
 
-    //public List<float> assisstTimers = new List<float>();
+    public List<float> assisstTimers = new List<float>();
 
     private void Start()
     {
         if (avatar.IsMe)
+        {
             avatar.gameObject.layer = playerSelfLayer;
-
-        baseHealth = health;
-        baseAssistTimer = assistTimer;
+            baseHealth = health;
+            baseAssistTimer = assistTimer;
+        }
     }
 
     private void Update()
@@ -74,14 +75,15 @@ public class PlayerHealth : AttributesSync
         if (playerHitHp.previousDamageDealer != null && avatar != playerHitHp.previousDamageDealer)
         {
             Debug.Log("ADD TO LIST");
-            playerHitHp.assistingPlayers.Add(playerHitHp.previousDamageDealer.gameObject);
+            playerHitHp.assistingPlayers.Add(playerHitHp.previousDamageDealer);
             //assisstTimers.Add(assistTimer);
         }
 
-        playerHitHp.previousDamageDealer = avatar.gameObject;
+        playerHitHp.previousDamageDealer = avatar;
         Debug.Log(playerHitHp.previousDamageDealer.GetInstanceID());
 
         playerHitHp.health -= damageTaken;
+        //UPDATE HEALT TEXT
 
         if (playerHitHp.health <= 0)
         {
@@ -100,10 +102,12 @@ public class PlayerHealth : AttributesSync
 
         for (int i = assistingPlayers.Count - 1; i > 0; i--)
         {
-            assistingPlayers[i].GetComponentInChildren<PlayerKDA>().AddAssist(1);
-            assistingPlayers.RemoveAt(i);
-        }
+            //if (assisstTimers[i] > 0)
+                assistingPlayers[i].GetComponentInChildren<PlayerKDA>().AddAssist(1);
+                assistingPlayers.RemoveAt(i);
 
+        }
+        //UPDATEKDATEXT
         Spawn();
     }
 
@@ -112,7 +116,8 @@ public class PlayerHealth : AttributesSync
     {
         ClearDamageDealers();
         //Spawn timer
-        health = baseHealth;
+        if (avatar.IsMe)
+            health = baseHealth;
         //Respawn
     }
 
