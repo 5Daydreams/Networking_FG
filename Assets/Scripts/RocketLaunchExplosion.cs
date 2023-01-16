@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Alteruna;
+using Alteruna.Trinity;
 using UnityEngine;
 
-public class RocketLaunchExplosion : AttributesSync
+public class RocketLaunchExplosion : MonoBehaviour
 {
     private Spawner spawner;
     private Alteruna.Avatar avatar;
@@ -21,16 +22,20 @@ public class RocketLaunchExplosion : AttributesSync
     [SerializeField] private float maxRange;
     [SerializeField] private float maxDamage;
     
+    public Multiplayer networkManager;
+    
 
     private void Awake()
     {
         avatar = GetComponent<Alteruna.Avatar>();
         rigidbodySynchronizable = GetComponent<Alteruna.RigidbodySynchronizable>();
+      //  networkManager = GameObject.FindGameObjectsWithTag("NetWorkManager").GetComponent<Multiplayer>();
+        
     }
 
     void Start()
     {
-       
+        networkManager.RegisterRemoteProcedure("name",AddExplosionForce);
     }
 
     void Update()
@@ -43,10 +48,17 @@ public class RocketLaunchExplosion : AttributesSync
        
         if (other.CompareTag("RocketLauncherBullet"))
         {
+            Debug.Log("Rocketbullet hit me");
            //DoExplosion(other.transform.position, blastRadius);
+           AddExplosionForce1();
         }
     }
-    public void AddExplosionForce()// , float upwardsModifier, ForceMode forceMode
+    public void AddExplosionForce1()// , float upwardsModifier, ForceMode forceMode
+    {
+        Vector3 upVelocity = new Vector3(0, 10, 0);
+        rigidbodySynchronizable.velocity += upVelocity;
+    }
+    public void AddExplosionForce(ushort fromUser, ProcedureParameters parameters, uint callId, ITransportStreamReader processor)// , float upwardsModifier, ForceMode forceMode
     {
         Vector3 upVelocity = new Vector3(0, 500, 0);
         rigidbodySynchronizable.velocity += upVelocity;
@@ -65,14 +77,14 @@ public class RocketLaunchExplosion : AttributesSync
         Debug.Log(damageToDeal);
         
         rigidbodySynchronizable.velocity +=  blastDir * 2 + Vector3.up * damageToDeal  *Time.deltaTime; // add force to the player
-        foreach (var hitCollider in hitColliders) // add force to the the other objects around the hit
-        {
-            if (hitCollider.GetComponent<RigidbodySynchronizable>())
-            {
-                var HitRigidbodySynchronizable = hitCollider.GetComponent<RigidbodySynchronizable>();
-                HitRigidbodySynchronizable.velocity += blastDir * 2 + Vector3.up * damageToDeal * Time.deltaTime;
-            }
-        }
+      // foreach (var hitCollider in hitColliders) // add force to the the other objects around the hit
+      // {
+      //     if (hitCollider.GetComponent<RigidbodySynchronizable>())
+      //     {
+      //         var HitRigidbodySynchronizable = hitCollider.GetComponent<RigidbodySynchronizable>();
+      //         HitRigidbodySynchronizable.velocity += blastDir * 2 + Vector3.up * damageToDeal * Time.deltaTime;
+      //     }
+      // }
         
     }
     

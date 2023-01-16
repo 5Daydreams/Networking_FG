@@ -10,19 +10,22 @@ public class RocketLauncherGun : MonoBehaviour
     [SerializeField] Transform GunPipe;
    
    private Spawner spawner;
-   private Alteruna.Avatar avatar;
+   public Alteruna.Avatar avatar;
 
    private void Awake()
    {
        
        spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
-       avatar = GetComponent<Alteruna.Avatar>();
+       //avatar = GetComponent<Alteruna.Avatar>();
+       //avatar = gameObject.GetComponent<Alteruna.Avatar>();
       
+
+
    }
 
    void Start()
     {
-        
+        //avatar = transform.GetComponent<Alteruna.Avatar>();
     }
 
   
@@ -35,14 +38,34 @@ public class RocketLauncherGun : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            Debug.Log("Spawn bullet");
             SpawnBullet();
             
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DeSpawnBullet();
         }
     }
 
     void SpawnBullet()
     {
         spawner.Spawn(indexToSpawn, GunPipe.position + GunPipe.forward, GunPipe.rotation);
+        
+      //  spawner.Despawn();
+       
+    }
+
+    void DeSpawnBullet()
+    {
+       var spawnedObjects = spawner.SpawnedObjects;
+       foreach (var bullet in spawnedObjects)
+       {
+           spawner.Despawn(bullet.Item1);
+           
+           Destroy(bullet.Item1);
+       }
        
     }
 }
