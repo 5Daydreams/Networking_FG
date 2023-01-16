@@ -5,13 +5,9 @@ using Alteruna;
 using UnityEngine;
 
 public class RocketLauncherGun : MonoBehaviour
-{
-   //[SerializeField]
-   //GameObject Projectile;
-
-   [SerializeField] private int indexToSpawn = 0;
-   [SerializeField]
-   Transform GunPipe;
+{ 
+    [SerializeField] private int indexToSpawn = 0;
+    [SerializeField] Transform GunPipe;
    
    private Spawner spawner;
    private Alteruna.Avatar avatar;
