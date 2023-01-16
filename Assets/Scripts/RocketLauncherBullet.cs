@@ -5,9 +5,9 @@ using Alteruna;
 using UnityEngine;
 using Avatar = UnityEngine.Avatar;
 
-public class RocketLauncherBullet : MonoBehaviour
+public class RocketLauncherBullet : AttributesSync
 {
-    private TransformSynchronizable transform;
+    private TransformSynchronizable _transform;
     private Vector3 startPosition;
     [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float bulletMaxLength = 50f;
@@ -19,8 +19,8 @@ public class RocketLauncherBullet : MonoBehaviour
     private Collider[] hitColliders;
     private void Awake()
     {
-        transform = GetComponent<Alteruna.TransformSynchronizable>();
-        startPosition = transform.transform.position;
+        _transform = GetComponent<Alteruna.TransformSynchronizable>();
+        startPosition = _transform.transform.position;
     }
 
     void Start()
@@ -34,48 +34,66 @@ public class RocketLauncherBullet : MonoBehaviour
     }
     void Update()
     {
-        transform.transform.Translate(0, 0, bulletSpeed * Time.deltaTime);
+        _transform.transform.Translate(0, 0, bulletSpeed * Time.deltaTime);
         
-        if (Vector3.Distance(startPosition, this.transform.transform.position) > bulletMaxLength)
+        if (Vector3.Distance(startPosition, this._transform.transform.position) > bulletMaxLength)
             Destroy(this.gameObject);
     }
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("bullet trigger");
-        //hitColliders =  Physics.OverlapSphere(this.transform.transform.position, 10f, playerLayer);
-        //DoExplosion();
+        
+        
+       
+      //  foreach (Collider hitcol in hitColliders)
+      //  {
+      //      if (hitcol.gameObject.layer == 7)
+      //      {
+      //          Debug.Log("Hit playerlayer");
+      //          var avatar = hitcol.gameObject.GetComponent<Alteruna.Avatar>();
+      //          avatar.gameObject.GetComponent<RocketLaunchExplosion>()
+      //              .DoExplosion(avatar.gameObject.transform.position, 10f);
+      //      }
+//
+      //      Debug.Log("inside foreach loop");
+      //  }
+
+        DoExplosion();
         Destroy(this.gameObject);
     }
     void DoExplosion()
     {
-        foreach (Collider hitcol in hitColliders)
+        hitColliders =  Physics.OverlapSphere(this._transform.transform.position, 10f);
+        foreach (var hitcol in hitColliders)
         {
-            Debug.Log("inside foreach loop");
-             if (hitcol.gameObject.layer == 7) // this works
-             {
-                 Debug.Log(hitcol.gameObject.layer );
-                 Debug.Log("hitcol.gameObject.layer");
-                
-                 hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(hitcol.gameObject.transform.position, 10f); // this does not work, nullrefference
-             }
-             if (hitcol.gameObject.CompareTag("Player"))
-             {
-                 Debug.Log("bullet trigger gameobject Player");
-                 hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(gameObject.transform.position, 10f);
-             }
-             if (hitcol.CompareTag("Player"))
-             {
-                 Debug.Log("bullet trigger Player");
-                 hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(gameObject.transform.position, 10f);
-             }
-
-            if (playerLayer == 7)
+            if (hitcol.gameObject.layer == 7) // this works
             {
-                Debug.Log(playerLayer);
+                Debug.Log(hitcol.gameObject.layer );
                 Debug.Log("hitcol.gameObject.layer");
-               
-                hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(hitcol.gameObject.transform.position, 10f); // this does not work, nullrefference
+            
+                //hitcol.gameObject.GetComponent<RocketLaunchExplosion>().AddExplosionForce();
+               //hitcol.GetComponent<RocketLaunchExplosion>().AddExplosionForce(); // this does not work, nullrefference
             }
         }
+         
+         // if (hitcol.gameObject.CompareTag("Player"))
+         // {
+         //     Debug.Log("bullet trigger gameobject Player");
+         //     hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(gameObject.transform.position, 10f);
+         // }
+         // if (hitcol.CompareTag("Player"))
+         // {
+         //     Debug.Log("bullet trigger Player");
+         //     hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(gameObject.transform.position, 10f);
+         // }
+
+         //if (playerLayer == 7)
+         //{
+         //    Debug.Log(playerLayer);
+         //    Debug.Log("hitcol.gameObject.layer");
+         //   
+         //    hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(hitcol.gameObject.transform.position, 10f); // this does not work, nullrefference
+         //}
+        //}
     }
 }

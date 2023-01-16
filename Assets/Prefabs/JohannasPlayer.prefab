@@ -457,19 +457,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4f23cfacf8a9549b9c36cc69b9db15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 70
+  walkSpeed: 7
   groundDrag: 7
-  airDrag: 0
   jumpForce: 7
+  jumpSpeed: 2
   jumpCooldown: 0.25
-  airMultiplier: 0.1
-  bodyTransform: {fileID: 2538953114544123422}
+  maxGroundSlideSpeed: 0
+  maxSlopeSlideSpeed: 0
+  slideForce: 0
+  speedIncreaseMultiplier: 0
+  steepIncreaseMultiplier: 0
+  maxSlideTime: 0
+  slideYScale: 0
   playerHeight: 2
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
+  maxSteepAngle: 0
+  bodyOrientation: {fileID: 2538953114544123422}
   avatar: {fileID: 3818068261183263210}
-  mText: {fileID: 5778323047171376877}
+  movementState: 0
+  speedText: {fileID: 5778323047171376877}
+  stateText: {fileID: 5778323047171376877}
 --- !u!114 &3017413889455676530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,6 +924,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.016
       objectReference: {fileID: 0}
+    - target: {fileID: 5874486892043834643, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8a594dfb56229948b75a3a00f871c94, type: 2}
     - target: {fileID: 7170351107618555085, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: m_Layer
       value: 7
