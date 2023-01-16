@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 2613547992927943933}
   - component: {fileID: 6454601066920813429}
   - component: {fileID: 3614954633889359328}
-  - component: {fileID: 647036793330362498}
   - component: {fileID: -2401335500057721295}
+  - component: {fileID: 5980286677704367680}
   m_Layer: 0
-  m_Name: RocketLauncherBullet
+  m_Name: RocketLauncherBullet_Alternate
   m_TagString: RocketLauncherBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,21 +165,6 @@ MonoBehaviour:
     LastUpdated: 0
     NeverString: Never
     RealtimeString: Realtime
---- !u!114 &647036793330362498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378792108265994139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b728804d538219749bb20b6b37e6906d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 10
-  bulletMaxLength: 50
-  coll: {fileID: 0}
 --- !u!54 &-2401335500057721295
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -196,6 +181,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5980286677704367680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378792108265994139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ab489e399641b3a4e8204e3b98f05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 10
+  bulletMaxLength: 50
+  coll: {fileID: 0}
+  _beforeDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1798074675406796721
 PrefabInstance:
   m_ObjectHideFlags: 0

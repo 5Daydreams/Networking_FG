@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using Alteruna;
@@ -11,16 +12,17 @@ public class DespawnBehavior : MonoBehaviour
     private void OnEnable()
     {
         spawner = GameObject.FindWithTag("NetworkManager").GetComponent<Spawner>();
+
+        Debug.Log("Starting Countdown");
         StartCoroutine(KillAfterSeconds(_lifetime));
     }
 
     private IEnumerator KillAfterSeconds(float time)
     {
-        Debug.Log("Waiting for despawn");
-        
         yield return new WaitForSeconds(time);
         spawner.Despawn(this.gameObject);
-        
-        Debug.Log("Despawned");
+        yield return null;
+        Destroy(this.gameObject);
+        Debug.Log("End Of Countdown");
     }
 }
