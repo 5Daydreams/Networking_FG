@@ -29,7 +29,7 @@ public class PlayerUiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.text = playerHealt.health.ToString();
+        healthText.text = playerHealt.GetHealt().ToString();
 
         killsText.text = "K:" + playerKDA.kills.ToString();
         deathsText.text = "D:" + playerKDA.deaths.ToString();
