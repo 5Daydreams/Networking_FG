@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VFXSpawner : MonoBehaviour
+public class VFXSpawnController : MonoBehaviour
 {
     public void SpawnVFX(Alteruna.Spawner spawner, int spawnerIndex, Transform targetTransform)
     {

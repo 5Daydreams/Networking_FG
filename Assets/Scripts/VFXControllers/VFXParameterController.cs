@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.VFX;
 
 [RequireComponent(typeof(VisualEffect))]
-public class VFXController : MonoBehaviour
+public class VFXParameterController : MonoBehaviour
 {
     private VisualEffect _effect;
     [SerializeField] private string _spawnRateString = "SpawnRate";
