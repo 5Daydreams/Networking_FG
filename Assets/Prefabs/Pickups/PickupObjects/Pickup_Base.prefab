@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5181954204635795605}
   - component: {fileID: 8436637873089209007}
   - component: {fileID: 5115126742505254244}
+  - component: {fileID: 2846905641282456082}
   m_Layer: 0
   m_Name: Pickup_Base
   m_TagString: Untagged
@@ -61,16 +62,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a9465b7cfb22549aa96ba36e27c0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _applyOnPlayerIndex: 0
-  _onCollectedIndex: 1
+  _vfx: {fileID: 2846905641282456082}
+  _indexForPlayerVFX: 0
+  _indexForDespawnVFX: 1
   _pickupDuration: 5
   _callback:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 42b3910e7de18fa4d89e640be293bb9f, type: 2}
-        m_TargetAssemblyTypeName: EventDebug, Assembly-CSharp
-        m_MethodName: MessageLog
-        m_Mode: 5
+      - m_Target: {fileID: 11400000, guid: 653975d95ed4d9c40b5c64bd1b92e0d8, type: 2}
+        m_TargetAssemblyTypeName: submodules.unity_spellbook._Code.CustomEvents.BaseEvent.BaseGameEvent`1[[System.Int32,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -79,7 +82,7 @@ MonoBehaviour:
           m_StringArgument: Picked up Red
           m_BoolArgument: 0
         m_CallState: 2
-  _debug: {fileID: 0}
+  checkTag: Player
 --- !u!114 &8436637873089209007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +118,18 @@ MonoBehaviour:
   ObjectDespawned:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2846905641282456082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181954204635795610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf147d4f6244ba1a1febac3c766e2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5181954205092550632
 GameObject:
   m_ObjectHideFlags: 0

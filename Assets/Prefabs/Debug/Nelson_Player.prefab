@@ -615,6 +615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexToSpawn: 0
   GunPipe: {fileID: 9193710638593714777}
+  avatar: {fileID: 3818068261183263210}
 --- !u!114 &6859230254726779757
 MonoBehaviour:
   m_ObjectHideFlags: 0
