@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Alteruna;
 using UnityEngine;
+using UnityEngine.Events;
 using Avatar = UnityEngine.Avatar;
 
 public class RocketLauncherBullet : AttributesSync
@@ -23,6 +24,7 @@ public class RocketLauncherBullet : AttributesSync
     private Spawner spawner;
     
     private Coroutine destroyRoutine;
+    [SerializeField] UnityEvent _beforeDestroy;
     private void Awake()
     {
         _transform = GetComponent<Alteruna.TransformSynchronizable>(); // might be able to use normal transform
@@ -73,7 +75,7 @@ public class RocketLauncherBullet : AttributesSync
       //  }
 
         DoExplosion();
-        
+        //CustomDestroy();
         //destroyRoutine = StartCoroutine(nameof(DestroyBullet));
     }
 
@@ -81,10 +83,15 @@ public class RocketLauncherBullet : AttributesSync
    IEnumerator DestroyBullet() // normal
    {
       
-      spawner.Despawn(this.gameObject);
+      spawner.Despawn(this._transform.gameObject);
       yield return new WaitForSeconds(10);
-      Destroy(this.gameObject);
+      Destroy(this._transform.gameObject);
 
+   }
+   private void CustomDestroy()
+   {
+       _beforeDestroy.Invoke();
+       Destroy(this._transform.transform.gameObject);
    }
  // private void OnDisable()
  // {
