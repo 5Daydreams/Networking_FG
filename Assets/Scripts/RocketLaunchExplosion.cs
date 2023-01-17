@@ -8,7 +8,7 @@ using UnityEngine;
 public class RocketLaunchExplosion : MonoBehaviour
 {
     private Spawner spawner;
-    private Alteruna.Avatar avatar;
+    public Alteruna.Avatar avatar;
     private RigidbodySynchronizable rigidbodySynchronizable;
 
     private Vector3 ParticalSpawnPosition;
@@ -16,26 +16,25 @@ public class RocketLaunchExplosion : MonoBehaviour
     [SerializeField] private float explosionForce;
     private Collider[] hitColliders;
     private float distance;
-    private float blastRadius = 5f;
+    private float blastRadius = 1f;
 
     [SerializeField] private float minRange;
     [SerializeField] private float maxRange;
     [SerializeField] private float maxDamage;
     
-    public Multiplayer networkManager;
-    
-
     private void Awake()
     {
-        avatar = GetComponent<Alteruna.Avatar>();
-        rigidbodySynchronizable = GetComponent<Alteruna.RigidbodySynchronizable>();
+        //avatar = GetComponent<Alteruna.Avatar>();
+       
+        rigidbodySynchronizable = GetComponentInParent<RigidbodySynchronizable>();
+        
       //  networkManager = GameObject.FindGameObjectsWithTag("NetWorkManager").GetComponent<Multiplayer>();
         
     }
 
     void Start()
     {
-        networkManager.RegisterRemoteProcedure("name",AddExplosionForce);
+       
     }
 
     void Update()
@@ -50,7 +49,8 @@ public class RocketLaunchExplosion : MonoBehaviour
         {
             Debug.Log("Rocketbullet hit me");
            //DoExplosion(other.transform.position, blastRadius);
-           AddExplosionForce1();
+            //AddExplosionForce1();
+           //DoExplosion(other.transform.position,1);
         }
     }
     public void AddExplosionForce1()// , float upwardsModifier, ForceMode forceMode
@@ -58,13 +58,9 @@ public class RocketLaunchExplosion : MonoBehaviour
         Vector3 upVelocity = new Vector3(0, 10, 0);
         rigidbodySynchronizable.velocity += upVelocity;
     }
-    public void AddExplosionForce(ushort fromUser, ProcedureParameters parameters, uint callId, ITransportStreamReader processor)// , float upwardsModifier, ForceMode forceMode
-    {
-        Vector3 upVelocity = new Vector3(0, 500, 0);
-        rigidbodySynchronizable.velocity += upVelocity;
-    }
     public void DoExplosion(Vector3 explosionPoint, float radius) // spelaren pos, blasradious
     {
+      
         hitColliders = Physics.OverlapSphere(explosionPoint, radius);
         
         var distance = Vector3.Distance(explosionPoint, transform.position);
@@ -73,19 +69,22 @@ public class RocketLaunchExplosion : MonoBehaviour
         
         Vector3 blastDir = transform.position - explosionPoint;
         
-        Debug.Log("damageToDeal");
-        Debug.Log(damageToDeal);
         
-        rigidbodySynchronizable.velocity +=  blastDir * 2 + Vector3.up * damageToDeal  *Time.deltaTime; // add force to the player
-      // foreach (var hitCollider in hitColliders) // add force to the the other objects around the hit
-      // {
-      //     if (hitCollider.GetComponent<RigidbodySynchronizable>())
-      //     {
-      //         var HitRigidbodySynchronizable = hitCollider.GetComponent<RigidbodySynchronizable>();
-      //         HitRigidbodySynchronizable.velocity += blastDir * 2 + Vector3.up * damageToDeal * Time.deltaTime;
-      //     }
-      // }
-        
+         if (avatar.IsMe)
+         {
+             Debug.Log("damageToDeal");
+             Debug.Log(damageToDeal);
+             
+             this.rigidbodySynchronizable.velocity +=  blastDir * 2 + Vector3.up * damageToDeal; // add force to the player
+         }
+      //     foreach (var hitCollider in hitColliders) // add force to the the other objects around the hit
+      //  {
+      //      if (hitCollider.GetComponent<RigidbodySynchronizable>())
+      //      {
+      //          var HitRigidbodySynchronizable = hitCollider.GetComponent<RigidbodySynchronizable>();
+      //          HitRigidbodySynchronizable.velocity += blastDir * 2 + Vector3.up * damageToDeal * Time.deltaTime;
+      //      }
+      //  }
     }
     
     float GetDamageAtPosition(Vector3 pos, Vector3 explosionPos)
