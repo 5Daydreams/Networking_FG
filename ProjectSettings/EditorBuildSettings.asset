@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JohannasScene.unity
     guid: bf779a8c8285b4c4d92d93a54bd481cf
   - enabled: 1
