@@ -18,9 +18,10 @@ public class DespawnBehavior : MonoBehaviour
 
     private IEnumerator KillAfterSeconds(float time)
     {
+        yield return null;
+        
         yield return new WaitForSeconds(time);
         spawner.Despawn(this.gameObject);
-        yield return null;
         Destroy(this.gameObject);
     }
 }

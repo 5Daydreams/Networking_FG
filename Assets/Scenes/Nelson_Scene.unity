@@ -878,7 +878,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43378
+  m_Name: pb_Mesh46476
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1508,7 +1508,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43182
+  m_Name: pb_Mesh46282
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2484,7 +2484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469603390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.35887, y: -14.007767, z: -1.9351249}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2505,7 +2505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Multiplayer: {fileID: 1469603391}
   SpawnableObjects:
-  - {fileID: 378792108265994139, guid: 57080a814ad6cb5468d9623eae2bfea0, type: 3}
+  - {fileID: 378792108265994139, guid: 40f5366b81520b044a42e298fe12fb7d, type: 3}
   ObjectSpawned:
     m_PersistentCalls:
       m_Calls: []
@@ -2518,7 +2518,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43330
+  m_Name: pb_Mesh46428
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2682,7 +2682,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43130
+  m_Name: pb_Mesh46230
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
