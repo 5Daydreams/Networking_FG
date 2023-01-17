@@ -3,11 +3,10 @@ using Alteruna;
 using System.Collections.Generic;
 using System.Collections;
 using Unity.Burst.CompilerServices;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerHealth : AttributesSync
 {
-    [SerializeField] private int damage = 20;// remove when in weapons script
-
     [Header("Health")]
     [SynchronizableField][SerializeField]private int health = 100;
     private int baseHealth;
@@ -27,28 +26,28 @@ public class PlayerHealth : AttributesSync
 
     [SerializeField] Camera camera;
 
-    public Alteruna.Avatar avatar;
+    public Alteruna.Avatar localAvatar;
 
-    //[SynchronizableField]
-    public Alteruna.Avatar previousDamageDealer;
-    //[SynchronizableField]
-    public List<Alteruna.Avatar> assistingPlayers = new List<Alteruna.Avatar>();
+    [SynchronizableField] public int previousDamageDealer;
+    [SynchronizableField] public List<int> assistingPlayers = new List<int>();
 
-    public List<float> assisstTimers = new List<float>();
+    AvatarCollection avatarCollection;
 
     private void Start()
     {
-        if (avatar.IsMe)
-        {
-            avatar.gameObject.layer = playerSelfLayer;
+        avatarCollection = FindObjectOfType<AvatarCollection>();
             baseHealth = health;
             baseAssistTimer = assistTimer;
+        if (localAvatar.IsMe)
+        {
+            previousDamageDealer = localAvatar.Possessor.Index;
+            localAvatar.gameObject.layer = playerSelfLayer;
         }
     }
 
     private void Update()
     {
-        if (!avatar.IsMe)
+        if (!localAvatar.IsMe)
             return;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -66,64 +65,58 @@ public class PlayerHealth : AttributesSync
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, Mathf.Infinity, playerLayer))
         {
             PlayerHealth playerHp = hit.transform.GetComponentInChildren<PlayerHealth>();
-            TakeDamage(damage, playerHp);
+            DealDamage(20, playerHp);
         }
     }
 
-    public void TakeDamage(int damageTaken, PlayerHealth playerHitHp)
+    public void DealDamage(int damageTaken, PlayerHealth playerHit)
     {
-        if (playerHitHp.previousDamageDealer != null && avatar != playerHitHp.previousDamageDealer)
+        playerHit.previousDamageDealer = localAvatar.Possessor.Index;
+        playerHit.assistingPlayers.Add(localAvatar.Possessor.Index);
+
+        playerHit.health -= damageTaken;
+
+        if (playerHit.health <= 0)
         {
-            Debug.Log("ADD TO LIST");
-            playerHitHp.assistingPlayers.Add(playerHitHp.previousDamageDealer);
-            //assisstTimers.Add(assistTimer);
-        }
-
-        playerHitHp.previousDamageDealer = avatar;
-        Debug.Log(playerHitHp.previousDamageDealer.GetInstanceID());
-
-        playerHitHp.health -= damageTaken;
-        //UPDATE HEALT TEXT
-
-        if (playerHitHp.health <= 0)
-        {
-            playerHitHp.BroadcastRemoteMethod("Die");
+            playerHit.Die(localAvatar.Possessor.Index);
         }
     }
 
-    [SynchronizableMethod]
-    void Die()
+    void Die(int killer)
     {
         playerkda.AddDeath(1);
 
-        // if no dmg dealer, give no kills
-        if (previousDamageDealer != null)
-            previousDamageDealer.GetComponentInChildren<PlayerKDA>().AddKill(1);
+        if (previousDamageDealer != localAvatar.Possessor.Index)
+            avatarCollection.avatars[previousDamageDealer].GetComponentInChildren<PlayerKDA>().AddKill(1);
 
-        for (int i = assistingPlayers.Count - 1; i > 0; i--)
+        if (assistingPlayers.Count < 0)
         {
-            //if (assisstTimers[i] > 0)
-                assistingPlayers[i].GetComponentInChildren<PlayerKDA>().AddAssist(1);
-                assistingPlayers.RemoveAt(i);
-
+            for (int i = 0; i < assistingPlayers.Count; i++)
+            {
+                if (assistingPlayers[i] != killer)
+                {
+                    avatarCollection.avatars[assistingPlayers[i]].GetComponentInChildren<PlayerKDA>().AddAssist(1);
+                    assistingPlayers.RemoveAt(i);
+                }
+            }
+                // Multiplayer.GetAvatar((ushort)i).GetComponentInChildren<PlayerKDA>().AddAssist(1);
         }
         //UPDATEKDATEXT
         Spawn();
     }
 
-    [SynchronizableMethod]
+
     void Spawn()
     {
-        ClearDamageDealers();
+        //ClearDamageDealers();
         //Spawn timer
-        if (avatar.IsMe)
             health = baseHealth;
         //Respawn
     }
 
     void ClearDamageDealers()
     {
-        previousDamageDealer = null;
+        previousDamageDealer = localAvatar.Possessor.Index;
         assistingPlayers.Clear();
     }
 
@@ -137,7 +130,7 @@ public class PlayerHealth : AttributesSync
         {
             if (assistTimer <= 0)
             {
-                previousDamageDealer = null;
+                previousDamageDealer = localAvatar.Possessor.Index;
                 assistingPlayers.RemoveAt(i);
                 //remove assisting player from the bottom up
             }

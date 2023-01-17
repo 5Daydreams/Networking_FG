@@ -1006,6 +1006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2538953114182484418}
   - component: {fileID: 3629450495841672613}
+  - component: {fileID: 1215124335403854535}
   - component: {fileID: 6760002208509685307}
   - component: {fileID: 8658296048782188329}
   - component: {fileID: 3017413889455676530}
@@ -1071,6 +1072,19 @@ MonoBehaviour:
   movementState: 0
   speedText: {fileID: 5778323047171376877}
   stateText: {fileID: 8361333021167384216}
+--- !u!114 &1215124335403854535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538953114182484416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2a303eb0eb16242a4207e62e9fdecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 3818068261183263210}
 --- !u!54 &6760002208509685307
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1184,7 +1198,19 @@ MonoBehaviour:
   IsPossessed: 0
   OnPossessed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1215124335403854535}
+        m_TargetAssemblyTypeName: OnAvatarPosses, Assembly-CSharp
+        m_MethodName: OnPossessed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnUnpossessed:
     m_PersistentCalls:
       m_Calls: []
@@ -2209,10 +2235,9 @@ MonoBehaviour:
   assistTimer: 0
   playerkda: {fileID: 2107959267115876722}
   camera: {fileID: 579797559739742130}
-  avatar: {fileID: 3818068261183263210}
-  previousDamageDealer: {fileID: 0}
-  assistingPlayers: []
-  assisstTimers: []
+  localAvatar: {fileID: 3818068261183263210}
+  previousDamageDealer: 0
+  assistingPlayers: 
 --- !u!1 &7802891528766714885
 GameObject:
   m_ObjectHideFlags: 0
