@@ -2505,7 +2505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Multiplayer: {fileID: 1469603391}
   SpawnableObjects:
-  - {fileID: 378792108265994139, guid: 40f5366b81520b044a42e298fe12fb7d, type: 3}
+  - {fileID: 378792108265994139, guid: 57080a814ad6cb5468d9623eae2bfea0, type: 3}
   ObjectSpawned:
     m_PersistentCalls:
       m_Calls: []
