@@ -19,13 +19,16 @@ public class RocketLauncherBullet : AttributesSync
     private Collider[] hitColliders;
 
     //public Multiplayer NetworkManager;
-    public Alteruna.Avatar avatar;
+    public uint hitAvatarID;
     private Spawner spawner;
+    
+    private Coroutine destroyRoutine;
     private void Awake()
     {
-        _transform = GetComponent<Alteruna.TransformSynchronizable>();
+        _transform = GetComponent<Alteruna.TransformSynchronizable>(); // might be able to use normal transform
         startPosition = _transform.transform.position;
         spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
+        
     }
 
     void Start()
@@ -44,7 +47,8 @@ public class RocketLauncherBullet : AttributesSync
 
         if (Vector3.Distance(startPosition, this._transform.transform.position) > bulletMaxLength)
         {
-            DestroyBullet();
+            //Destroy(this.gameObject);
+           //destroyRoutine = StartCoroutine(nameof(DestroyBullet));
         }
 
         
@@ -52,10 +56,10 @@ public class RocketLauncherBullet : AttributesSync
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("bullet trigger");
-        
-        
-        DestroyBullet();
-      //  foreach (Collider hitcol in hitColliders)
+
+
+       // destroyRoutine = StartCoroutine(nameof(DestroyBullet));
+        //  foreach (Collider hitcol in hitColliders)
       //  {
       //      if (hitcol.gameObject.layer == 7)
       //      {
@@ -68,48 +72,64 @@ public class RocketLauncherBullet : AttributesSync
       //      Debug.Log("inside foreach loop");
       //  }
 
-        //DoExplosion();
-        //Destroy(this.gameObject);
+        DoExplosion();
         
+        //destroyRoutine = StartCoroutine(nameof(DestroyBullet));
     }
 
-    void DestroyBullet()
-    {
-        spawner.Despawn(this.gameObject);
-            
-        Destroy(this.gameObject);
-    }
+    //[SynchronizableMethod] // yess or no?
+   IEnumerator DestroyBullet() // normal
+   {
+      
+      spawner.Despawn(this.gameObject);
+      yield return new WaitForSeconds(10);
+      Destroy(this.gameObject);
+
+   }
+ // private void OnDisable()
+ // {
+ //     StopCoroutine(nameof(DestroyBullet));
+ // }
 
     void DoExplosion()
     {
-        hitColliders =  Physics.OverlapSphere(this._transform.transform.position, 10f);
+        Debug.Log("Do Explosion");
+        hitColliders =  Physics.OverlapSphere(this._transform.transform.position, 1f);
         foreach (var hitcol in hitColliders)
         {
-            avatar = hitcol.gameObject.GetComponent<Alteruna.Avatar>();
+           // avatar = hitcol.gameObject.GetComponent<Alteruna.Avatar>();
             
-            Debug.Log(avatar.Possessor.Index);
+           // Debug.Log(avatar.Possessor.Index);
             if (hitcol.gameObject.layer == 7) // this works
             {
+                Debug.Log("hello"); 
+                var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>();
+               Debug.Log(avatar);
+               avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().DoExplosion(transform.position, 1);
                
-                ProcedureParameters parameters = new ProcedureParameters();
-                
-                parameters.Set("value", 16.0f);
-                Multiplayer.InvokeRemoteProcedure("name", avatar.Possessor.Index, parameters); // Null
-               
-              //  Debug.Log(hitcol.gameObject.layer );
-              //  Debug.Log("hitcol.gameObject.layer");
-              //  Debug.Log(hitcol.gameObject);
-              //  PlayerHealth playerHp = hitcol.transform.GetComponentInChildren<PlayerHealth>();
-              //  Debug.Log("playerHp");
-              //  Debug.Log(playerHp);
-              
-                
+               //var p = Multiplayer.AvatarPrefab.Possessor.Index;
+
+
+               // possessor.index
+               // Debug.Log("Hit layer 7");
+              // ProcedureParameters parameters = new ProcedureParameters();
+              // parameters.Set("value", 16.0f);
+              // Multiplayer.InvokeRemoteProcedure("name", avatar.Possessor.Index, parameters); // what userID?
+
+               //  Debug.Log(hitcol.gameObject.layer );
+               //  Debug.Log("hitcol.gameObject.layer");
+               //  Debug.Log(hitcol.gameObject);
+               //  PlayerHealth playerHp = hitcol.transform.GetComponentInChildren<PlayerHealth>();
+               //  Debug.Log("playerHp");
+               //  Debug.Log(playerHp);
+
+
                ///// NULL
-                // avatar.gameObject.GetComponent<RocketLaunchExplosion>()
-                //             .DoExplosion(avatar.gameObject.transform.position, 10f);
-                // avatar.Possessor.Index
-                // 
-                //hitcol.gameObject.GetComponent<RocketLaunchExplosion>().AddExplosionForce();
+               // avatar.gameObject.GetComponent<RocketLaunchExplosion>()
+               //             .DoExplosion(avatar.gameObject.transform.position, 10f);
+               // avatar.Possessor.Index
+               // 
+               //hitcol.gameObject.GetComponent<RocketLaunchExplosion>().AddExplosionForce();
                //hitcol.GetComponent<RocketLaunchExplosion>().AddExplosionForce(); // this does not work, nullrefference
             }
         }
