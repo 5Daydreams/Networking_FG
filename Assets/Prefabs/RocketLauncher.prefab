@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1030169645340376018}
   - component: {fileID: 5874486892043834643}
   - component: {fileID: 7260430651405018580}
+  - component: {fileID: -2434147249923477179}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c37ea7027d21dd4589292503d83aa7e, type: 2}
+  - {fileID: 2100000, guid: a8a594dfb56229948b75a3a00f871c94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,6 +99,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2434147249923477179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798070599626767659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d7668e1e9162348a6fcc2fda10b3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForce: 0
+  minRange: 0
+  maxRange: 0
+  maxDamage: 0
+  networkManager: {fileID: 4412056548497521751, guid: 205b9015f3d2ab040aaae2e7575a342b, type: 3}
 --- !u!1 &7170351107618555085
 GameObject:
   m_ObjectHideFlags: 0

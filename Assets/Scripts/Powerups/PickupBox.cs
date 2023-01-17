@@ -2,51 +2,38 @@ using System;
 using Alteruna;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.VFX;
 
-[RequireComponent(typeof(Collider), typeof(Spawner))]
+[RequireComponent(typeof(Collider), typeof(VFXSpawnController), typeof(Spawner))]
 public class PickupBox : MonoBehaviour
 {
-    private Alteruna.Spawner spawner;
-    private Collider col;
-
-    [SerializeField] private int _applyOnPlayerIndex = 0;
-    [SerializeField] private int _onCollectedIndex = 0;
+    private Alteruna.Spawner _spawner;
+    private VFXSpawnController _vfx;
+    
+    [SerializeField] private int _indexForPlayerVFX = 0;
+    [SerializeField] private int _indexForDespawnVFX = 0;
     [SerializeField] private float _pickupDuration = 5.0f;
     [SerializeField] private UnityEvent _callback;
     [SerializeField] private string checkTag = "Player";
 
     private void Start()
     {
-        spawner = this.GetComponent<Alteruna.Spawner>();
-        col = this.GetComponent<Collider>();
-    }
-
-    private void SpawnVFXOnPickup()
-    {
-        spawner.Spawn(
-            _onCollectedIndex,
-            this.transform.position,
-            this.transform.rotation
-        );
-    }
-
-    private void AttachedVFXToTarget(Transform attachTarget)
-    {
-        GameObject output =
-            spawner.Spawn(
-                _applyOnPlayerIndex,
-                attachTarget.position,
-                attachTarget.rotation
-            );
-
-        output.transform.parent = attachTarget;
+        _spawner = this.GetComponent<Alteruna.Spawner>();
+        _vfx = this.GetComponent<VFXSpawnController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        SpawnVFXOnPickup();
-        AttachedVFXToTarget(other.gameObject.transform);
+        bool hitByPlayer = other.CompareTag(checkTag);
+
+        if (!hitByPlayer)
+        {
+            return;
+        }
+
+        Transform playerTransform = other.transform;
+
+        _vfx.SpawnVFX(_spawner, _indexForDespawnVFX, this.transform);
+        _vfx.AttachVFXToTarget(_spawner, _indexForPlayerVFX, playerTransform, playerTransform);
 
         _callback.Invoke();
         Destroy(this.gameObject);
