@@ -22,6 +22,7 @@ public class DespawnBehavior : MonoBehaviour
         
         yield return new WaitForSeconds(time);
         spawner.Despawn(this.gameObject);
+        yield return null;
         Destroy(this.gameObject);
     }
 }
