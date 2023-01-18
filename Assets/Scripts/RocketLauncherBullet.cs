@@ -70,7 +70,9 @@ public class RocketLauncherBullet : AttributesSync
         Debug.Log("Multiplayer.Me in bullet: " +Multiplayer.Me);
         if (UserID == Multiplayer.Me.Index)
         {
-            StartCoroutine(DelayedDeSpawne (2));
+            StartCoroutine(DelayedDeSpawne (0.5f));
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<SphereCollider>().enabled = false;
             // spawner.Despawn(transform.gameObject);
             // _beforeDestroy.Invoke();
         }
