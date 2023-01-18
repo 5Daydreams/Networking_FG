@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MaterialControllers.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Nelson/Scriptables.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Nelson/_Code.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Nelson/_Code/RocketEffectsController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Nelson/_Code/RocketEffectsController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Nelson/_Code/TeamColorChoose.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MaterialControllers/TeamColorChoose.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Nelson/_Code/TeamColorChoose.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MaterialControllers/TeamColorChoose.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomScriptables.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomScriptables/SpawnerList.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomScriptables/SpawnerList.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/CopyOf_Rocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/CopyOf_Rocket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,10 +112,10 @@
           <line>71</line>
           <properties documentPath="C:\_Kiyoshi\Unity\Networking_FG\Assets\Scripts\RocketLauncherBullet.cs" initialLine="71" containingFunctionPresentation="method 'CustomDestroy'">
             <startOffsets>
-              <option value="2005" />
+              <option value="2011" />
             </startOffsets>
             <endOffsets>
-              <option value="2052" />
+              <option value="2058" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
@@ -136,10 +125,10 @@
           <line>73</line>
           <properties documentPath="C:\_Kiyoshi\Unity\Networking_FG\Assets\Scripts\RocketLauncherBullet.cs" initialLine="73" containingFunctionPresentation="method 'CustomDestroy'">
             <startOffsets>
-              <option value="2075" />
+              <option value="2081" />
             </startOffsets>
             <endOffsets>
-              <option value="2099" />
+              <option value="2105" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
