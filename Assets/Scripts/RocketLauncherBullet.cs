@@ -25,7 +25,7 @@ public class RocketLauncherBullet : AttributesSync
     private Collider[] hitColliders;
 
     //public Multiplayer NetworkManager;
-    private Spawner spawner;
+    public Spawner spawner;
 
     private Coroutine destroyRoutine;
     [SerializeField] UnityEvent _beforeDestroy;
@@ -74,7 +74,18 @@ public class RocketLauncherBullet : AttributesSync
             _beforeDestroy.Invoke();
             spawner.Despawn(transform.gameObject);
         }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
+
+    IEnumerator DelayedDeSpawne(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        spawner.Despawn(transform.gameObject);
+    }
+
     void DoExplosion2(Vector3 hitpoint, Collider other)
     {
         hitColliders = Physics.OverlapSphere(hitpoint, explosionRadius); // make a spherecast to se what is inside the explosion
