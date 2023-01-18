@@ -63,32 +63,32 @@ public class CopyOf_Rocket : MonoBehaviour
     {
         foreach (Collider hitcol in hitColliders)
         {
-            Debug.Log("inside foreach loop");
-             if (hitcol.gameObject.layer == 7) // this works
-             {
-                 Debug.Log(hitcol.gameObject.layer );
-                 Debug.Log("hitcol.gameObject.layer");
-                
-                 hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(hitcol.gameObject.transform.position, 10f); // this does not work, nullrefference
-             }
-             if (hitcol.gameObject.CompareTag("Player"))
-             {
-                 Debug.Log("bullet trigger gameobject Player");
-                 hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(gameObject.transform.position, 10f);
-             }
-             if (hitcol.CompareTag("Player"))
-             {
-                 Debug.Log("bullet trigger Player");
-                 hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(gameObject.transform.position, 10f);
-             }
+         // Debug.Log("inside foreach loop");
+         //  if (hitcol.gameObject.layer == 7) // this works
+         //  {
+         //      Debug.Log(hitcol.gameObject.layer );
+         //      Debug.Log("hitcol.gameObject.layer");
+         //     
+         //      hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(hitcol.gameObject.transform.position, 10f); // this does not work, nullrefference
+         //  }
+         //  if (hitcol.gameObject.CompareTag("Player"))
+         //  {
+         //      Debug.Log("bullet trigger gameobject Player");
+         //      hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(gameObject.transform.position, 10f);
+         //  }
+         //  if (hitcol.CompareTag("Player"))
+         //  {
+         //      Debug.Log("bullet trigger Player");
+         //      hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(gameObject.transform.position, 10f);
+         //  }
 
-            if (playerLayer == 7)
-            {
-                Debug.Log(playerLayer);
-                Debug.Log("hitcol.gameObject.layer");
-               
-                hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(hitcol.gameObject.transform.position, 10f); // this does not work, nullrefference
-            }
+         // if (playerLayer == 7)
+         // {
+         //     Debug.Log(playerLayer);
+         //     Debug.Log("hitcol.gameObject.layer");
+         //    
+         //     hitcol.GetComponent<RocketLaunchExplosion>().DoExplosion(hitcol.gameObject.transform.position, 10f); // this does not work, nullrefference
+         // }
         }
     }
 }
