@@ -13,14 +13,17 @@ public class DespawnBehavior : MonoBehaviour
     {
         spawner = GameObject.FindWithTag("NetworkManager").GetComponent<Spawner>();
         
-        StartCoroutine(KillAfterSeconds(_lifetime));
+        spawner.Despawn(this.gameObject);
     }
 
     private IEnumerator KillAfterSeconds(float time)
     {
-        yield return new WaitForSeconds(time);
-        spawner.Despawn(this.gameObject);
+        // StartCoroutine(KillAfterSeconds(_lifetime));
         yield return null;
-        Destroy(this.gameObject);
+        
+        yield return new WaitForSeconds(time);
+        
+        yield return null;
+        // Destroy(this.gameObject);
     }
 }

@@ -75,7 +75,7 @@ public class RocketLauncherBullet : AttributesSync
       //  }
 
         DoExplosion();
-        //CustomDestroy();
+        CustomDestroy();
         //destroyRoutine = StartCoroutine(nameof(DestroyBullet));
     }
 
@@ -91,6 +91,7 @@ public class RocketLauncherBullet : AttributesSync
    private void CustomDestroy()
    {
        _beforeDestroy.Invoke();
+       spawner.Despawn(this._transform.gameObject);
        Destroy(this._transform.transform.gameObject);
    }
  // private void OnDisable()
