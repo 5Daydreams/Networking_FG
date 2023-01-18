@@ -35,7 +35,7 @@ public class CopyOf_Rocket : MonoBehaviour
     private void CustomDestroy()
     {
         _beforeDestroy.Invoke();
-        Destroy(this.gameObject);
+        Utilities.Singletons.Spawner.Instance.Despawn(this.gameObject);
     }
     
     private void FixedUpdate()

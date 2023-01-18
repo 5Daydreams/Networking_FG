@@ -62,13 +62,14 @@ public class RocketLauncherBullet : AttributesSync
     void OnTriggerEnter(Collider other)
     {
         DoExplosion2(_transform.transform.position, other);
-       // CustomDestroy();
+        CustomDestroy();
     }
 
     private void CustomDestroy()
     {
-        Debug.Log("Multiplayer.Me in bullet: " +Multiplayer.Me);
-        if (UserID == Multiplayer.Me)
+        // Debug.Log("Multiplayer.Me in bullet: " + Multiplayer.Me.Index);
+        // Debug.Log("UserID in bullet: " + UserID);
+        if ((int) UserID == (int) Multiplayer.Me.Index)
         {
             _beforeDestroy.Invoke();
             spawner.Despawn(transform.gameObject);
