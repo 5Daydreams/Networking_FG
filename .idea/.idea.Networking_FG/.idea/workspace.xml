@@ -2,17 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/CopyOf_Rocket.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NetworkManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/NetworkManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pickups/PickupObjects/Pickup_Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pickups/PickupObjects/Pickup_Base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pickups/VFX/SpawnOnDeath/SpawnOnDeath_Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pickups/VFX/SpawnOnDeath/SpawnOnDeath_Base.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/JohannasPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/JohannasPlayer.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pickups/VFX/SpawnOnDeath/SpawnOnDeath_RocketExplosion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pickups/VFX/SpawnOnDeath/SpawnOnDeath_RocketExplosion.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncherBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncherBullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JohannasScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/JohannasScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomScriptables/SpawnerList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomScriptables/SpawnerList.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLaunchExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLaunchExplosion.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Spawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VFXControllers/BurstVFX.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VFXControllers/BurstVFX.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/UnparentByEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/UnparentByEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

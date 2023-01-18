@@ -34,6 +34,6 @@ public class PickupBox : MonoBehaviour
         _vfx.AttachVFXToTarget(Utilities.Singletons.Spawner.Instance, _indexForPlayerVFX, playerTransform, playerTransform);
 
         _callback.Invoke();
-        Destroy(this.gameObject);
+        Utilities.Singletons.Spawner.Instance.Despawn(this.gameObject);
     }
 }

@@ -16014,6 +16014,14 @@ PrefabInstance:
       propertyPath: AvatarSpawnLocations.Array.data[3]
       value: 
       objectReference: {fileID: 1897282108}
+    - target: {fileID: 2204795521721318399, guid: a63969624db8c814eb5f32e1254c8aa5, type: 3}
+      propertyPath: SpawnableObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204795521721318399, guid: a63969624db8c814eb5f32e1254c8aa5, type: 3}
+      propertyPath: SpawnableObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 3976542658383854217, guid: c77312c8c7ae18d45923c79335a37513, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a63969624db8c814eb5f32e1254c8aa5, type: 3}
 --- !u!1001 &5181954203165745276

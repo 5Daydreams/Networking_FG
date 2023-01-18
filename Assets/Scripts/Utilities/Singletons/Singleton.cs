@@ -28,6 +28,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (_instance != null)
         {
+            Utilities.Singletons.Spawner.Instance.Despawn(this.gameObject);
             Destroy(this);
         }
     }

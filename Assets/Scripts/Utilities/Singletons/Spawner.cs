@@ -1,4 +1,5 @@
-using CustomScriptables;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Utilities.Singletons
@@ -6,7 +7,21 @@ namespace Utilities.Singletons
     [RequireComponent(typeof(Alteruna.Spawner))]
     public class Spawner : Singleton<Alteruna.Spawner>
     {
-        [SerializeField] private SpawnerList _items;
+        [SerializeField] private List<SpawnerEntry> _items;
+
+        private int FindIndexInList(string key)
+        {
+            for (int i = 0; i < _items.Count; i++)
+            {
+                bool nameFound = _items[i].key == key;
+                if (nameFound)
+                {
+                    return _items[i].index;
+                }
+            }
+
+            return -1;
+        }
 
         protected override void Awake()
         {
@@ -14,10 +29,10 @@ namespace Utilities.Singletons
 
             int LastIndex = Instance.SpawnableObjects.Count;
 
-            for (int i = 0; i < _items.List.Count; i++)
+            for (int i = 0; i < _items.Count; i++)
             {
-                _items.List[i].index = LastIndex + i;
-                Instance.SpawnableObjects.Add(_items.List[i].prefab);
+                _items[i].index = LastIndex + i;
+                Instance.SpawnableObjects.Add(_items[i].prefab);
             }
         }
 
@@ -35,7 +50,7 @@ namespace Utilities.Singletons
         {
             GameObject output = null;
 
-            int index = _items.FindIndexInList(key);
+            int index = FindIndexInList(key);
 
             if (index == -1)
             {
@@ -43,10 +58,18 @@ namespace Utilities.Singletons
             }
             else
             {
-                output = Spawner.Instance.Spawn(_items.List[index].index, position, rotation, scale);
+                output = Spawner.Instance.Spawn(_items[index].index, position, rotation, scale);
             }
 
             return output;
         }
+    }
+    
+    [Serializable]
+    public class SpawnerEntry
+    {
+        public string key;
+        public GameObject prefab;
+        [HideInInspector] public int index;
     }
 }
