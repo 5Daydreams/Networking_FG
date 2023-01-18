@@ -5,10 +5,10 @@ using System.Collections;
 using Unity.Burst.CompilerServices;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class PlayerHealth : AttributesSync
+public class PlayerHpBackup : AttributesSync
 {
-    [Header("Health")]
-    [SynchronizableField][SerializeField]private int health = 100;
+   /* [Header("Health")]
+    [SynchronizableField][SerializeField] private int health = 100;
     private int baseHealth;
 
     [Header("Spawn")]
@@ -19,30 +19,27 @@ public class PlayerHealth : AttributesSync
     [SerializeField] private int playerSelfLayer;
 
     [Header("KDA")]
-    [SerializeField]private float assistTimer;
-    [SerializeField] PlayerKDA playerkda;
+    [SerializeField] private float assistTimer;
     private float baseAssistTimer;
+
+    [SerializeField] PlayerKDA playerkda;
 
     [SerializeField] Camera camera;
 
     public Alteruna.Avatar localAvatar;
 
-    [Header("Damage Dealers")]
     [SynchronizableField] public int previousDamageDealer;
-    [SynchronizableField] public List<int> assistingPlayers = new List<int>();
+    [SynchronizableField] public int assistBitmask;
 
     AvatarCollection avatarCollection;
-
-    [SerializeField] PlayerUiManager uiManager;
 
     private void Start()
     {
         avatarCollection = FindObjectOfType<AvatarCollection>();
-
+        baseHealth = health;
+        baseAssistTimer = assistTimer;
         if (localAvatar.IsMe)
         {
-            baseHealth = health;
-            baseAssistTimer = assistTimer;
             previousDamageDealer = localAvatar.Possessor.Index;
             localAvatar.gameObject.layer = playerSelfLayer;
         }
@@ -57,7 +54,7 @@ public class PlayerHealth : AttributesSync
             Shoot();
     }
 
-    public int GetHealth()
+    public int GetHealt()
     {
         return health;
     }
@@ -75,7 +72,9 @@ public class PlayerHealth : AttributesSync
     public void DealDamage(int damageTaken, PlayerHealth playerHit)
     {
         playerHit.previousDamageDealer = localAvatar.Possessor.Index;
-        playerHit.assistingPlayers.Add(localAvatar.Possessor.Index);
+
+        int assists = 1 << localAvatar.Possessor.Index;
+        playerHit.assistBitmask |= assists;
 
         playerHit.health -= damageTaken;
 
@@ -91,23 +90,20 @@ public class PlayerHealth : AttributesSync
 
         if (previousDamageDealer != localAvatar.Possessor.Index)
             avatarCollection.avatars[previousDamageDealer].GetComponentInChildren<PlayerKDA>().AddKill(1);
-        else // - kills if you kill your self
-            avatarCollection.avatars[previousDamageDealer].GetComponentInChildren<PlayerKDA>().AddKill(-1);
 
-        if (assistingPlayers.Count < 0)
+        if (avatarCollection.avatars[assistBitmask] == 1)
         {
-            for (int i = 0; i < assistingPlayers.Count; i++)
+            foreach (var item in collection)
             {
-                if (assistingPlayers[i] != killer)
+                if ()
                 {
-                    avatarCollection.avatars[assistingPlayers[i]].GetComponentInChildren<PlayerKDA>().AddAssist(1);
-                    assistingPlayers.RemoveAt(i);
+                    avatarCollection.avatars[assistBitmask[i]].GetComponentInChildren<PlayerKDA>().AddAssist(1);
+                    assistBitmask.RemoveAt(i);
                 }
             }
-                // Multiplayer.GetAvatar((ushort)i).GetComponentInChildren<PlayerKDA>().AddAssist(1);
+            // Multiplayer.GetAvatar((ushort)i).GetComponentInChildren<PlayerKDA>().AddAssist(1);
         }
         //UPDATEKDATEXT
-        uiManager.BroadcastMessage("UpdateScoreboard");
         Spawn();
     }
 
@@ -116,14 +112,14 @@ public class PlayerHealth : AttributesSync
     {
         //ClearDamageDealers();
         //Spawn timer
-            health = baseHealth;
+        health = baseHealth;
         //Respawn
     }
 
     void ClearDamageDealers()
     {
         previousDamageDealer = localAvatar.Possessor.Index;
-        assistingPlayers.Clear();
+        assistBitmask.Clear();
     }
 
     void AssistTimer()
@@ -132,14 +128,14 @@ public class PlayerHealth : AttributesSync
         assistTimer -= Time.deltaTime;
 
         //remove assisting player from the bottom up
-        for (int i = assistingPlayers.Count - 1; i >= 0; i--)
+        for (int i = assistBitmask.Count - 1; i >= 0; i--)
         {
             if (assistTimer <= 0)
             {
                 previousDamageDealer = localAvatar.Possessor.Index;
-                assistingPlayers.RemoveAt(i);
+                assistBitmask.RemoveAt(i);
                 //remove assisting player from the bottom up
             }
         }
-    }
+    }*/
 }

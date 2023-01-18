@@ -214,7 +214,6 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator LerpMoveSpeed()
     {
-
         float time = 0;
         float difference = Mathf.Abs(desiredMovespeed - moveSpeed);
         float startValue = moveSpeed;
