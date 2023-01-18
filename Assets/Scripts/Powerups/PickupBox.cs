@@ -3,7 +3,7 @@ using Alteruna;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider), typeof(VFXController))]
+[RequireComponent(typeof(Collider),typeof(Owner), typeof(VFXController))]
 public class PickupBox : MonoBehaviour
 {
     private VFXController _vfx;

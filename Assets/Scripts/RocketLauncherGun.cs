@@ -23,10 +23,10 @@ public class RocketLauncherGun : AttributesSync
     }
    void Update()
     {
-        if (!avatar.IsMe)
-        {
-            return;
-        }
+        // if (!avatar.IsMe)
+        // {
+        //     return;
+        // }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Debug.Log("Spawn bullet");

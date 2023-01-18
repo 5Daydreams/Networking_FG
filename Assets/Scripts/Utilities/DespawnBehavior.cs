@@ -3,16 +3,16 @@ using System.Collections;
 using Alteruna;
 using UnityEngine;
 
+[RequireComponent(typeof(Owner))]
 public class DespawnBehavior : AttributesSync
 {
     [SerializeField] protected float _lifetime = 5.0f;
-
-    [HideInInspector] [SynchronizableField]
-    public int OwnerID = -1;
-
-    private void OnEnable()
+    private Owner _owner;
+    private void Start()
     {
-        bool differentUser = (int) OwnerID != (int) Multiplayer.Me.Index;
+        _owner = this.GetComponent<Owner>();
+        
+        bool differentUser = _owner.ID != Multiplayer.Me.Index;
 
         if (differentUser)
         {

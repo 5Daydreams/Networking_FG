@@ -16022,6 +16022,18 @@ PrefabInstance:
       propertyPath: SpawnableObjects.Array.data[1]
       value: 
       objectReference: {fileID: 3976542658383854217, guid: c77312c8c7ae18d45923c79335a37513, type: 3}
+    - target: {fileID: 2204795521721318399, guid: a63969624db8c814eb5f32e1254c8aa5, type: 3}
+      propertyPath: ObjectSpawned.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204795521721318399, guid: a63969624db8c814eb5f32e1254c8aa5, type: 3}
+      propertyPath: ObjectSpawned.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204795521721318399, guid: a63969624db8c814eb5f32e1254c8aa5, type: 3}
+      propertyPath: ObjectSpawned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a63969624db8c814eb5f32e1254c8aa5, type: 3}
 --- !u!1001 &5181954203165745276
