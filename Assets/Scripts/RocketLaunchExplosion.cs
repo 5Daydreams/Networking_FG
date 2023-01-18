@@ -37,11 +37,13 @@ public class RocketLaunchExplosion : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-       
-        if (other.CompareTag("RocketLauncherBullet"))
-        {
-            
-        }
+      // Debug.Log("collided with something");
+      // if (other.CompareTag("RocketLauncherBullet"))
+      // {
+      //     Debug.Log("collided with bullet");
+      //     var spawner = other.GetComponent<RocketLauncherBullet>().spawner;
+      //     spawner.Despawn(other.gameObject);
+      // }
     }
     //public void AddExplosionForce1()// , float upwardsModifier, ForceMode forceMode
     //{
