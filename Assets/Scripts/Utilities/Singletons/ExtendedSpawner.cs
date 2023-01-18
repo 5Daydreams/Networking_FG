@@ -30,6 +30,27 @@ namespace Utilities.Singletons
             return -1;
         }
 
+        private void SetOwner(GameObject spawnedObject)
+        {
+            GameObject target = spawnedObject;
+
+            if (target.transform.childCount == 0)
+            {
+                if (target.GetComponent<Owner>() == null)
+                {
+                    target.AddComponent<Owner>().ID = _spawnerID;
+                }
+            }
+            else
+            {
+                foreach (Transform child in target.transform)
+                { 
+                    SetOwner(child.gameObject);
+                }
+            }
+            
+        }
+
         protected void Awake()
         {
             _spawnerID = this.GetComponent<Owner>().ID = this.GetComponent<Multiplayer>().Me.Index;
