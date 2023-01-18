@@ -20,14 +20,14 @@ public class PlayerHealth : AttributesSync
 
     [Header("KDA")]
     [SerializeField]private float assistTimer;
-    private float baseAssistTimer;
-
     [SerializeField] PlayerKDA playerkda;
+    private float baseAssistTimer;
 
     [SerializeField] Camera camera;
 
     public Alteruna.Avatar localAvatar;
 
+    [Header("Damage Dealers")]
     [SynchronizableField] public int previousDamageDealer;
     [SynchronizableField] public List<int> assistingPlayers = new List<int>();
 
@@ -36,10 +36,11 @@ public class PlayerHealth : AttributesSync
     private void Start()
     {
         avatarCollection = FindObjectOfType<AvatarCollection>();
-            baseHealth = health;
-            baseAssistTimer = assistTimer;
+
         if (localAvatar.IsMe)
         {
+            baseHealth = health;
+            baseAssistTimer = assistTimer;
             previousDamageDealer = localAvatar.Possessor.Index;
             localAvatar.gameObject.layer = playerSelfLayer;
         }
@@ -54,7 +55,7 @@ public class PlayerHealth : AttributesSync
             Shoot();
     }
 
-    public int GetHealt()
+    public int GetHealth()
     {
         return health;
     }
@@ -88,6 +89,8 @@ public class PlayerHealth : AttributesSync
 
         if (previousDamageDealer != localAvatar.Possessor.Index)
             avatarCollection.avatars[previousDamageDealer].GetComponentInChildren<PlayerKDA>().AddKill(1);
+        else // - kills if you kill your self
+            avatarCollection.avatars[previousDamageDealer].GetComponentInChildren<PlayerKDA>().AddKill(-1);
 
         if (assistingPlayers.Count < 0)
         {

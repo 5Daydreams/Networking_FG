@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Alteruna;
+using Unity.VisualScripting.Antlr3.Runtime.Collections;
 
 public class PlayerUiManager : AttributesSync
 {
@@ -21,25 +22,28 @@ public class PlayerUiManager : AttributesSync
 
     [Header("Scoreboard")]
     [SerializeField] private GameObject leaderBoardUi;
-    [SerializeField] private GameObject playerStats;
-    [SerializeField] private TextMeshProUGUI AvatarName;
-    [SerializeField] private TextMeshProUGUI killScore;
-    [SerializeField] private TextMeshProUGUI deathScore;
-    [SerializeField] private TextMeshProUGUI assitScore;
+    [SerializeField] public GameObject playerStats;
+    [SerializeField] public TextMeshProUGUI avatarName;
+    [SerializeField] public TextMeshProUGUI killScore;
+    [SerializeField] public TextMeshProUGUI deathScore;
+    [SerializeField] public TextMeshProUGUI assitScore;
+    public bool statsInstantiated = false;
 
     public List<GameObject> statList = new List<GameObject>();
+    AvatarCollection avatarCollection;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!avatar.IsMe)
-            canvas.enabled = false;
-        else
+        avatarCollection = FindObjectOfType<AvatarCollection>();
+
+        if (avatar.IsMe)
         {
-            AvatarName.text = avatar.GetInstanceID().ToString();
-            statList.Add(playerStats);
-            BroadcastRemoteMethod("UpdateScoreboard");
+            avatarName.text = avatar.Possessor.Name;
+            //statList.Add(playerStats);
         }
+        else
+            canvas.enabled = false;
     }
 
     // Update is called once per frame
@@ -53,29 +57,42 @@ public class PlayerUiManager : AttributesSync
     void ToggleScoreBoard()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
+        {
             leaderBoardUi.SetActive(true);
+            BroadcastRemoteMethod("UpdateScoreboard");
+        }
         if (Input.GetKeyUp(KeyCode.Tab))
             leaderBoardUi.SetActive(false);
     }
 
     public void UpdateHealthText()
     {
-        healthText.text = playerHealt.GetHealt().ToString();
+        healthText.text = playerHealt.GetHealth().ToString();
     }
 
     public void UpdateKDAText()
     {
-        killScore.text = killsText.text = "K:" + playerKDA.kills.ToString();
-        deathScore.text = deathsText.text = "D:" + playerKDA.deaths.ToString();
-        assitScore.text = assistText.text = "A:" + playerKDA.assist.ToString();
+        killScore.text = killsText.text = playerKDA.kills.ToString();
+        deathScore.text = deathsText.text = playerKDA.deaths.ToString();
+        assitScore.text = assistText.text = playerKDA.assist.ToString();
     }
 
     [SynchronizableMethod]
     public void UpdateScoreboard()
     {
-        for (int i = 0; i < statList.Count; i++)
+        for (int i = 0; i < avatarCollection.avatars.Count; i++)
         {
-            playerStats.transform.position += Vector3.up * -200 * i;
+            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().avatarName.text = avatarCollection.avatars[i].Possessor.Name;
+            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().killScore.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().kills.ToString();
+            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().deathScore.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().deaths.ToString();
+            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().assitScore.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().assist.ToString();
+
+            if (!avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().statsInstantiated)
+            {
+                statList.Add(avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().playerStats);
+                Instantiate(statList[i], leaderBoardUi.transform);
+                avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().statsInstantiated = true;
+            }
         }
     }
 }

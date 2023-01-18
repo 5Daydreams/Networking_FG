@@ -9,7 +9,6 @@ public class AvatarCollection : MonoBehaviour
 
     public void AddAvatar(Alteruna.Avatar avatar)
     {
-        Debug.Log("ADD");
         avatars.Add(avatar.Possessor.Index, avatar);
     }
 
