@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncher.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncher.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLaunchExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLaunchExplosion.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +96,7 @@
       <workItem from="1673884345212" duration="452000" />
       <workItem from="1673942936642" duration="10062000" />
       <workItem from="1674031782179" duration="9416000" />
-      <workItem from="1674044881238" duration="6592000" />
+      <workItem from="1674044881238" duration="7065000" />
     </task>
     <servers />
   </component>

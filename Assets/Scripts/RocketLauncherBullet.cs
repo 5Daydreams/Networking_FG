@@ -62,7 +62,7 @@ public class RocketLauncherBullet : AttributesSync
     void OnTriggerEnter(Collider other)
     {
         DoExplosion2(_transform.transform.position, other);
-       // CustomDestroy();
+        CustomDestroy();
     }
 
     private void CustomDestroy()
