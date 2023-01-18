@@ -3,11 +3,11 @@ using Alteruna;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider), typeof(VFXSpawnController), typeof(Spawner))]
+[RequireComponent(typeof(Collider), typeof(VFXController), typeof(Spawner))]
 public class PickupBox : MonoBehaviour
 {
     private Alteruna.Spawner _spawner;
-    private VFXSpawnController _vfx;
+    private VFXController _vfx;
     
     [SerializeField] private int _indexForPlayerVFX = 0;
     [SerializeField] private int _indexForDespawnVFX = 0;
@@ -18,7 +18,7 @@ public class PickupBox : MonoBehaviour
     private void Start()
     {
         _spawner = this.GetComponent<Alteruna.Spawner>();
-        _vfx = this.GetComponent<VFXSpawnController>();
+        _vfx = this.GetComponent<VFXController>();
     }
 
     private void OnTriggerEnter(Collider other)

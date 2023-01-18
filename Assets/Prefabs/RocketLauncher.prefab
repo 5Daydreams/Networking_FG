@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5874486892043834643}
   - component: {fileID: 7260430651405018580}
   - component: {fileID: -2434147249923477179}
+  - component: {fileID: 990775678332715612}
+  - component: {fileID: 6827950676321742858}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -94,7 +96,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798070599626767659}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -111,11 +113,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d7668e1e9162348a6fcc2fda10b3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 0
-  minRange: 0
-  maxRange: 0
-  maxDamage: 0
-  networkManager: {fileID: 4412056548497521751, guid: 205b9015f3d2ab040aaae2e7575a342b, type: 3}
+  avatar: {fileID: 0}
+--- !u!114 &990775678332715612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798070599626767659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1709514741, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a: ca296d8c-7120-49de-9c0f-ac17c1a478b4
+--- !u!114 &6827950676321742858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798070599626767659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ee49766e7a482428e1b7b03ce11077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Multiplayer: {fileID: 0}
+  UID: {fileID: 0}
+  Reliability: 1
+  indexToSpawn: 0
+  GunPipe: {fileID: 0}
+  avatar: {fileID: 0}
 --- !u!1 &7170351107618555085
 GameObject:
   m_ObjectHideFlags: 0
