@@ -6,17 +6,14 @@ using UnityEngine;
 public class DespawnBehavior : AttributesSync
 {
     [SerializeField] protected float _lifetime = 5.0f;
-    private int _ownerID = -1;
-    
-    public void SetOwner(int id)
-    {
-        _ownerID = id;
-    }
+
+    [HideInInspector] [SynchronizableField]
+    public int OwnerID = -1;
 
     private void OnEnable()
     {
-        bool differentUser = (int) _ownerID != (int) Multiplayer.Me.Index;
-        
+        bool differentUser = (int) OwnerID != (int) Multiplayer.Me.Index;
+
         if (differentUser)
         {
             return;

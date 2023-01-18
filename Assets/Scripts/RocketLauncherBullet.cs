@@ -72,6 +72,7 @@ public class RocketLauncherBullet : AttributesSync
         if ((int) UserID == (int) Multiplayer.Me.Index)
         {
             _beforeDestroy.Invoke();
+            this.transform.GetComponentInChildren<DespawnBehavior>().OwnerID = this.UserID;
             spawner.Despawn(transform.gameObject);
         }
         else

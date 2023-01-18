@@ -185,6 +185,7 @@ MonoBehaviour:
   explosionRadius: 9
   fullExplosionforce: 2
   coll: {fileID: 0}
+  spawner: {fileID: 0}
   _beforeDestroy:
     m_PersistentCalls:
       m_Calls:
