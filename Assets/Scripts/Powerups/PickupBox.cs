@@ -3,10 +3,9 @@ using Alteruna;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider), typeof(VFXController), typeof(Spawner))]
+[RequireComponent(typeof(Collider), typeof(VFXController))]
 public class PickupBox : MonoBehaviour
 {
-    private Alteruna.Spawner _spawner;
     private VFXController _vfx;
     
     [SerializeField] private int _indexForPlayerVFX = 0;
@@ -17,7 +16,6 @@ public class PickupBox : MonoBehaviour
 
     private void Start()
     {
-        _spawner = this.GetComponent<Alteruna.Spawner>();
         _vfx = this.GetComponent<VFXController>();
     }
 
@@ -32,8 +30,8 @@ public class PickupBox : MonoBehaviour
 
         Transform playerTransform = other.transform;
 
-        _vfx.SpawnVFX(_spawner, _indexForDespawnVFX, this.transform);
-        _vfx.AttachVFXToTarget(_spawner, _indexForPlayerVFX, playerTransform, playerTransform);
+        _vfx.SpawnVFX(Utilities.Singletons.Spawner.Instance, _indexForDespawnVFX, this.transform);
+        _vfx.AttachVFXToTarget(Utilities.Singletons.Spawner.Instance, _indexForPlayerVFX, playerTransform, playerTransform);
 
         _callback.Invoke();
         Destroy(this.gameObject);

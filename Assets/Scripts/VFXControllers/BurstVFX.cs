@@ -1,13 +1,11 @@
-using System;
-using Alteruna;
 using UnityEngine;
-using UnityEngine.VFX;
 
-[RequireComponent(typeof(VFXController), typeof(Spawner))]
+[RequireComponent(typeof(VFXController))]
 public class BurstVFX : MonoBehaviour
 {
     private VFXController _vfxSpawner;
     [SerializeField] private int _indexForVFX;
+    [SerializeField] private string _stringForVFX;
 
     private void Start()
     {
@@ -16,6 +14,6 @@ public class BurstVFX : MonoBehaviour
 
     public void Spawn()
     {
-        _vfxSpawner.SpawnVFX(Utilities.Spawner.Instance, _indexForVFX, this.transform);
+        _vfxSpawner.SpawnVFX(Utilities.Singletons.Spawner.Instance, _indexForVFX, this.transform);
     }
 }
