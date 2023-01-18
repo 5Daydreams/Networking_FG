@@ -40,7 +40,6 @@ public class PlayerUiManager : AttributesSync
         if (avatar.IsMe)
         {
             avatarName.text = avatar.Possessor.Name;
-            //statList.Add(playerStats);
         }
         else
             canvas.enabled = false;
@@ -82,17 +81,17 @@ public class PlayerUiManager : AttributesSync
     {
         for (int i = 0; i < avatarCollection.avatars.Count; i++)
         {
-            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().avatarName.text = avatarCollection.avatars[i].Possessor.Name;
-            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().killScore.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().kills.ToString();
-            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().deathScore.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().deaths.ToString();
-            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().assitScore.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().assist.ToString();
+            statList.Add(avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().playerStats);
+            Instantiate(statList[i], leaderBoardUi.transform);
+            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().statsInstantiated = true;
+            
 
-            if (!avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().statsInstantiated)
-            {
-                statList.Add(avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().playerStats);
-                Instantiate(statList[i], leaderBoardUi.transform);
-                avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().statsInstantiated = true;
-            }
+            statList[i].GetComponentInChildren<PlayerStatsUi>().avatarName.text = avatarCollection.avatars[i].Possessor.Name;
+            statList[i].GetComponentInChildren<PlayerStatsUi>().killsText.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().kills.ToString();
+            statList[i].GetComponentInChildren<PlayerStatsUi>().deathsText.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().deaths.ToString();
+            statList[i].GetComponentInChildren<PlayerStatsUi>().deathsText.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().assist.ToString();
         }
     }
+
+
 }

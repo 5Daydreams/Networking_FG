@@ -33,6 +33,8 @@ public class PlayerHealth : AttributesSync
 
     AvatarCollection avatarCollection;
 
+    [SerializeField] PlayerUiManager uiManager;
+
     private void Start()
     {
         avatarCollection = FindObjectOfType<AvatarCollection>();
@@ -105,6 +107,7 @@ public class PlayerHealth : AttributesSync
                 // Multiplayer.GetAvatar((ushort)i).GetComponentInChildren<PlayerKDA>().AddAssist(1);
         }
         //UPDATEKDATEXT
+        uiManager.BroadcastMessage("UpdateScoreboard");
         Spawn();
     }
 
