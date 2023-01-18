@@ -436,7 +436,6 @@ GameObject:
   - component: {fileID: 3017413889455676530}
   - component: {fileID: 3039676429089814024}
   - component: {fileID: 3818068261183263210}
-  - component: {fileID: 2766679250532914480}
   - component: {fileID: 6859230254726779757}
   - component: {fileID: 2684344872504991221}
   m_Layer: 0
@@ -601,21 +600,6 @@ MonoBehaviour:
   OnUnpossessed:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2766679250532914480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538953114182484416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ee49766e7a482428e1b7b03ce11077, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indexToSpawn: 0
-  GunPipe: {fileID: 9193710638593714777}
-  avatar: {fileID: 3818068261183263210}
 --- !u!114 &6859230254726779757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,6 +907,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8980350065934143929}
     m_Modifications:
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 3818068261183263210}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: explosionForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1798070599626767659, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: m_Name
       value: RocketLauncher
@@ -982,6 +974,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2764645729660716482, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
   m_PrefabInstance: {fileID: 4513404029140989791}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2762627015320291956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1798070599626767659, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+  m_PrefabInstance: {fileID: 4513404029140989791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4991491446926228652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762627015320291956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ee49766e7a482428e1b7b03ce11077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexToSpawn: 0
+  GunPipe: {fileID: 9193710638593714777}
+  avatar: {fileID: 3818068261183263210}
 --- !u!4 &9193710638593714777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4698461746549513478, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
