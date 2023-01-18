@@ -38,5 +38,6 @@ public class RocketLauncherGun : AttributesSync
     {
        GameObject bullet = spawner.Spawn(indexToSpawn, GunPipe.position + GunPipe.forward, GunPipe.rotation);
        bullet.GetComponent<RocketLauncherBullet>().UserID = Multiplayer.Me.Index;
+       Debug.Log("Spawn bullet me index: " +Multiplayer.Me.Index);
     }
 }

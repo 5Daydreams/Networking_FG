@@ -29,7 +29,8 @@ public class RocketLauncherBullet : AttributesSync
 
     private Coroutine destroyRoutine;
     [SerializeField] UnityEvent _beforeDestroy;
-    
+
+    [HideInInspector]
     [SynchronizableField] public int UserID;
 
     private void Awake()
@@ -42,6 +43,7 @@ public class RocketLauncherBullet : AttributesSync
     void Start()
     {
         //coll = GetComponent<SphereCollider>();
+        Debug.Log("UserID in bullet: " +UserID);
     }
 
     private void FixedUpdate()
@@ -60,11 +62,12 @@ public class RocketLauncherBullet : AttributesSync
     void OnTriggerEnter(Collider other)
     {
         DoExplosion2(_transform.transform.position, other);
-        CustomDestroy();
+       // CustomDestroy();
     }
 
     private void CustomDestroy()
     {
+        Debug.Log("Multiplayer.Me in bullet: " +Multiplayer.Me);
         if (UserID == Multiplayer.Me)
         {
             _beforeDestroy.Invoke();
