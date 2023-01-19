@@ -6,7 +6,10 @@
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/JohannasPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/JohannasPlayer.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncher.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncher.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncherBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RocketLauncherBullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLaunchExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLaunchExplosion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +106,7 @@
       <workItem from="1674044881238" duration="8326000" />
       <workItem from="1674054266458" duration="1690000" />
       <workItem from="1674056102286" duration="265000" />
-      <workItem from="1674116562570" duration="804000" />
+      <workItem from="1674116562570" duration="9180000" />
     </task>
     <servers />
   </component>

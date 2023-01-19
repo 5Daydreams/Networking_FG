@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3614954633889359328}
   - component: {fileID: 647036793330362498}
   - component: {fileID: -2401335500057721295}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocketLauncherBullet
   m_TagString: RocketLauncherBullet
   m_Icon: {fileID: 0}
@@ -183,11 +183,10 @@ MonoBehaviour:
   bulletMaxLength: 50
   explosionRadius: 9
   fullExplosionforce: 2
-  coll: {fileID: 0}
-  spawner: {fileID: 0}
   _beforeDestroy:
     m_PersistentCalls:
       m_Calls: []
+  spawner: {fileID: 0}
   UserID: 0
 --- !u!54 &-2401335500057721295
 Rigidbody:
