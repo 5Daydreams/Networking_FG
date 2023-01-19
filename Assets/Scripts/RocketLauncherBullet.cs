@@ -16,20 +16,22 @@ public class RocketLauncherBullet : AttributesSync
     
     [SerializeField] private float explosionRadius = 10f;
     [SerializeField] private float fullExplosionforce = 2f;
+
+    private bool DirectHitOnPlayer = false;
     //[SerializeField] private float bulletDamage = 5f;
 
     // public float hitPoints = 100.0F;
-    public SphereCollider coll;
+    //public SphereCollider coll;
 
     private LayerMask playerLayer;
     private Collider[] hitColliders;
-
-    //public Multiplayer NetworkManager;
-    public Spawner spawner;
-
+    
     private Coroutine destroyRoutine;
     [SerializeField] UnityEvent _beforeDestroy;
 
+    [HideInInspector]
+    public Spawner spawner;
+    
     [HideInInspector]
     [SynchronizableField] public int UserID;
 
@@ -62,18 +64,26 @@ public class RocketLauncherBullet : AttributesSync
     }
     void OnTriggerEnter(Collider other)
     {
+       //if (UserID == Multiplayer.Me.Index)
+       //{
+       if (other.gameObject.layer == 7)
+            {
+                DirectHitOnPlayer = true;
+                Debug.Log("Hit a player with an avatar");
+            }
+        //}
+        
         DoExplosion2(_transform.transform.position, other);
         CustomDestroy();
     }
 
     private void CustomDestroy()
     {
-        Debug.Log("Multiplayer.Me in bullet: " +Multiplayer.Me);
         _beforeDestroy.Invoke();
 
         if (UserID == Multiplayer.Me.Index)
         {
-            StartCoroutine(DelayedDeSpawne (1f));
+            StartCoroutine(DelayedDeSpawn (1f));
             GetComponent<MeshRenderer>().enabled = false;
             gameObject.SetActive(false);
            // GetComponent<SphereCollider>().enabled = false; // DONT ADD IT WILL BEAK
@@ -85,7 +95,7 @@ public class RocketLauncherBullet : AttributesSync
         }
     }
 
-    IEnumerator DelayedDeSpawne(float delay)
+    IEnumerator DelayedDeSpawn(float delay)
     {
         yield return new WaitForSeconds(delay);
         spawner.Despawn(transform.gameObject);
@@ -93,8 +103,20 @@ public class RocketLauncherBullet : AttributesSync
 
     void DoExplosion2(Vector3 hitpoint, Collider other)
     {
+        Debug.Log(other.gameObject);
+        Debug.Log(other.name);
         hitColliders = Physics.OverlapSphere(hitpoint, explosionRadius); // make a spherecast to se what is inside the explosion
 
+       // if (other.gameObject.GetComponentInParent<Alteruna.Avatar>() != null && other.gameObject.layer == 7)
+       // {
+       //     Debug.Log("Hit a player with an avatar");
+       // }
+       if (DirectHitOnPlayer)
+       {
+           Debug.Log("Add Full force to player");
+          // DirectHitOnPlayer = false;
+       }
+       
         foreach (var hitcol in hitColliders)
         {
             var distance = Vector3.Distance(hitpoint, hitcol.transform.position);
@@ -102,21 +124,21 @@ public class RocketLauncherBullet : AttributesSync
             float damageToDeal = procentileDamage / explosionRadius * fullExplosionforce; // calculate the damage/force to add on the object depending on how close to the explosion it is
 
             Vector3 blastDir = hitcol.transform.position - this._transform.transform.position; // give a direction on the force
-
-            if (other.gameObject.GetComponentInParent<Alteruna.Avatar>() != null && hitcol.gameObject.layer == 7) // if the object we collide with have a avatar & is a player
-            {
-                Debug.Log("Add fullforce to player");
-                var hitAvatar = other.transform.gameObject.GetComponentInParent<Alteruna.Avatar>();
-                hitAvatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>()
-                    .AddExplosionForce(hitpoint, fullExplosionforce,
-                        -blastDir); // Add full explosionforce to that player
-
-                if (other.gameObject.GetComponentInParent<Alteruna.Avatar>().Possessor.Index == hitcol.gameObject.GetComponentInParent<Alteruna.Avatar>().Possessor.Index) // if the spherecast hit something with the same index as we hit the bullet, continue
-                {
-                    Debug.Log("continue");
-                    continue;
-                }
-            }
+            
+           
+          //// if (other.gameObject.GetComponentInParent<Alteruna.Avatar>() != null && hitcol.gameObject.layer == 7) // if the object we collide with have a avatar & is a player
+          //// {
+          ////   // var hitAvatar = other.transform.gameObject.GetComponentInParent<Alteruna.Avatar>();
+          ////   // hitAvatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>()
+          ////   //     .AddExplosionForce(hitpoint, fullExplosionforce,
+          ////   //         -blastDir); // Add full explosionforce to that player
+////
+          ////     if (other.gameObject.GetComponentInParent<Alteruna.Avatar>().Possessor.Index == hitcol.gameObject.GetComponentInParent<Alteruna.Avatar>().Possessor.Index) // if the spherecast hit something with the same index as we hit the bullet, continue
+          ////     {
+          ////         Debug.Log("continue");
+          ////         continue;
+          ////     }
+          //// }
           // else if (other.gameObject.GetComponent<RigidbodySynchronizable>() != null && other.gameObject.layer == 9)
           // {
           //     Debug.Log("Direct hit on something with layer 9");
@@ -133,7 +155,7 @@ public class RocketLauncherBullet : AttributesSync
 
             if (hitcol.gameObject.layer == 7 && UserID != Multiplayer.Me.Index) // if the spherecast hit a player but its not me add a force tot hat player
             {
-                Debug.Log("The spherecast hit a player");
+                Debug.Log("The spherecast hit a player, add force: " + damageToDeal);
                 //Debug.Log("GameObjectPlayer: " + hitcol.gameObject + ", Distance: " + distance + ", Damage: " + damageToDeal);
                 var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>(); 
                 avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddExplosionForce(hitpoint, damageToDeal, blastDir);
@@ -143,7 +165,7 @@ public class RocketLauncherBullet : AttributesSync
             {
                 if (hitcol.GetComponent<RigidbodySynchronizable>())
                 {
-                    Debug.Log("The spherecast hit an object with a RigidbodySynchronizable");
+                    Debug.Log("The spherecast hit an object with a RigidbodySynchronizable, add force: " + damageToDeal);
                     //Debug.Log("GameObject: " + hitcol.gameObject + ", Distance: " + distance + ", Damage: " + damageToDeal);
                     var hitRigidbodySynchronizable = hitcol.GetComponent<RigidbodySynchronizable>();
                     hitRigidbodySynchronizable.velocity += Vector3.up * damageToDeal + blastDir * damageToDeal;
