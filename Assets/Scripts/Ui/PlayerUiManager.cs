@@ -27,9 +27,8 @@ public class PlayerUiManager : AttributesSync
     [SerializeField] public TextMeshProUGUI killScore;
     [SerializeField] public TextMeshProUGUI deathScore;
     [SerializeField] public TextMeshProUGUI assitScore;
-    public bool statsInstantiated = false;
 
-    public List<GameObject> statList = new List<GameObject>();
+    public Dictionary<int, GameObject> statList = new Dictionary<int, GameObject>();
     AvatarCollection avatarCollection;
 
     // Start is called before the first frame update
@@ -79,18 +78,42 @@ public class PlayerUiManager : AttributesSync
     [SynchronizableMethod]
     public void UpdateScoreboard()
     {
-        for (int i = 0; i < avatarCollection.avatars.Count; i++)
+        foreach (var avatar in avatarCollection.avatars)
         {
-            statList.Add(avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().playerStats);
-            Instantiate(statList[i], leaderBoardUi.transform);
-            avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().statsInstantiated = true;
-            
+            if (!statList.ContainsKey(avatar.Key))
+            {
+                int i = avatar.Value.Possessor.Index;
+                Alteruna.Avatar av = avatarCollection.avatars[i];
+                statList.Add(i, avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().playerStats);
+                Instantiate(statList[i], leaderBoardUi.transform);
+            }
 
-            statList[i].GetComponentInChildren<PlayerStatsUi>().avatarName.text = avatarCollection.avatars[i].Possessor.Name;
-            statList[i].GetComponentInChildren<PlayerStatsUi>().killsText.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().kills.ToString();
-            statList[i].GetComponentInChildren<PlayerStatsUi>().deathsText.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().deaths.ToString();
-            statList[i].GetComponentInChildren<PlayerStatsUi>().deathsText.text = avatarCollection.avatars[i].GetComponentInChildren<PlayerKDA>().assist.ToString();
+            PlayerStatsUi stats = avatar.Value.GetComponentInChildren<PlayerStatsUi>();
+            stats.avatarName.text = avatar.Value.Possessor.Name;
+            stats.killsText.text = avatar.Value.GetComponentInChildren<PlayerKDA>().kills.ToString();
+            stats.deathsText.text = avatar.Value.GetComponentInChildren<PlayerKDA>().deaths.ToString();
+            stats.assistText.text = avatar.Value.GetComponentInChildren<PlayerKDA>().assist.ToString();
         }
+    }
+
+    public void OnPossessed(User user)
+    {
+        if (avatarCollection == null)
+            avatarCollection = FindObjectOfType<AvatarCollection>();
+
+        int i = avatar.Possessor.Index;
+        Alteruna.Avatar av = avatarCollection.avatars[i];
+
+        GameObject statClone;
+        statClone = Instantiate(av.GetComponentInChildren<PlayerUiManager>().playerStats, leaderBoardUi.transform);
+        statList.Add(i, statClone);
+    }
+
+    IEnumerator AddToStatList()
+    {
+        //avatarCollection.avatars[i].GetComponentInChildren<PlayerUiManager>().statsInstantiated = true;
+
+        yield return null;
     }
 
 
