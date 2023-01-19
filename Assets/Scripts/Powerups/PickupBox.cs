@@ -8,7 +8,7 @@ public class PickupBox : MonoBehaviour
     
     [SerializeField] private int _indexForPlayerVFX = 0;
     [SerializeField] private int _indexForDespawnVFX = 0;
-    [SerializeField] private float _pickupDuration = 5.0f;
+    // [SerializeField] private float _pickupDuration = 5.0f;
     [SerializeField] private UnityEvent _callback;
     [SerializeField] private string checkTag = "Player";
 

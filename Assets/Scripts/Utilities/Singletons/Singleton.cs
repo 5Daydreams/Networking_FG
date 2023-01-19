@@ -15,7 +15,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 if (_instance == null)
                 {
                     _instance = new GameObject().AddComponent<T>();
+#if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPaused = true;
+#endif
                 }
             }
 

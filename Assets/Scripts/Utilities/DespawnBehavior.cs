@@ -9,7 +9,7 @@ public class DespawnBehavior : AttributesSync
     [SerializeField] protected float _lifetime = 5.0f;
     private Owner _owner;
 
-    private void StartCountdown()
+    public void StartCountdown()
     {
         if (Multiplayer.Me == null)
         {

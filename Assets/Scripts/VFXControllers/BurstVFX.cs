@@ -7,7 +7,7 @@ public class BurstVFX : MonoBehaviour
     [SerializeField] private bool _useNetwork;
     [SerializeField] private int _indexForVFX;
     [SerializeField] private string _stringForVFX;
-    [SerializeField] private GameObject _explosionPrefab;
+    [SerializeField] private DespawnBehavior _explosionPrefab;
 
     private void Start()
     {
@@ -25,11 +25,15 @@ public class BurstVFX : MonoBehaviour
             if (_explosionPrefab == null)
             {
                 Debug.LogError("Missing the explosion prefab in the inspector");
+#if UNITY_EDITOR
                 UnityEngine.Application.Quit();
+#else
+                return;
+#endif
             }
-            Instantiate(_explosionPrefab);
+
+            DespawnBehavior spawnedObject = Instantiate(_explosionPrefab, this.transform.position, this.transform.rotation);
+            spawnedObject.StartCountdown();
         }
-
-
     }
 }

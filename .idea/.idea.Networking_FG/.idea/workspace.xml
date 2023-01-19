@@ -4,11 +4,12 @@
     <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/VFX/SpawnOnDeath/SpawnOnDeath_RocketExplosion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/VFX/SpawnOnDeath/SpawnOnDeath_RocketExplosion.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OwnershipSystem/Owner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OwnershipSystem/Owner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/ExtendedSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/ExtendedSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/VFXControllers/BurstVFX.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VFXControllers/BurstVFX.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VFXControllers/VFXController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VFXControllers/VFXController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +106,7 @@
       <workItem from="1673859753422" duration="1354000" />
       <workItem from="1673884345212" duration="452000" />
       <workItem from="1673942936642" duration="10062000" />
-      <workItem from="1674132367438" duration="2702000" />
+      <workItem from="1674132367438" duration="3641000" />
     </task>
     <servers />
   </component>

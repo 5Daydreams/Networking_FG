@@ -75,6 +75,7 @@ public class RocketLauncherBullet : AttributesSync
         {
             StartCoroutine(DelayedDeSpawne (1f));
             GetComponent<MeshRenderer>().enabled = false;
+            gameObject.SetActive(false);
            // GetComponent<SphereCollider>().enabled = false; // DONT ADD IT WILL BEAK
         }
         else

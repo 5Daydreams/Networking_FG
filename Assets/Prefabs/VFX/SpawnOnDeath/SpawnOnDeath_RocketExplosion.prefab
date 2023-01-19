@@ -62,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 5897403778547836007, guid: 3f9598eb7f21bbb46bcfa6c0e5b151c8, type: 3}
       propertyPath: _explosionPrefab
       value: 
-      objectReference: {fileID: 3976542658383854217, guid: c77312c8c7ae18d45923c79335a37513, type: 3}
+      objectReference: {fileID: 351286509723332818, guid: c77312c8c7ae18d45923c79335a37513, type: 3}
     m_RemovedComponents:
     - {fileID: 3634360429746617083, guid: 3f9598eb7f21bbb46bcfa6c0e5b151c8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f9598eb7f21bbb46bcfa6c0e5b151c8, type: 3}
@@ -215,6 +215,18 @@ MonoBehaviour:
   Reliability: 1
   _useNetwork: 0
   _lifetime: 2
+--- !u!114 &3284684703771179605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8311362547360308503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444280809694b954e99fb8d81e1c82b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4480426058410550051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,17 +250,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cb016cc9e37dc44ebfc488660310bd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3284684703771179605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8311362547360308503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 444280809694b954e99fb8d81e1c82b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
