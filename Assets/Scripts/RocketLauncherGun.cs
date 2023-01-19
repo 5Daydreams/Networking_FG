@@ -23,10 +23,11 @@ public class RocketLauncherGun : AttributesSync
     }
    void Update()
     {
-        // if (!avatar.IsMe)
-        // {
-        //     return;
-        // }
+        // Hi Johanna - I'm sorry, but I need to debug this
+        if (!avatar.IsMe)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Debug.Log("Spawn bullet");

@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/JasonTestScene.unity
     guid: 334f1b18ee834dc4681b661095ed7310
-  - enabled: 1
+  - enabled: 0
     path: Assets/JeepersCreepers/JesperScene.unity
     guid: 5352b84213f407147ada2276480758fd
   m_configObjects: {}
