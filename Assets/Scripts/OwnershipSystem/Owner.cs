@@ -1,6 +1,4 @@
-using System;
 using Alteruna;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Owner : AttributesSync
