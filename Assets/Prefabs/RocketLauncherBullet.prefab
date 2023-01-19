@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 4470907940308904332}
   - component: {fileID: 2613547992927943933}
   - component: {fileID: 6454601066920813429}
-  - component: {fileID: 3614954633889359328}
-  - component: {fileID: 647036793330362498}
-  - component: {fileID: -2401335500057721295}
+  - component: {fileID: 2780434509513145955}
+  - component: {fileID: -6697538733031948515}
   m_Layer: 10
   m_Name: RocketLauncherBullet
   m_TagString: RocketLauncherBullet
@@ -34,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8873257069451762713}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,9 +97,9 @@ SphereCollider:
   m_GameObject: {fileID: 378792108265994139}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6454601066920813429
 MonoBehaviour:
@@ -114,7 +114,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: 577f9649-5838-4082-a1d7-57f6154f3c7d
---- !u!114 &3614954633889359328
+--- !u!54 &2780434509513145955
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378792108265994139}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!114 &-6697538733031948515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 378792108265994139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1312809854, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Script: {fileID: 1576325847, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Multiplayer: {fileID: 0}
@@ -152,7 +168,7 @@ MonoBehaviour:
     RealtimeString: Realtime
   - Name: High
     NetLOD: 3
-    Frequency: 4
+    Frequency: 0
     Pending: 0
     LastUpdated: 0
     NeverString: Never
@@ -164,13 +180,63 @@ MonoBehaviour:
     LastUpdated: 0
     NeverString: Never
     RealtimeString: Realtime
---- !u!114 &647036793330362498
+  SyncEveryNUpdates: 2
+  FullSyncEveryNSync: 2
+  sendData: 1
+--- !u!1 &876661910464733665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8873257069451762713}
+  - component: {fileID: 2097667844204229356}
+  - component: {fileID: 673963230389668202}
+  - component: {fileID: 2577582698362024252}
+  m_Layer: 10
+  m_Name: GameObject
+  m_TagString: RocketLauncherBullet
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8873257069451762713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876661910464733665}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4314028024959869112}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2097667844204229356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378792108265994139}
+  m_GameObject: {fileID: 876661910464733665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1709514741, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a: 745babe4-e974-4dee-b5f3-06fe70df2f46
+--- !u!114 &673963230389668202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876661910464733665}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b728804d538219749bb20b6b37e6906d, type: 3}
@@ -179,28 +245,28 @@ MonoBehaviour:
   Multiplayer: {fileID: 0}
   UID: {fileID: 0}
   Reliability: 1
-  bulletSpeed: 15
+  bulletSpeed: 20
   bulletMaxLength: 50
-  explosionRadius: 9
-  fullExplosionforce: 2
+  explosionRadius: 3
+  fullExplosionforceOnDirectHit: 7
+  explosionForce: 20
+  explosionForceRocketJump: 5
   _beforeDestroy:
     m_PersistentCalls:
       m_Calls: []
   spawner: {fileID: 0}
   UserID: 0
---- !u!54 &-2401335500057721295
-Rigidbody:
+  showExplosionRadius: 1
+--- !u!135 &2577582698362024252
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378792108265994139}
+  m_GameObject: {fileID: 876661910464733665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}

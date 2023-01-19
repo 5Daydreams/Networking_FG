@@ -29,15 +29,19 @@ public class RocketLauncherGun : AttributesSync
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("Spawn bullet");
+           // Debug.Log("Spawn bullet");
             SpawnBullet();
+            Debug.Log("Multiplayer.Me.Index in gun: " + Multiplayer.Me.Index);
         }
     }
 
     void SpawnBullet()
     {
        GameObject bullet = spawner.Spawn(indexToSpawn, GunPipe.position + GunPipe.forward, GunPipe.rotation);
-       bullet.GetComponent<RocketLauncherBullet>().UserID = Multiplayer.Me.Index;
-       Debug.Log("Spawn bullet me index: " +Multiplayer.Me.Index);
+       bullet.GetComponentInChildren<RocketLauncherBullet>().UserID = Multiplayer.Me.Index;
+       Debug.Log("Multiplayer.Me.Index in gun: " + Multiplayer.Me.Index);
+       Debug.Log("UserID in bullet in gun: " + bullet.GetComponentInChildren<RocketLauncherBullet>().UserID);
+      
+    
     }
 }
