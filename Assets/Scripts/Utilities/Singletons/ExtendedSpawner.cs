@@ -80,12 +80,15 @@ namespace Utilities.Singletons
 
         public GameObject SpawnByIndex(int index, Vector3 position, Quaternion rotation, Vector3 scale)
         {
-            GameObject output = Spawn(_items[index].index, position, rotation, scale);
-
-            if (output.GetComponent<Owner>() == null)
+            GameObject output = Spawn(index, position, rotation, scale);
+            Owner owner = output.GetComponent<Owner>();
+            
+            if (owner == null)
             {
-                output.AddComponent<Owner>().ID = _spawnerID;
+                owner = output.AddComponent<Owner>();
             }
+            
+            owner.ID = _spawnerID;
 
             return output;
         }

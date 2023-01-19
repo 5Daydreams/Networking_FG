@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.VFX;
+using Utilities.Singletons;
 
 [RequireComponent(typeof(VisualEffect))]
 public class VFXController : MonoBehaviour
@@ -23,20 +24,20 @@ public class VFXController : MonoBehaviour
         _effect.SetFloat(_spawnRateString, value);
     }
     
-    public void SpawnVFX(Alteruna.Spawner spawner, int spawnerIndex, Transform targetTransform)
+    public void SpawnVFX(ExtendedSpawner spawner, int spawnerIndex, Transform targetTransform)
     {
-        spawner.Spawn(
+        spawner.SpawnByIndex(
             spawnerIndex,
             targetTransform.position,
             targetTransform.rotation
         );
     }
 
-    public void AttachVFXToTarget(Alteruna.Spawner spawner, int spawnerIndex,
+    public void AttachVFXToTarget(ExtendedSpawner spawner, int spawnerIndex,
         Transform spawnTransform, Transform attachTransform)
     {
         GameObject output =
-            spawner.Spawn(
+            spawner.SpawnByIndex(
                 spawnerIndex,
                 spawnTransform.position,
                 spawnTransform.rotation

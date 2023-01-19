@@ -5,19 +5,28 @@ using UnityEngine;
 [RequireComponent(typeof(Owner))]
 public class DespawnBehavior : AttributesSync
 {
+    [SerializeField] protected bool _useNetwork = false;
     [SerializeField] protected float _lifetime = 5.0f;
     private Owner _owner;
-    private void Start()
+
+    private void StartCountdown()
     {
-        if (Multiplayer == null)
+        if (Multiplayer.Me == null)
         {
-            Debug.LogWarning("My name is Unity, and I'm fucking stupid");
+            Debug.LogWarning("Multiplayer Room not entered yet, user not initialized");
             return;
         }
 
         _owner = this.GetComponent<Owner>();
-        
-        bool differentUser = _owner.ID != Multiplayer.Me.Index;
+
+        if (_owner == null)
+        {
+            Debug.LogError("I have no idea what happened. Somehow this spawned without an owner?");
+            return;
+        }
+
+        Alteruna.Multiplayer multiplayer = GameObject.FindWithTag("NetworkManager").GetComponent<Multiplayer>();
+        bool differentUser = _owner.ID != multiplayer.Me.Index;
 
         if (differentUser)
         {
@@ -32,6 +41,14 @@ public class DespawnBehavior : AttributesSync
         yield return null;
 
         yield return new WaitForSeconds(time);
-        Utilities.Singletons.Spawner.Instance.RequestDespawn(_owner.ID, this.gameObject);
+        
+        if (_useNetwork)
+        {
+            Utilities.Singletons.Spawner.Instance.RequestDespawn(_owner.ID, this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

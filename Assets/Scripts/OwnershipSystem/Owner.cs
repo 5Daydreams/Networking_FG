@@ -1,11 +1,9 @@
 using Alteruna;
 using UnityEngine;
 
-public class Owner : AttributesSync
+public class Owner : MonoBehaviour
 {
     private bool dirtyTag_IdSet = false;
-    
-    [SynchronizableField]
     private int _id = -1;
 
     public int ID
