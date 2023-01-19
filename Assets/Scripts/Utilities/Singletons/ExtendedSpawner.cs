@@ -44,16 +44,20 @@ namespace Utilities.Singletons
             else
             {
                 foreach (Transform child in target.transform)
-                { 
+                {
                     SetOwner(child.gameObject);
                 }
             }
-            
         }
-
-        protected void Awake()
+        
+        public void OnRoomJoin(Multiplayer m, Room r, User user)
         {
-            _spawnerID = this.GetComponent<Owner>().ID = this.GetComponent<Multiplayer>().Me.Index;
+            // Multiplayer mpComponent = this.GetComponent<Alteruna.Multiplayer>();
+            // Alteruna.User user = mpComponent.Me;
+            
+            int mpIndex = user.Index;
+            this.GetComponent<Owner>().ID = mpIndex;
+            _spawnerID = mpIndex;
 
             int LastIndex = SpawnableObjects.Count;
 
@@ -62,6 +66,28 @@ namespace Utilities.Singletons
                 _items[i].index = LastIndex + i;
                 SpawnableObjects.Add(_items[i].prefab);
             }
+        }
+
+        public GameObject SpawnByIndex(int index, Vector3 position)
+        {
+            return SpawnByIndex(index, position, Quaternion.identity, Vector3.one);
+        }
+
+        public GameObject SpawnByIndex(int index, Vector3 position, Quaternion rot)
+        {
+            return SpawnByIndex(index, position, rot, Vector3.one);
+        }
+
+        public GameObject SpawnByIndex(int index, Vector3 position, Quaternion rotation, Vector3 scale)
+        {
+            GameObject output = Spawn(_items[index].index, position, rotation, scale);
+
+            if (output.GetComponent<Owner>() == null)
+            {
+                output.AddComponent<Owner>().ID = _spawnerID;
+            }
+
+            return output;
         }
 
         public GameObject SpawnByKey(string key, Vector3 position)
@@ -97,14 +123,14 @@ namespace Utilities.Singletons
             return output;
         }
 
-        public void RequestDespawn(int requesterID, Owner despawnTarget)
+        public void RequestDespawn(int requesterID, GameObject despawnTarget)
         {
             if (_spawnerID != requesterID)
             {
                 return;
             }
 
-            Despawn(despawnTarget.gameObject);
+            Despawn(despawnTarget);
         }
     }
 

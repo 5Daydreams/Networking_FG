@@ -38,6 +38,7 @@ public class RocketLauncherBullet : AttributesSync
         _transform = GetComponent<Alteruna.TransformSynchronizable>(); // might be able to use normal transform
         startPosition = _transform.transform.position;
         spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
+        // this.gameObject.AddComponent<Owner>().ID = UserID;
     }
 
     void Start()

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
@@ -14,6 +15,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 if (_instance == null)
                 {
                     _instance = new GameObject().AddComponent<T>();
+                    UnityEditor.EditorApplication.isPaused = true;
                 }
             }
 

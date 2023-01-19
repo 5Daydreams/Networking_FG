@@ -9,6 +9,12 @@ public class DespawnBehavior : AttributesSync
     private Owner _owner;
     private void Start()
     {
+        if (Multiplayer == null)
+        {
+            Debug.LogWarning("My name is Unity, and I'm fucking stupid");
+            return;
+        }
+
         _owner = this.GetComponent<Owner>();
         
         bool differentUser = _owner.ID != Multiplayer.Me.Index;
@@ -26,6 +32,6 @@ public class DespawnBehavior : AttributesSync
         yield return null;
 
         yield return new WaitForSeconds(time);
-        Utilities.Singletons.Spawner.Instance.Despawn(this.gameObject);
+        Utilities.Singletons.Spawner.Instance.RequestDespawn(_owner.ID, this.gameObject);
     }
 }

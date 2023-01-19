@@ -3,12 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Debug/NetworkManager_Nelson.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Debug/NetworkManager_Nelson.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NetworkManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/NetworkManager.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherGun.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/ExtendedSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/ExtendedSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Singleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +21,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/0c/5883c29b/CommunicationBridge.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/77/975aec0d/RemoteProcedure.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/8d/b5e28132/Spawner.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/a6/68d60f79/Synchronizable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/53/d8087623/Avatar.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/82/3fe17434/Multiplayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/2dfec857425942e0b1827e8c3c86ee9b44600/ec/77e91de1/CommunicationBridge.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DebugTools/EventDebug.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OwnershipSystem/Owner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/CopyOf_Rocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/UnparentByEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@1.6.0/Editor/Core/Build/ProjectUnlinkBuildWarning.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -38,19 +43,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "rider.run.widget.enabled.cache": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:/NetworkingLecture\Networking_FG.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../NetworkingLecture\Networking_FG.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\NetworkingLecture" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -75,10 +80,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3316">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2064">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="3316" />
+      <option name="pid" value="2064" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -111,7 +116,37 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/ExtendedSpawner.cs</url>
+          <line>68</line>
+          <properties documentPath="D:\_Unity\Networking_FG\Assets\Scripts\Utilities\Singletons\ExtendedSpawner.cs" initialLine="68" containingFunctionPresentation="method 'Start'">
+            <startOffsets>
+              <option value="1953" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1954" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
