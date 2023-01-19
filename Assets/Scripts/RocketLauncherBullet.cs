@@ -68,12 +68,13 @@ public class RocketLauncherBullet : AttributesSync
     private void CustomDestroy()
     {
         Debug.Log("Multiplayer.Me in bullet: " +Multiplayer.Me);
+        _beforeDestroy.Invoke();
+
         if (UserID == Multiplayer.Me.Index)
         {
             StartCoroutine(DelayedDeSpawne (1f));
             GetComponent<MeshRenderer>().enabled = false;
            // GetComponent<SphereCollider>().enabled = false; // DONT ADD IT WILL BEAK
-           // _beforeDestroy.Invoke();
         }
         else
         {
