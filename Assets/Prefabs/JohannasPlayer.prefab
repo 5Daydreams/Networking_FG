@@ -921,7 +921,6 @@ MonoBehaviour:
   Multiplayer: {fileID: 0}
   UID: {fileID: 0}
   Reliability: 1
-  damage: 10
   health: 100
   spawnTimer: 0
   playerLayer:
@@ -931,10 +930,10 @@ MonoBehaviour:
   assistTimer: 0
   playerkda: {fileID: 6958451082047587910}
   camera: {fileID: 579797559739742130}
-  avatar: {fileID: 3818068261183263210}
-  previousDamageDealer: {fileID: 3818068261183263210}
-  assistingPlayers: []
-  assisstTimers: []
+  localAvatar: {fileID: 3818068261183263210}
+  previousDamageDealer: 0
+  assistingPlayers: 
+  uiManager: {fileID: 0}
 --- !u!1 &8192054183831874141
 GameObject:
   m_ObjectHideFlags: 0
