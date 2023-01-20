@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Alteruna;
 using UnityEngine;
 using UnityEngine.Events;
-using Avatar = UnityEngine.Avatar;
 
 public class CopyOf_Rocket : MonoBehaviour
 {
@@ -35,7 +31,7 @@ public class CopyOf_Rocket : MonoBehaviour
     private void CustomDestroy()
     {
         _beforeDestroy.Invoke();
-        Destroy(this.gameObject);
+        Utilities.Singletons.Spawner.Instance.Despawn(this.gameObject);
     }
     
     private void FixedUpdate()
