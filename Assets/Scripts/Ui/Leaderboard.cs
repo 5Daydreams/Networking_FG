@@ -5,15 +5,14 @@ using TMPro;
 using UnityEngine;
 
 public class Leaderboard : AttributesSync
-{
-    [SerializeField] private PlayerKDA playerKDA;
-
+{  
     [Header("Scoreboard")]
     [SerializeField] private GameObject leaderBoardUi;
     [SerializeField] public GameObject playerStats;
 
-    public Dictionary<int, GameObject> statList = new Dictionary<int, GameObject>();
+    private PlayerKDA playerKDA;
     AvatarCollection avatarCollection;
+    public Dictionary<int, GameObject> statList = new Dictionary<int, GameObject>();
 
     private void Awake()
     {
