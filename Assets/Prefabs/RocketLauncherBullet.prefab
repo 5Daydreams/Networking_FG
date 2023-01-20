@@ -129,7 +129,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &-6697538733031948515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,10 +247,10 @@ MonoBehaviour:
   Reliability: 1
   bulletSpeed: 20
   bulletMaxLength: 50
-  explosionRadius: 3
-  fullExplosionforceOnDirectHit: 7
+  explosionRadius: 3.5
+  fullExplosionforceOnDirectHit: 8
   explosionForce: 20
-  explosionForceRocketJump: 5
+  explosionForceRocketJump: 2
   _beforeDestroy:
     m_PersistentCalls:
       m_Calls: []
