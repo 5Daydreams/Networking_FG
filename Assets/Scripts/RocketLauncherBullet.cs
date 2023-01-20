@@ -19,6 +19,8 @@ public class RocketLauncherBullet : AttributesSync
     [SerializeField] private float fullExplosionforceOnDirectHit = 4f;
     [SerializeField] private float explosionForce = 5f;
     [SerializeField] private float explosionForceRocketJump = 5f;
+    
+    AvatarCollection avatarCollection;
 
     private bool DirectHitOnPlayer = false;
     //[SerializeField] private float bulletDamage = 5f;
@@ -53,6 +55,7 @@ public class RocketLauncherBullet : AttributesSync
     {
         Debug.Log("Multiplayer.Me.Index in bullet: " + Multiplayer.Me.Index);
         Debug.Log("UserID in bullet in bullet: " +UserID);
+        avatarCollection = FindObjectOfType<AvatarCollection>();
         rb.velocity = transform.forward * bulletSpeed;
         DirectHitOnPlayer = false;
     }
@@ -99,7 +102,7 @@ public class RocketLauncherBullet : AttributesSync
             StartCoroutine(DelayedDeSpawn (1f));
             GetComponentInParent<MeshRenderer>().enabled = false;
             GetComponent<SphereCollider>().enabled = false; // DONT ADD IT WILL BEAK
-            GetComponent<RigidbodySynchronizable>().SendData = false;
+            GetComponentInParent<RigidbodySynchronizable>().SendData = false;
             // _beforeDestroy.Invoke();
         }
         else
@@ -117,6 +120,9 @@ public class RocketLauncherBullet : AttributesSync
 
     void DoExplosion2(Vector3 hitpoint, Collider other)
     {
+        Debug.Log("in avatar collection, avatar.is me [userid]: " +avatarCollection.avatars[UserID].IsMe);
+        Debug.Log(" Bullet UserID: " + UserID);
+        
         
         hitColliders = Physics.OverlapSphere(hitpoint, explosionRadius); // make a spherecast to se what is inside the explosion
         
@@ -134,30 +140,40 @@ public class RocketLauncherBullet : AttributesSync
             float damageToDeal = procentileDamage / explosionRadius * explosionForce; // calculate the damage/force to add on the object depending on how close to the explosion it is
 
             Vector3 blastDir = hitcol.transform.position - this.rb.transform.position; // give a direction on the force
-            
-          if (hitcol.gameObject.CompareTag("Player")) // Layer does not work for some reason?
-          {
-              Debug.Log("The spherecast hit a playertag");
-              if (DirectHitOnPlayer == false && UserID != Multiplayer.Me.Index)
-              {
-                  Debug.Log("The spherecast hit a player, distance: " + distance);
-                  Debug.Log("The spherecast hit a player, procentileDamage: " + procentileDamage);
-                  Debug.Log("The spherecast hit a player, damageToDeal: " + damageToDeal);
-                  var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>(); 
-                  avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddExplosionForce(hitpoint, damageToDeal, blastDir);
-              }
-              if (UserID == Multiplayer.Me.Index)
-              {
-                  Debug.Log("UserID:" + UserID);
-                  Debug.Log("UMultiplayer.Me:" + Multiplayer.Me.Index);
-                  Debug.Log("The spherecast hit me, add force for rocket jump: " + explosionForceRocketJump);
-                  var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>(); 
-                  avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddExplosionForce(hitpoint, explosionForceRocketJump, blastDir); // use a set rocketjumpforce or use the calculated one?
-              }
-              //Debug.Log("GameObjectPlayer: " + hitcol.gameObject + ", Distance: " + distance + ", Damage: " + damageToDeal);
-              // var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>(); 
-              // avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddExplosionForce(hitpoint, damageToDeal, blastDir);
-          }
+
+            if (hitcol.gameObject.CompareTag("Player")) // Layer does not work for some reason?
+            {
+                if (!DirectHitOnPlayer &&
+                    !avatarCollection.avatars[UserID]
+                        .IsMe) // the explosion hit a player and we did not get a direct hit. And the id is not the same as the person that shot the bullet
+                {
+                    Debug.Log("The spherecast hit a playertag");
+                    Debug.Log("The spherecast hit a player, distance: " + distance);
+                    var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>();
+                    avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>()
+                        .AddExplosionForce(hitpoint, damageToDeal, blastDir);
+                }
+            }
+
+            //if (avatarCollection.avatars[UserID].IsMe)
+             //{
+             //    avatarCollection.avatars[UserID].GetComponentInChildren<>()
+             //}
+           //  if (DirectHitOnPlayer == false && UserID != Multiplayer.Me.Index)
+           //  {
+           //      Debug.Log("The spherecast hit a player, distance: " + distance);
+           //      var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>(); 
+           //      avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddExplosionForce(hitpoint, damageToDeal, blastDir);
+           //  }
+           //  if (UserID == Multiplayer.Me.Index)
+           //  {
+           //      Debug.Log("UserID:" + UserID);
+           //      Debug.Log("UMultiplayer.Me:" + Multiplayer.Me.Index);
+           //      Debug.Log("The spherecast hit me, add force for rocket jump: " + explosionForceRocketJump);
+           //      var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>(); 
+           //      avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddExplosionForce(hitpoint, explosionForceRocketJump, blastDir); // use a set rocketjumpforce or use the calculated one?
+           //  }
+          
           if (hitcol.gameObject.layer == 9 && hitcol.GetComponent<RigidbodySynchronizable>()) // if the spherecast hit a object that is movable and have a RigidbodySynchronizable add a force to that object
           {
               Debug.Log("The spherecast hit an object with a RigidbodySynchronizable, add force: " + damageToDeal);
