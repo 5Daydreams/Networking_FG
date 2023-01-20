@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 3818068261183263210}
   m_Layer: 7
   m_Name: PlayerMP
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1833,7 +1833,6 @@ MonoBehaviour:
   killScore: {fileID: 8212161360499224698}
   deathScore: {fileID: 5430945865351948435}
   assitScore: {fileID: 7051128760771160742}
-  statsInstantiated: 0
 --- !u!114 &1406151483823589327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3375,7 +3374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798070599626767659, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2764645729660716482, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: m_RootOrder
