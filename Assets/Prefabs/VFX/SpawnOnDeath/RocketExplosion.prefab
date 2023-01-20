@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2133983497822375207}
   - component: {fileID: 351286509723332818}
   - component: {fileID: 613795996257395080}
+  - component: {fileID: 2195769140521637704}
   m_Layer: 0
   m_Name: RocketExplosion
   m_TagString: Untagged
@@ -124,6 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5e3db38d284994aa7330a42c12e424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Multiplayer: {fileID: 0}
+  UID: {fileID: 0}
+  Reliability: 1
+  _useNetwork: 0
+  _startByDefault: 1
   _lifetime: 2
 --- !u!114 &613795996257395080
 MonoBehaviour:
@@ -138,3 +144,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: d87e5660-ffc2-40e3-94f5-a3318c0260d9
+--- !u!114 &2195769140521637704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3976542658383854217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444280809694b954e99fb8d81e1c82b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
