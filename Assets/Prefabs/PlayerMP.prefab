@@ -815,7 +815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 3818068261183263210}
-  Leaderboard: {fileID: 0}
 --- !u!54 &6760002208509685307
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2174,6 +2173,10 @@ PrefabInstance:
       propertyPath: avatar
       value: 
       objectReference: {fileID: 3818068261183263210}
+    - target: {fileID: 6827950676321742858, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 579797559739742130}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
 --- !u!4 &5384430527520409450 stripped
