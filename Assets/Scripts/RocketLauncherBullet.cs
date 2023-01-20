@@ -11,14 +11,17 @@ public class RocketLauncherBullet : AttributesSync
     //private TransformSynchronizable _transform;
     private RigidbodySynchronizable rb;
     private Vector3 startPosition;
-    [SerializeField] private float bulletSpeed = 10f;
+    private Ray ray;
+    private Camera camera;
+    public Vector3 direction;
 
+    [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float bulletMaxLength = 50f;
-    
     [SerializeField] private float explosionRadius = 10f;
     [SerializeField] private float fullExplosionforceOnDirectHit = 4f;
     [SerializeField] private float explosionForce = 5f;
     [SerializeField] private float explosionForceRocketJump = 5f;
+    
     
     AvatarCollection avatarCollection;
 
@@ -49,7 +52,10 @@ public class RocketLauncherBullet : AttributesSync
         rb = GetComponentInParent<Alteruna.RigidbodySynchronizable>();
         startPosition = rb.transform.position;
         spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
-        // this.gameObject.AddComponent<Owner>().ID = UserID;
+        
+        //camera = GetComponentInParent<RocketLauncherGun>().camera;
+        //camera = avatarCollection.avatars[UserID].GetComponentInParent<RocketLauncherGun>().camera;
+        
     }
 
     void Start()
@@ -57,7 +63,11 @@ public class RocketLauncherBullet : AttributesSync
         Debug.Log("Multiplayer.Me.Index in bullet: " + Multiplayer.Me.Index);
         Debug.Log("UserID in bullet in bullet: " +UserID);
         avatarCollection = FindObjectOfType<AvatarCollection>();
-        rb.velocity = transform.forward * bulletSpeed;
+
+       
+        
+        //ray = GetComponentInParent<RocketLauncherGun>().ray;
+        rb.velocity = direction.normalized * bulletSpeed;
         DirectHitOnPlayer = false;
     }
 
@@ -104,7 +114,7 @@ public class RocketLauncherBullet : AttributesSync
             StartCoroutine(DelayedDeSpawn (1f));
             GetComponentInParent<MeshRenderer>().enabled = false;
             GetComponent<SphereCollider>().enabled = false; // DONT ADD IT WILL BEAK
-            GetComponentInParent<RigidbodySynchronizable>().SendData = false;
+          //  GetComponentInParent<RigidbodySynchronizable>().SendData = false;
             // _beforeDestroy.Invoke();
         }
         else

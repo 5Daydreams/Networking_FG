@@ -66,6 +66,11 @@ public class PlayerHealth : AttributesSync
         return health;
     }
 
+    public int AddHealt(int amount)
+    {
+        return health += amount;
+    }
+
     //will be done in the weapon script later;
     void Shoot()
     {

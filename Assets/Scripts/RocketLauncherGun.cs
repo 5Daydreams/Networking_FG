@@ -2,19 +2,34 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Alteruna;
+using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class RocketLauncherGun : AttributesSync
 { 
-    [SerializeField] private int indexToSpawn = 0;
-    [SerializeField] Transform GunPipe;
+   [SerializeField] private int indexToSpawn = 0;
+   [SerializeField] Transform GunPipe;
+   [SerializeField]
+   public Camera camera;
+
+   [SerializeField] private float maxRayLenght = 1000f;
+   [SerializeField] private float bulletMaxLength = 100f;
+
+   private Ray ray;
+   
+
+   private Vector3 HitPoint;
+   
    
    private Spawner spawner;
    public Alteruna.Avatar avatar;
+   
 
    private void Awake()
    {
        spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
+       //camera = GetComponentInParent<Camera>();
    }
 
    void Start()
@@ -36,13 +51,22 @@ public class RocketLauncherGun : AttributesSync
         }
     }
 
-    void SpawnBullet()
-    {
+   void SpawnBullet()
+   {
+       RaycastHit Hit;
+       ray = new Ray(camera.transform.position, camera.transform.forward);
+       
+       if (Physics.Raycast(ray, out Hit, maxRayLenght))
+       {
+           //Debug.DrawRay(camera.transform.position, camera.transform.forward *100f, Color.red,1000f);
+           HitPoint = Hit.point;
+       }
+       else
+       {
+           HitPoint = ray.GetPoint(bulletMaxLength);
+       }
        GameObject bullet = spawner.Spawn(indexToSpawn, GunPipe.position + GunPipe.forward, GunPipe.rotation);
        bullet.GetComponentInChildren<RocketLauncherBullet>().UserID = Multiplayer.Me.Index;
-       Debug.Log("Multiplayer.Me.Index in gun: " + Multiplayer.Me.Index);
-       Debug.Log("UserID in bullet in gun: " + bullet.GetComponentInChildren<RocketLauncherBullet>().UserID);
-      
-    
-    }
+       bullet.GetComponentInChildren<RocketLauncherBullet>().direction = HitPoint- GunPipe.position;
+   }
 }
