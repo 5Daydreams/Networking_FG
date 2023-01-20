@@ -32,16 +32,20 @@ public class PlayerHealth : AttributesSync
     [SynchronizableField] public List<int> assistingPlayers = new List<int>();
 
     AvatarCollection avatarCollection;
-
-    [SerializeField] PlayerUiManager uiManager;
+    Leaderboard leaderboard;
+    PlayerRespawn playerRespawn;
+    private void Awake()
+    {
+        avatarCollection = FindObjectOfType<AvatarCollection>();
+        leaderboard = FindObjectOfType<Leaderboard>();
+        playerRespawn = FindObjectOfType<PlayerRespawn>();
+        baseHealth = health;
+    }
 
     private void Start()
     {
-        avatarCollection = FindObjectOfType<AvatarCollection>();
-
         if (localAvatar.IsMe)
         {
-            baseHealth = health;
             baseAssistTimer = assistTimer;
             previousDamageDealer = localAvatar.Possessor.Index;
             localAvatar.gameObject.layer = playerSelfLayer;
@@ -107,17 +111,17 @@ public class PlayerHealth : AttributesSync
                 // Multiplayer.GetAvatar((ushort)i).GetComponentInChildren<PlayerKDA>().AddAssist(1);
         }
         //UPDATEKDATEXT
-        uiManager.BroadcastMessage("UpdateScoreboard");
+        leaderboard.BroadcastMessage("UpdateScoreboard");
         Spawn();
     }
 
-
     void Spawn()
     {
-        //ClearDamageDealers();
+        Debug.Log("spawn");
         //Spawn timer
-            health = baseHealth;
-        //Respawn
+        ClearDamageDealers();
+        StartCoroutine(playerRespawn.Respawn(localAvatar, 0));
+        health = baseHealth;
     }
 
     void ClearDamageDealers()

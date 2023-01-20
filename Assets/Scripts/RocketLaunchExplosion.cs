@@ -84,8 +84,13 @@ public class RocketLaunchExplosion : MonoBehaviour
         {
            // PlayerHealth playerHp = avatar.GetComponentInChildren<PlayerHealth>();
            // playerHp.DealDamage(20, playerHp);
-            Debug.Log("Add force to player i hit with bullet:" + damage);
-            this.rigidbodySynchronizable.velocity +=  Vector3.up * damage + direction * damage;
+            Debug.Log("Add force to player:" + damage);
+            //this.rigidbodySynchronizable.velocity +=  Vector3.up * damage + direction * damage;
+            AddImpulse(Vector3.up * damage + direction * damage);
         }
+    }
+    void AddImpulse(Vector3 impulse)
+    {
+        rigidbodySynchronizable.velocity += impulse;
     }
 }
