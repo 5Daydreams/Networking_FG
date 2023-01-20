@@ -24,26 +24,22 @@ public class PlayerRespawn : MonoBehaviour
 
     public IEnumerator Respawn(Alteruna.Avatar avatar, float spawnTime)
     {
-        float distance = 0;
+        float closestPlayer = 0;
         rb = avatar.GetComponent<RigidbodySynchronizable>();
 
-        foreach (GameObject spawn in SpawnPossitions)
+        for (int i = 0; i < SpawnPossitions.Length; i++)
         {
-            int i = 0;
             foreach (var player in avatarCollection.avatars)
             {
-                distanceToPlayer = Vector3.Distance(spawn.transform.position, player.Value.transform.position);
+                distanceToPlayer = Vector3.Distance(SpawnPossitions[i].transform.position, player.Value.transform.position);
 
-                if (distance > distanceToPlayer || distance == 0)
+                if (closestPlayer < distanceToPlayer || closestPlayer == 0)
                 {
-                    distance = distanceToPlayer;
-                    Debug.Log(SpawnPossitions[i]);
+                    closestPlayer = distanceToPlayer;
                     spawnPosition = SpawnPossitions[i].transform.position;
                 }
-                i++;
             }
         }
-
 
         yield return new WaitForSeconds(spawnTime);
         rb.position = spawnPosition;

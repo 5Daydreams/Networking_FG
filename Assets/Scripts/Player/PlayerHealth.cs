@@ -122,7 +122,6 @@ public class PlayerHealth : AttributesSync
 
     void Spawn()
     {
-        Debug.Log("spawn");
         //Spawn timer
         ClearDamageDealers();
         StartCoroutine(playerRespawn.Respawn(localAvatar, 0));
