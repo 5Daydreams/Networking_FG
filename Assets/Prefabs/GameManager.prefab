@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8313212333041613180, guid: f585ebe0ba297b04798a570ed5f675b4, type: 3}
       propertyPath: SpawnPossitions.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8313212333041613180, guid: f585ebe0ba297b04798a570ed5f675b4, type: 3}
       propertyPath: SpawnPossitions.Array.data[0]
@@ -483,6 +483,10 @@ PrefabInstance:
       propertyPath: AvatarPrefab
       value: 
       objectReference: {fileID: 3818068261183263210, guid: 30e5315cddfb59742940edc0f0cbd728, type: 3}
+    - target: {fileID: 4412056548497521751, guid: 205b9015f3d2ab040aaae2e7575a342b, type: 3}
+      propertyPath: AvatarSpawnLocations.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4412056548497521751, guid: 205b9015f3d2ab040aaae2e7575a342b, type: 3}
       propertyPath: AvatarSpawnLocations.Array.data[0]
       value: 
