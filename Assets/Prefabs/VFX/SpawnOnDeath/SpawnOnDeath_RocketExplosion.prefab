@@ -87,7 +87,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 35
+        m_Name: SpawnRate
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -214,7 +217,8 @@ MonoBehaviour:
   UID: {fileID: 0}
   Reliability: 1
   _useNetwork: 0
-  _lifetime: 2
+  _startByDefault: 1
+  _lifetime: 5
 --- !u!114 &3284684703771179605
 MonoBehaviour:
   m_ObjectHideFlags: 0

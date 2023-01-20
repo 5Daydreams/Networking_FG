@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherGun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +100,8 @@
       <workItem from="1673884345212" duration="452000" />
       <workItem from="1673942936642" duration="10062000" />
       <workItem from="1674132367438" duration="4987000" />
+      <workItem from="1674143014758" duration="594000" />
+      <workItem from="1674169349579" duration="602000" />
     </task>
     <servers />
   </component>
