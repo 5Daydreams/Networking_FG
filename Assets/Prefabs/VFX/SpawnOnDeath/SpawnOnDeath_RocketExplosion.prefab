@@ -51,16 +51,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4191176360322349249, guid: 3f9598eb7f21bbb46bcfa6c0e5b151c8, type: 3}
-      propertyPath: SpawnableObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 3976542658383854217, guid: c77312c8c7ae18d45923c79335a37513, type: 3}
     - target: {fileID: 4279995801755398766, guid: 3f9598eb7f21bbb46bcfa6c0e5b151c8, type: 3}
       propertyPath: m_Name
       value: SpawnOnDeath_RocketExplosion
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3634360429746617083, guid: 3f9598eb7f21bbb46bcfa6c0e5b151c8, type: 3}
+    - target: {fileID: 5897403778547836007, guid: 3f9598eb7f21bbb46bcfa6c0e5b151c8, type: 3}
+      propertyPath: _indexForVFX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897403778547836007, guid: 3f9598eb7f21bbb46bcfa6c0e5b151c8, type: 3}
+      propertyPath: _explosionPrefab
+      value: 
+      objectReference: {fileID: 351286509723332818, guid: c77312c8c7ae18d45923c79335a37513, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f9598eb7f21bbb46bcfa6c0e5b151c8, type: 3}
 --- !u!1 &8311362547360308503 stripped
 GameObject:
@@ -83,7 +86,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 35
+        m_Name: SpawnRate
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -151,13 +157,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8311362547360308503}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da5e3db38d284994aa7330a42c12e424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifetime: 2
---- !u!114 &922808435254210513
+  Multiplayer: {fileID: 0}
+  UID: {fileID: 0}
+  Reliability: 1
+  _useNetwork: 0
+  _startByDefault: 1
+  _lifetime: 5
+--- !u!114 &3284684703771179605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,10 +177,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8311362547360308503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b64fc9f12986ae4f889b7bee542a009, type: 3}
+  m_Script: {fileID: 11500000, guid: 444280809694b954e99fb8d81e1c82b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRateString: SpawnRate
 --- !u!114 &4480426058410550051
 MonoBehaviour:
   m_ObjectHideFlags: 0

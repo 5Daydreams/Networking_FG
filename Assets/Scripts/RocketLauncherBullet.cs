@@ -107,7 +107,8 @@ public class RocketLauncherBullet : AttributesSync
 
     private void CustomDestroy()
     {
-      //  Debug.Log("Multiplayer.Me in bullet: " +Multiplayer.Me);
+        _beforeDestroy.Invoke();
+
         if (UserID == Multiplayer.Me.Index)
         {
             StartCoroutine(DelayedDeSpawn (1f));

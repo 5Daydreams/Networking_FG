@@ -1,10 +1,11 @@
-using System.Collections.Generic;
+using Alteruna;
 using UnityEngine;
 
-namespace Utilities
+namespace Utilities.Singletons
 {
-    [RequireComponent(typeof(Alteruna.Spawner))]
-    public class Spawner : Singleton<Alteruna.Spawner>
+    [RequireComponent(typeof(Multiplayer), typeof(Owner), typeof(Alteruna.Spawner))]
+    public class Spawner : Singleton<ExtendedSpawner>
     {
+
     }
 }

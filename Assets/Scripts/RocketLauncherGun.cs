@@ -38,6 +38,7 @@ public class RocketLauncherGun : AttributesSync
     }
    void Update()
     {
+        // Hi Johanna - I'm sorry, but I need to debug this
         if (!avatar.IsMe)
         {
             return;
