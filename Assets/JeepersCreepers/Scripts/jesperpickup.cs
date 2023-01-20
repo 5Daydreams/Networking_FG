@@ -45,8 +45,8 @@ public class jesperpickup : MonoBehaviour
 
         ActivateEffect(currentEffect, other);
 
-        _vfx.SpawnVFX(_spawner, _indexForDespawnVFX, this.transform);
-        _vfx.AttachVFXToTarget(_spawner, _indexForPlayerVFX, playerTransform, playerTransform);
+        _vfx.SpawnVFX(Utilities.Singletons.Spawner.Instance, _indexForDespawnVFX, this.transform);
+        _vfx.AttachVFXToTarget(Utilities.Singletons.Spawner.Instance, _indexForPlayerVFX, playerTransform, playerTransform);
 
         Destroy(this.gameObject);
     }
