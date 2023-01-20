@@ -56,6 +56,10 @@ PrefabInstance:
       value: NetworkManager_Nelson
       objectReference: {fileID: 0}
     - target: {fileID: 4412056548497521751, guid: 205b9015f3d2ab040aaae2e7575a342b, type: 3}
+      propertyPath: AvatarPrefab
+      value: 
+      objectReference: {fileID: 3818068261183263210, guid: 504c3f638c19abe45ba87a182a2777bf, type: 3}
+    - target: {fileID: 4412056548497521751, guid: 205b9015f3d2ab040aaae2e7575a342b, type: 3}
       propertyPath: AvatarSpawnLocations.Array.size
       value: 4
       objectReference: {fileID: 0}
