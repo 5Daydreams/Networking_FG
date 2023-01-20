@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
@@ -17,6 +15,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 if (_instance == null)
                 {
                     _instance = new GameObject().AddComponent<T>();
+#if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPaused = true;
+#endif
                 }
             }
 
@@ -28,7 +29,11 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (_instance != null)
         {
-            Destroy(this);
+            Debug.LogError("Singleton Error - found pre-existing singleton within scene.\n" +
+                           "Despawning the entirety of the following GAME OBJECT: " + this.gameObject.name +
+                           ", as well as it's components.");
+            Utilities.Singletons.Spawner.Instance.Despawn(this.gameObject);
+            // Destroy(this);
         }
     }
 }
