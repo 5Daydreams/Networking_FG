@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1764106449215913467}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: GunSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8821765192103848827}
   - component: {fileID: 2827312892583910921}
   - component: {fileID: 6989460752562513487}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 8144506047756432389}
   - component: {fileID: 1881958445091301324}
   - component: {fileID: 5778323047171376877}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Speed Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 4027832483261551095}
   - component: {fileID: 8021891329567282650}
   - component: {fileID: 1132959835446589150}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 2538953113851718703}
   - component: {fileID: 2538953113851718688}
   - component: {fileID: 2538953113851718689}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 3017413889455676530}
   - component: {fileID: 3039676429089814024}
   - component: {fileID: 3818068261183263210}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: PlayerMPTESTDELUXE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 2538953114544123422}
   - component: {fileID: 7338747485268071112}
   - component: {fileID: 8830497734081424284}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4039227100311700668}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: DebugText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 3912035686160818228}
   - component: {fileID: 1714115751765717954}
   - component: {fileID: 2591499444991974025}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 198452348429751770}
   - component: {fileID: 8232486064844198973}
   - component: {fileID: 8942237456047520071}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: bodybody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1155,7 +1155,7 @@ GameObject:
   - component: {fileID: 1882518608083881609}
   - component: {fileID: 588453370861179059}
   - component: {fileID: 6976844592235478812}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1229,7 +1229,7 @@ GameObject:
   - component: {fileID: 1847966603432045206}
   - component: {fileID: 2139359514544139467}
   - component: {fileID: 8361333021167384216}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: State Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 8517846002919269526}
   - component: {fileID: 6644137583181397212}
   - component: {fileID: 6417621323092650100}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1468,6 +1468,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeamUI
       objectReference: {fileID: 0}
+    - target: {fileID: 357922562165368277, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 806873404580958520, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2396127276063047754, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1552,6 +1560,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3500032069287726688, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621769139831100232, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842536078226673961, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147095133129051962, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8287042232084511725, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8772639206829511394, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169314737178242133, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d929a6001d27448bde46a8df31cccd, type: 3}
 --- !u!114 &18915717622618541 stripped
@@ -1625,7 +1661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4082058846851495738, guid: f74bb6b1b820d5a4dac134585bc17019, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6182781645577438683, guid: f74bb6b1b820d5a4dac134585bc17019, type: 3}
       propertyPath: m_RootOrder
@@ -1673,7 +1709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8705605711687676787, guid: f74bb6b1b820d5a4dac134585bc17019, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f74bb6b1b820d5a4dac134585bc17019, type: 3}
