@@ -33,18 +33,19 @@ public class PlayerHealth : AttributesSync
 
     AvatarCollection avatarCollection;
     Leaderboard leaderboard;
-
+    PlayerRespawn playerRespawn;
     private void Awake()
     {
         avatarCollection = FindObjectOfType<AvatarCollection>();
         leaderboard = FindObjectOfType<Leaderboard>();
+        playerRespawn = FindObjectOfType<PlayerRespawn>();
+        baseHealth = health;
     }
 
     private void Start()
     {
         if (localAvatar.IsMe)
         {
-            baseHealth = health;
             baseAssistTimer = assistTimer;
             previousDamageDealer = localAvatar.Possessor.Index;
             localAvatar.gameObject.layer = playerSelfLayer;
@@ -114,13 +115,13 @@ public class PlayerHealth : AttributesSync
         Spawn();
     }
 
-
     void Spawn()
     {
-        //ClearDamageDealers();
+        Debug.Log("spawn");
         //Spawn timer
-            health = baseHealth;
-        //Respawn
+        ClearDamageDealers();
+        StartCoroutine(playerRespawn.Respawn(localAvatar, 0));
+        health = baseHealth;
     }
 
     void ClearDamageDealers()

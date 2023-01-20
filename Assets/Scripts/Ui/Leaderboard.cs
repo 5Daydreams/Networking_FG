@@ -21,7 +21,6 @@ public class Leaderboard : AttributesSync
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         ToggleScoreBoard();
