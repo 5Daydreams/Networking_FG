@@ -6,11 +6,16 @@ using UnityEngine;
 public class OnAvatarPosses : MonoBehaviour
 {
     [SerializeField] private Alteruna.Avatar avatar;
-    [SerializeField] PlayerUiManager uiManager;
+    Leaderboard Leaderboard;
+
+    private void Awake()
+    {
+        Leaderboard = FindObjectOfType<Leaderboard>();
+    }
 
     public void OnPossessed(User user)
     {
         FindObjectOfType<AvatarCollection>().AddAvatar(avatar);
-        //uiManager.OnPossessed(user);
+        Leaderboard.OnPossessed(user);
     }
 }

@@ -32,13 +32,16 @@ public class PlayerHealth : AttributesSync
     [SynchronizableField] public List<int> assistingPlayers = new List<int>();
 
     AvatarCollection avatarCollection;
+    Leaderboard leaderboard;
 
-    [SerializeField] PlayerUiManager uiManager;
+    private void Awake()
+    {
+        avatarCollection = FindObjectOfType<AvatarCollection>();
+        leaderboard = FindObjectOfType<Leaderboard>();
+    }
 
     private void Start()
     {
-        avatarCollection = FindObjectOfType<AvatarCollection>();
-
         if (localAvatar.IsMe)
         {
             baseHealth = health;
@@ -107,7 +110,7 @@ public class PlayerHealth : AttributesSync
                 // Multiplayer.GetAvatar((ushort)i).GetComponentInChildren<PlayerKDA>().AddAssist(1);
         }
         //UPDATEKDATEXT
-        uiManager.BroadcastMessage("UpdateScoreboard");
+        leaderboard.BroadcastMessage("UpdateScoreboard");
         Spawn();
     }
 
