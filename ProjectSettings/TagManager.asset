@@ -19,7 +19,7 @@ TagManager:
   - PlayerSelf
   - MovableObjects
   - RocketLauncherBullet
-  - 
+  - RocketExplosionVFX
   - 
   - 
   - 

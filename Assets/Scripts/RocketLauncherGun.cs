@@ -43,7 +43,6 @@ public class RocketLauncherGun : AttributesSync
         if (Input.GetKey(KeyCode.Mouse0) && !IsRealoading)
         {
             SpawnBullet();
-            //     //Debug.Log("Multiplayer.Me.Index in gun: " + Multiplayer.Me.Index);
             IsRealoading = true;
         }
         if (IsRealoading)
