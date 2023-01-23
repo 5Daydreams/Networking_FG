@@ -60,6 +60,11 @@ public class Leaderboard : AttributesSync
         }
     }
 
+    void removeAvatarFromLeaderboards()
+    {
+
+    }
+
     public void OnPossessed(User user)
     {
         BroadcastRemoteMethod("UpdateScoreboard");
