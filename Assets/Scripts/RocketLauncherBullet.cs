@@ -52,25 +52,17 @@ public class RocketLauncherBullet : AttributesSync
 
     private void Awake()
     {
-       // _transform = GetComponentInParent<Alteruna.TransformSynchronizable>(); // might be able to use normal transform
         rb = GetComponentInParent<Alteruna.RigidbodySynchronizable>();
         startPosition = rb.transform.position;
         spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
-        
-        //camera = GetComponentInParent<RocketLauncherGun>().camera;
-        //camera = avatarCollection.avatars[UserID].GetComponentInParent<RocketLauncherGun>().camera;
-        
     }
 
     void Start()
     {
-        Debug.Log("Multiplayer.Me.Index in bullet: " + Multiplayer.Me.Index);
-        Debug.Log("UserID in bullet in bullet: " +UserID);
-        avatarCollection = FindObjectOfType<AvatarCollection>();
-
+       // Debug.Log("Multiplayer.Me.Index in bullet: " + Multiplayer.Me.Index);
+       // Debug.Log("UserID in bullet in bullet: " +UserID);
        
-        
-        //ray = GetComponentInParent<RocketLauncherGun>().ray;
+        avatarCollection = FindObjectOfType<AvatarCollection>();
         rb.velocity = direction.normalized * bulletSpeed;
         DirectHitOnPlayer = false;
     }
@@ -119,7 +111,6 @@ public class RocketLauncherBullet : AttributesSync
             GetComponent<CapsuleCollider>().enabled = false; // DONT ADD IT WILL BEAK
             StartCoroutine(DelayedDeSpawn (1f));
             //  GetComponentInParent<RigidbodySynchronizable>().SendData = false;
-            // _beforeDestroy.Invoke();
         }
         else
         {
@@ -170,26 +161,7 @@ public class RocketLauncherBullet : AttributesSync
                         .AddExplosionForce(hitpoint, damageToDeal, blastDir);
                 }
             }
-
-            //if (avatarCollection.avatars[UserID].IsMe)
-             //{
-             //    avatarCollection.avatars[UserID].GetComponentInChildren<>()
-             //}
-           //  if (DirectHitOnPlayer == false && UserID != Multiplayer.Me.Index)
-           //  {
-           //      Debug.Log("The spherecast hit a player, distance: " + distance);
-           //      var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>(); 
-           //      avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddExplosionForce(hitpoint, damageToDeal, blastDir);
-           //  }
-           //  if (UserID == Multiplayer.Me.Index)
-           //  {
-           //      Debug.Log("UserID:" + UserID);
-           //      Debug.Log("UMultiplayer.Me:" + Multiplayer.Me.Index);
-           //      Debug.Log("The spherecast hit me, add force for rocket jump: " + explosionForceRocketJump);
-           //      var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>(); 
-           //      avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddExplosionForce(hitpoint, explosionForceRocketJump, blastDir); // use a set rocketjumpforce or use the calculated one?
-           //  }
-          
+            
           if (hitcol.gameObject.layer == 9 && hitcol.GetComponent<RigidbodySynchronizable>()) // if the spherecast hit a object that is movable and have a RigidbodySynchronizable add a force to that object
           {
               Debug.Log("The spherecast hit an object with a RigidbodySynchronizable, add force: " + damageToDeal);
