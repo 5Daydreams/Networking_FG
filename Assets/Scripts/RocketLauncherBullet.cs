@@ -46,6 +46,10 @@ public class RocketLauncherBullet : AttributesSync
     [SerializeField]
     private bool showExplosionRadius = true;
 
+    [SerializeField] GameObject parrentObject;
+    [SerializeField] MeshRenderer mesh;
+
+
     private void Awake()
     {
        // _transform = GetComponentInParent<Alteruna.TransformSynchronizable>(); // might be able to use normal transform
@@ -111,10 +115,10 @@ public class RocketLauncherBullet : AttributesSync
 
         if (UserID == Multiplayer.Me.Index)
         {
+            mesh.enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false; // DONT ADD IT WILL BEAK
             StartCoroutine(DelayedDeSpawn (1f));
-            GetComponentInParent<MeshRenderer>().enabled = false;
-            GetComponent<SphereCollider>().enabled = false; // DONT ADD IT WILL BEAK
-          //  GetComponentInParent<RigidbodySynchronizable>().SendData = false;
+            //  GetComponentInParent<RigidbodySynchronizable>().SendData = false;
             // _beforeDestroy.Invoke();
         }
         else
@@ -127,7 +131,7 @@ public class RocketLauncherBullet : AttributesSync
     IEnumerator DelayedDeSpawn(float delay)
     {
         yield return new WaitForSeconds(delay);
-        spawner.Despawn(transform.gameObject);
+        spawner.Despawn(parrentObject);
     }
 
     void DoExplosion2(Vector3 hitpoint, Collider other)
