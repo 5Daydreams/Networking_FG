@@ -12,8 +12,13 @@ public class PlayerHealth : AttributesSync
     private int baseHealth;
 
     [Header("Spawn")]
-    public int spawnTimer = 3;
+    public float spawnTimer = 3;
+    [HideInInspector]public float baseSpwanTime;
+    public RigidbodySynchronizable rb;
+    public Rigidbody rbUnity;
+    public CapsuleCollider collider;
     public MeshRenderer[] disableMeshOnDeath;
+    [SynchronizableField] public bool dead = false;
 
     [Header("Layers")]
     [SerializeField] private LayerMask playerLayer;
@@ -35,12 +40,14 @@ public class PlayerHealth : AttributesSync
     AvatarCollection avatarCollection;
     Leaderboard leaderboard;
     PlayerRespawn playerRespawn;
+
     private void Awake()
     {
         avatarCollection = FindObjectOfType<AvatarCollection>();
         leaderboard = FindObjectOfType<Leaderboard>();
         playerRespawn = FindObjectOfType<PlayerRespawn>();
         baseHealth = health;
+        baseSpwanTime = spawnTimer;
     }
 
     private void Start()
@@ -117,15 +124,49 @@ public class PlayerHealth : AttributesSync
                 // Multiplayer.GetAvatar((ushort)i).GetComponentInChildren<PlayerKDA>().AddAssist(1);
         }
         //UPDATEKDATEXT
-        leaderboard.BroadcastMessage("UpdateScoreboard");
-        Spawn();
+        leaderboard.BroadcastRemoteMethod("UpdateScoreboard");
+        BroadcastRemoteMethod("BrodcastCoroutine");
+        //Brodcas
+        //StartCoroutine(Spawn());
     }
 
-    void Spawn()
+    [SynchronizableMethod]
+    void BrodcastCoroutine()
     {
+        StartCoroutine(Spawn());
+    }
+
+    IEnumerator Spawn()
+    {
+        dead = true;
+        rbUnity.useGravity = false;
+        collider.enabled = false;
+
+        for (int i = 0; i < disableMeshOnDeath.Length; i++)
+        {
+            disableMeshOnDeath[i].enabled = false;
+        }
+
         ClearDamageDealers();
-        StartCoroutine(playerRespawn.Respawn(localAvatar, spawnTimer));
+
+        spawnTimer = baseSpwanTime;
+        yield return new WaitForSeconds(spawnTimer);
+
+        //Set spwan position
+        playerRespawn.Respawn(rb);
+
+        collider.enabled = true;
+        rbUnity.useGravity = true;
+
+        dead = false;
+
         health = baseHealth;
+
+        for (int i = 0; i < disableMeshOnDeath.Length; i++)
+        {
+            disableMeshOnDeath[i].enabled = true;
+        }
+
     }
 
     void ClearDamageDealers()
