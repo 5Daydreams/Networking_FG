@@ -14964,6 +14964,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3818068261183263210, guid: 30e5315cddfb59742940edc0f0cbd728, type: 3}
     - target: {fileID: 7636929067222576098, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
+      propertyPath: AvatarSpawnLocations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636929067222576098, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
       propertyPath: AvatarSpawnLocations.Array.data[0]
       value: 
       objectReference: {fileID: 73035161}
@@ -14974,7 +14978,7 @@ PrefabInstance:
     - target: {fileID: 7636929067222576098, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
       propertyPath: AvatarSpawnLocations.Array.data[2]
       value: 
-      objectReference: {fileID: 1942434719}
+      objectReference: {fileID: 2087615991}
     - target: {fileID: 7636929067222576098, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
       propertyPath: AvatarSpawnLocations.Array.data[3]
       value: 

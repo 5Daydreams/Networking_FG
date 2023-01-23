@@ -10,18 +10,16 @@ public class RocketLauncherGun : AttributesSync
 { 
    [SerializeField] private int indexToSpawn = 0;
    [SerializeField] Transform GunPipe;
-   [SerializeField]
-   public Camera camera;
+   [SerializeField] public Camera camera;
 
    [SerializeField] private float maxRayLenght = 1000f;
-   [SerializeField] private float bulletMaxLength = 100f;
-
+   [SerializeField] private float maxBulletLength = 100f;
+   [SerializeField] private float shootTimer = 3f;
+   private float defaultShootTimer = 3f;
+   private bool IsRealoading = false;
+   
    private Ray ray;
-   
-
    private Vector3 HitPoint;
-   
-   
    private Spawner spawner;
    public Alteruna.Avatar avatar;
    
@@ -29,7 +27,7 @@ public class RocketLauncherGun : AttributesSync
    private void Awake()
    {
        spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
-       //camera = GetComponentInParent<Camera>();
+       defaultShootTimer = shootTimer;
    }
 
    void Start()
@@ -38,16 +36,24 @@ public class RocketLauncherGun : AttributesSync
     }
    void Update()
     {
-        // Hi Johanna - I'm sorry, but I need to debug this
         if (!avatar.IsMe)
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && !IsRealoading)
         {
-           // Debug.Log("Spawn bullet");
             SpawnBullet();
-            Debug.Log("Multiplayer.Me.Index in gun: " + Multiplayer.Me.Index);
+            //     //Debug.Log("Multiplayer.Me.Index in gun: " + Multiplayer.Me.Index);
+            IsRealoading = true;
+        }
+        if (IsRealoading)
+        {
+            shootTimer -= Time.deltaTime;
+            if (shootTimer <= 0)
+            {
+                IsRealoading = false;
+                shootTimer = defaultShootTimer;
+            }
         }
     }
 
@@ -63,7 +69,7 @@ public class RocketLauncherGun : AttributesSync
        }
        else
        {
-           HitPoint = ray.GetPoint(bulletMaxLength);
+           HitPoint = ray.GetPoint(maxBulletLength);
        }
        GameObject bullet = spawner.Spawn(indexToSpawn, GunPipe.position + GunPipe.forward, GunPipe.rotation);
        bullet.GetComponentInChildren<RocketLauncherBullet>().UserID = Multiplayer.Me.Index;
