@@ -1741,7 +1741,10 @@ MonoBehaviour:
   UID: {fileID: 0}
   Reliability: 1
   health: 100
-  spawnTimer: 0
+  spawnTimer: 3
+  disableMeshOnDeath:
+  - {fileID: 2538953114544123408}
+  - {fileID: 2538953113851718689}
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -2111,7 +2114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798070599626767659, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2764645729660716482, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: m_RootOrder

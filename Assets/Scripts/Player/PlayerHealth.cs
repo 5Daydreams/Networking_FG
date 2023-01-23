@@ -12,7 +12,8 @@ public class PlayerHealth : AttributesSync
     private int baseHealth;
 
     [Header("Spawn")]
-    public int spawnTimer;
+    public int spawnTimer = 3;
+    public MeshRenderer[] disableMeshOnDeath;
 
     [Header("Layers")]
     [SerializeField] private LayerMask playerLayer;
@@ -122,10 +123,8 @@ public class PlayerHealth : AttributesSync
 
     void Spawn()
     {
-        Debug.Log("spawn");
-        //Spawn timer
         ClearDamageDealers();
-        StartCoroutine(playerRespawn.Respawn(localAvatar, 0));
+        StartCoroutine(playerRespawn.Respawn(localAvatar, spawnTimer));
         health = baseHealth;
     }
 
