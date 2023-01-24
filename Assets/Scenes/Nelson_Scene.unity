@@ -2236,7 +2236,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh56182
+  m_Name: pb_Mesh28926
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15829,6 +15829,14 @@ PrefabInstance:
       propertyPath: _debug
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5181954204635795605, guid: e4ede7b45fb6d4b49942bb0d499b9a28, type: 3}
+      propertyPath: _indexForBurstVFX
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181954204635795605, guid: e4ede7b45fb6d4b49942bb0d499b9a28, type: 3}
+      propertyPath: _indexForDespawnVFX
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5181954204635795610, guid: e4ede7b45fb6d4b49942bb0d499b9a28, type: 3}
       propertyPath: m_Name
       value: Pickup_Base
@@ -15888,6 +15896,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2001525500, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
+      propertyPath: SpawnableObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001525500, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
+      propertyPath: SpawnableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 7812032676191187901, guid: cba93f04cf6f65544912c6e562678c47, type: 3}
+    - target: {fileID: 2001525500, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
+      propertyPath: ObjectDespawned.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001525500, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
+      propertyPath: ObjectDespawned.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001525500, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
+      propertyPath: ObjectDespawned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1207665049014411022, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -15975,6 +16003,18 @@ PrefabInstance:
     - target: {fileID: 7083062520471191288, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083062521065034860, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083062521065034860, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083062521065034860, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7083062521108837023, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
       propertyPath: m_AnchorMax.x
