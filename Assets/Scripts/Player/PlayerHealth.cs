@@ -39,7 +39,6 @@ public class PlayerHealth : AttributesSync
 
     [Header("Team Manager")]
     [SerializeField] private TeamManagerSync teamManagerSync;
-    int team = -1;
 
     AvatarCollection avatarCollection;
     Leaderboard leaderboard;
@@ -53,7 +52,6 @@ public class PlayerHealth : AttributesSync
         gameModeManager = FindObjectOfType<GameModeManager>();
         baseHealth = health;
         baseSpwanTime = spawnTimer;
-        team = teamManagerSync.teamID;
     }
 
     private void Start()
@@ -132,7 +130,7 @@ public class PlayerHealth : AttributesSync
         //UPDATEKDATEXT
         leaderboard.BroadcastRemoteMethod("UpdateScoreboard");
         BroadcastRemoteMethod("BrodcastCoroutine");
-        gameModeManager.UpdateTeamKills(team);
+        gameModeManager.UpdateTeamKills(teamManagerSync.teamID);
         //Brodcas
         //StartCoroutine(Spawn());
     }
