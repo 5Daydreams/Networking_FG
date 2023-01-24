@@ -60,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
     public Alteruna.Avatar avatar;
     RigidbodySynchronizable rb;
 
+    [SerializeField] PlayerHealth playerHealth;
+
     private KeyCode jumpKey = KeyCode.Space;
 
     float horizontalInput;
@@ -100,11 +102,13 @@ public class PlayerMovement : MonoBehaviour
         if (!avatar.IsMe)
             return;
 
-        GroundCheck();
-
-        Inputs();
-        SpeedControl();
-        StateHandeler();
+        if (!playerHealth.dead)
+        {
+            GroundCheck();
+            Inputs();        
+            SpeedControl();
+            StateHandeler();
+        }
     }
 
     private void FixedUpdate()

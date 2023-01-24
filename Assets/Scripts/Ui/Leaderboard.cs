@@ -30,7 +30,6 @@ public class Leaderboard : AttributesSync
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             leaderBoardUi.SetActive(true);
-            BroadcastRemoteMethod("UpdateScoreboard");
         }
         if (Input.GetKeyUp(KeyCode.Tab))
             leaderBoardUi.SetActive(false);
