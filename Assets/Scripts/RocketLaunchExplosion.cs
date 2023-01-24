@@ -13,14 +13,22 @@ public class RocketLaunchExplosion : MonoBehaviour
 
     private float fullExplosionDamage;
 
-    [SerializeField] private float upForce = 5f;
+    [SerializeField] private float upForce = 8f;
     [SerializeField] private PlayerHealth playerHp;
+    [SerializeField] private float rocketjumpForce = 5f;
+    [SerializeField] private float rocketjumpUpForce = 9f;
+    [SerializeField] private int rocketjumpUpDamage = 10;
+    
+    AvatarCollection avatarCollection;
+    
+    
 
     private int hitPlayer;
 
     private void Awake()
     {
         rigidbodySynchronizable = GetComponentInParent<RigidbodySynchronizable>();
+        avatarCollection = FindObjectOfType<AvatarCollection>();
     }
 
     void Start()
@@ -74,15 +82,37 @@ public class RocketLaunchExplosion : MonoBehaviour
     //   }
     //}
 
-    public void AddExplosionForce(Vector3 explosionPoint, float damage, float direction)
+    public void AddExplosionForce(Vector3 explosionPoint, float damage, Vector3 direction, int damageDealer)
     {
         if (avatar.IsMe)
         {
             Debug.Log("Add force to player:" + damage);
-            //this.rigidbodySynchronizable.velocity +=  Vector3.up * damage + direction * damage;
-            //AddImpulse(Vector3.up * damage + direction * damage);
-            rigidbodySynchronizable.AddForce(0, upForce, direction * damage, ForceMode.Impulse);
-            playerHp.DealDamage((int)damage,playerHp);
+            //rigidbodySynchronizable.AddForce(0, upForce, direction * damage, ForceMode.Impulse);
+            AddImpulse(Vector3.up * upForce + direction * damage);
+            avatarCollection.avatars[damageDealer].GetComponentInChildren<PlayerHealth>().DealDamage((int)damage,playerHp);
+            //playerHp.DealDamage((int)damage,playerHp);
         }
+    }
+    public void AddERocketJumpForce(Vector3 explosionPoint, Vector3 direction)
+    {
+        if (avatar.IsMe)
+        {
+            Debug.Log("Add rocket jump force to player:" + rocketjumpUpForce);
+            AddImpulse(Vector3.up * upForce + direction * rocketjumpUpDamage);
+            //rigidbodySynchronizable.AddForce(0, rocketjumpUpForce, direction * rocketjumpForce, ForceMode.Impulse);
+            playerHp.DealDamage((int)rocketjumpUpDamage,playerHp);
+        }
+    }
+    void AddImpulse(Vector3 impulse)
+    {
+        
+        rigidbodySynchronizable.velocity += impulse;
+        
+    }
+    void AddForce(Vector3 Force)
+    {
+        
+        rigidbodySynchronizable.velocity += Force * Time.deltaTime;
+        
     }
 }
