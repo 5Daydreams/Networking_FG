@@ -23,6 +23,8 @@ public class RocketLauncherGun : AttributesSync
    private Spawner spawner;
    public Alteruna.Avatar avatar;
    
+   [SerializeField] private LayerMask playerLayer;
+   
 
    private void Awake()
    {
@@ -42,6 +44,7 @@ public class RocketLauncherGun : AttributesSync
         }
         if (Input.GetKey(KeyCode.Mouse0) && !IsRealoading)
         {
+           // DirectHit();
             SpawnBullet();
             IsRealoading = true;
         }
@@ -73,5 +76,16 @@ public class RocketLauncherGun : AttributesSync
        GameObject bullet = spawner.Spawn(indexToSpawn, GunPipe.position + GunPipe.forward, GunPipe.rotation);
        bullet.GetComponentInChildren<RocketLauncherBullet>().UserID = Multiplayer.Me.Index;
        bullet.GetComponentInChildren<RocketLauncherBullet>().direction = HitPoint- GunPipe.position;
+   }
+
+   void DirectHit()
+   {
+      if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, Mathf.Infinity, playerLayer))
+      {
+          if (hit.transform.gameObject.layer == playerLayer)
+          {
+              Debug.Log("DirectHit in gun with raycast");
+          }
+      }
    }
 }
