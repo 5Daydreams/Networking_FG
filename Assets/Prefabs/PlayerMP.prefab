@@ -2442,9 +2442,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3818068261183263210}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: upForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: playerHp
       value: 
       objectReference: {fileID: 6976844592235478812}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: damageMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: rocketjumpUpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: rocketjumpUpDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: fullExplosionDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: fullExplosionforceOnDirectHit
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: fullExplosionDamageOnDirectHit
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1798070599626767659, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: m_Name
       value: RocketLauncher
@@ -2522,6 +2550,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 579797559739742130}
     - target: {fileID: 6827950676321742858, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 579797559739742130}
+    - target: {fileID: 6827950676321742858, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: gunPipe
+      value: 
+      objectReference: {fileID: 3301388929789173678}
+    - target: {fileID: 6827950676321742858, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: shootTimer
       value: 0.5
       objectReference: {fileID: 0}
@@ -2531,6 +2567,11 @@ PrefabInstance:
       objectReference: {fileID: 6976844592235478812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+--- !u!4 &3301388929789173678 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4698461746549513478, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+  m_PrefabInstance: {fileID: 7846583014915424936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &4423369474759186363 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5874486892043834643, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
