@@ -82,11 +82,11 @@ public class PlayerHealth : AttributesSync
     //will be done in the weapon script later;
     void Shoot()
     {
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, Mathf.Infinity, playerLayer))
-        {
-            PlayerHealth playerHp = hit.transform.GetComponentInChildren<PlayerHealth>();
-            DealDamage(20, playerHp);
-        }
+       // if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, Mathf.Infinity, playerLayer))
+       // {
+       //     PlayerHealth playerHp = hit.transform.GetComponentInChildren<PlayerHealth>();
+       //     DealDamage(20, playerHp);
+       // }
     }
 
     public void DealDamage(int damageTaken, PlayerHealth playerHit)

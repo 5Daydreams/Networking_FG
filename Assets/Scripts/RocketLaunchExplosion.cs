@@ -14,7 +14,7 @@ public class RocketLaunchExplosion : MonoBehaviour
     private float fullExplosionDamage;
 
     [SerializeField] private float upForce = 5f;
-    private PlayerHealth playerHp;
+    [SerializeField] private PlayerHealth playerHp;
 
     private int hitPlayer;
 
@@ -82,7 +82,7 @@ public class RocketLaunchExplosion : MonoBehaviour
             //this.rigidbodySynchronizable.velocity +=  Vector3.up * damage + direction * damage;
             //AddImpulse(Vector3.up * damage + direction * damage);
             rigidbodySynchronizable.AddForce(0, upForce, direction * damage, ForceMode.Impulse);
-            //playerHp.DealDamage((int)damage,playerHp);
+            playerHp.DealDamage((int)damage,playerHp);
         }
     }
 }
