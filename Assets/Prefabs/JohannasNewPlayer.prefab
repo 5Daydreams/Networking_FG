@@ -1308,6 +1308,7 @@ MonoBehaviour:
   maxSteepAngle: 40
   bodyOrientation: {fileID: 2538953114544123422}
   avatar: {fileID: 3818068261183263210}
+  playerHealth: {fileID: 6976844592235478812}
   movementState: 0
   speedText: {fileID: 5778323047171376877}
   stateText: {fileID: 8361333021167384216}
@@ -1793,14 +1794,6 @@ MonoBehaviour:
   killsText: {fileID: 4842994927837078000}
   deathsText: {fileID: 9089775274938995063}
   assistText: {fileID: 800513905815728003}
-  leaderBoardUi: {fileID: 5456209950997883685}
-  playerStats: {fileID: 8279811875162317417}
-  avatarName: {fileID: 894445183196510651}
-  killScore: {fileID: 8212161360499224698}
-  deathScore: {fileID: 5430945865351948435}
-  assitScore: {fileID: 7051128760771160742}
-  statsInstantiated: 0
-  statList: []
 --- !u!114 &1406151483823589327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2629,6 +2622,12 @@ MonoBehaviour:
   Reliability: 1
   health: 100
   spawnTimer: 0
+  baseSpwanTime: 0
+  rb: {fileID: 0}
+  rbUnity: {fileID: 0}
+  collider: {fileID: 0}
+  disableMeshOnDeath: []
+  dead: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -2639,7 +2638,6 @@ MonoBehaviour:
   localAvatar: {fileID: 3818068261183263210}
   previousDamageDealer: 0
   assistingPlayers: 
-  uiManager: {fileID: 2930790291095219951}
 --- !u!1 &7648171707436623959
 GameObject:
   m_ObjectHideFlags: 0
