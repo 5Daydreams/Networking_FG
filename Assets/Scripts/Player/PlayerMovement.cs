@@ -78,7 +78,8 @@ public class PlayerMovement : MonoBehaviour
         crouching,
         jumping,
         air, 
-        sliding 
+        sliding,
+        dead
     }
 
     [Header("Debug")]
@@ -109,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
             SpeedControl();
             StateHandeler();
         }
+
     }
 
     private void FixedUpdate()
@@ -152,7 +154,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandeler()
     {
-        if (isSliding)
+        if (playerHealth.dead)
+        {
+            movementState = MovementState.dead;
+            desiredMovespeed = 0;
+        }
+        else if (isSliding)
         {
             movementState = MovementState.sliding;
 
@@ -284,6 +291,13 @@ public class PlayerMovement : MonoBehaviour
             AddForce(moveDirection.normalized * moveSpeed * 10f);
 
         unityRb.useGravity = !OnSteep();
+
+        if (playerHealth.dead)
+        {
+            unityRb.isKinematic = true;
+        }
+        else
+            unityRb.isKinematic = false;
     }
 
     private void SpeedControl()

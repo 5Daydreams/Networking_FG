@@ -2071,6 +2071,7 @@ MonoBehaviour:
   rb: {fileID: 3039676429089814024}
   rbUnity: {fileID: 6760002208509685307}
   collider: {fileID: 8658296048782188329}
+  gunSocket: {fileID: 478653007715504923}
   disableMeshOnDeath:
   - {fileID: 2538953114544123408}
   - {fileID: 2538953113851718689}
@@ -2509,7 +2510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4698461746549513478, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.679
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6827950676321742858, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: avatar

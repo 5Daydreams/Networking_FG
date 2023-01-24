@@ -17,6 +17,7 @@ public class PlayerHealth : AttributesSync
     public RigidbodySynchronizable rb;
     public Rigidbody rbUnity;
     public CapsuleCollider collider;
+    public GameObject gunSocket;
     public MeshRenderer[] disableMeshOnDeath;
     [SynchronizableField] public bool dead = false;
 
@@ -139,7 +140,7 @@ public class PlayerHealth : AttributesSync
     IEnumerator Spawn()
     {
         dead = true;
-        rbUnity.useGravity = false;
+        gunSocket.SetActive(false);
         collider.enabled = false;
 
         for (int i = 0; i < disableMeshOnDeath.Length; i++)
@@ -155,18 +156,15 @@ public class PlayerHealth : AttributesSync
         //Set spwan position
         playerRespawn.Respawn(rb);
 
-        collider.enabled = true;
-        rbUnity.useGravity = true;
-
-        dead = false;
-
         health = baseHealth;
+        collider.enabled = true;
+        gunSocket.SetActive(true);
+        dead = false;
 
         for (int i = 0; i < disableMeshOnDeath.Length; i++)
         {
             disableMeshOnDeath[i].enabled = true;
         }
-
     }
 
     void ClearDamageDealers()
