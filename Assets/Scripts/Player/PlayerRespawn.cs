@@ -15,24 +15,15 @@ public class PlayerRespawn : MonoBehaviour
     float distanceToPlayer;
 
     AvatarCollection avatarCollection;
-    RigidbodySynchronizable rb;
     
     private void Awake()
     {
         avatarCollection = FindObjectOfType<AvatarCollection>();
     }
 
-    public IEnumerator Respawn(Alteruna.Avatar avatar, float spawnTime)
+    public void Respawn(RigidbodySynchronizable rb)
     {
         float closestPlayer = 0;
-        rb = avatar.GetComponent<RigidbodySynchronizable>();
-        MeshRenderer[] meshrenderers = avatar.GetComponentsInChildren<MeshRenderer>();
-        avatar.GetComponent<CapsuleCollider>().enabled = false;
-
-        for (int i = 0; i < meshrenderers.Length; i++)
-        {
-            meshrenderers[i].enabled = false;
-        }
 
         for (int i = 0; i < SpawnPossitions.Length; i++)
         {
@@ -48,15 +39,6 @@ public class PlayerRespawn : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(spawnTime);
-
-        avatar.GetComponent<CapsuleCollider>().enabled = true;
-
         rb.position = spawnPosition;
-
-        for (int i = 0; i < meshrenderers.Length; i++)
-        {
-            meshrenderers[i].enabled = true;
-        }
     }
 }

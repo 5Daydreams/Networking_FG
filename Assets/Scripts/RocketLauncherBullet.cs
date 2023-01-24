@@ -21,8 +21,8 @@ public class RocketLauncherBullet : AttributesSync
     [SerializeField] private float fullExplosionforceOnDirectHit = 4f;
     [SerializeField] private float explosionForce = 5f;
     [SerializeField] private float explosionForceRocketJump = 5f;
-    
-    
+
+
     AvatarCollection avatarCollection;
 
     private bool DirectHitOnPlayer = false;
@@ -33,18 +33,16 @@ public class RocketLauncherBullet : AttributesSync
 
     private LayerMask playerLayer;
     private Collider[] hitColliders;
-    
+
     private Coroutine destroyRoutine;
     [SerializeField] UnityEvent _beforeDestroy;
 
-    [HideInInspector]
-    public Spawner spawner;
-    
-    [HideInInspector]
-    [SynchronizableField] public int UserID;
+    [HideInInspector] public Spawner spawner;
 
-    [SerializeField]
-    private bool showExplosionRadius = true;
+    [HideInInspector] [SynchronizableField]
+    public int UserID;
+
+    [SerializeField] private bool showExplosionRadius = true;
 
     [SerializeField] GameObject parrentObject;
     [SerializeField] MeshRenderer mesh;
@@ -59,9 +57,9 @@ public class RocketLauncherBullet : AttributesSync
 
     void Start()
     {
-       // Debug.Log("Multiplayer.Me.Index in bullet: " + Multiplayer.Me.Index);
-       // Debug.Log("UserID in bullet in bullet: " +UserID);
-       
+        // Debug.Log("Multiplayer.Me.Index in bullet: " + Multiplayer.Me.Index);
+        // Debug.Log("UserID in bullet in bullet: " +UserID);
+
         avatarCollection = FindObjectOfType<AvatarCollection>();
         rb.velocity = direction.normalized * bulletSpeed;
         DirectHitOnPlayer = false;
@@ -69,8 +67,6 @@ public class RocketLauncherBullet : AttributesSync
 
     private void FixedUpdate()
     {
-       
-       // AddForce(transform.forward * bulletSpeed);
     }
 
     void Update()
@@ -80,19 +76,25 @@ public class RocketLauncherBullet : AttributesSync
             CustomDestroy();
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
-        
-         DirectHitOnPlayer = false;
-         if (other.gameObject.CompareTag("Player"))
-         {
-             Debug.Log("DirectHit on a player");
-             DirectHitOnPlayer = true;
-         }
-       
+        DirectHitOnPlayer = false;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("DirectHit on a player with tag");
+            DirectHitOnPlayer = true;
+        }
+        else if (other.gameObject.layer == 7)
+        {
+            Debug.Log("DirectHit on a player with layer");
+            DirectHitOnPlayer = true;
+        }
+
         DoExplosion2(rb.transform.position, other);
         CustomDestroy();
     }
+
     private void OnDrawGizmos()
     {
         if (showExplosionRadius)
@@ -103,14 +105,14 @@ public class RocketLauncherBullet : AttributesSync
 
     private void CustomDestroy()
     {
+        
         _beforeDestroy.Invoke();
-
         if (UserID == Multiplayer.Me.Index)
         {
+            StartCoroutine(DelayedDeSpawn(1f));
             mesh.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false; // DONT ADD IT WILL BEAK
-            StartCoroutine(DelayedDeSpawn (1f));
-            //  GetComponentInParent<RigidbodySynchronizable>().SendData = false;
+            GetComponentInParent<RigidbodySynchronizable>().SendData = false;
         }
         else
         {
@@ -127,50 +129,71 @@ public class RocketLauncherBullet : AttributesSync
 
     void DoExplosion2(Vector3 hitpoint, Collider other)
     {
-        Debug.Log("in avatar collection, avatar.is me [userid]: " +avatarCollection.avatars[UserID].IsMe);
+        Debug.Log("in avatar collection, avatar.is me [userid]: " + avatarCollection.avatars[UserID].IsMe);
         Debug.Log(" Bullet UserID: " + UserID);
-        
-        
-        hitColliders = Physics.OverlapSphere(hitpoint, explosionRadius); // make a spherecast to se what is inside the explosion
-        
-       if (DirectHitOnPlayer)
-       {
-           Debug.Log("Add Full force to player i hit");
-           var hitAvatar = other.transform.gameObject.GetComponentInParent<Alteruna.Avatar>();
-           hitAvatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddExplosionForce(hitpoint, fullExplosionforceOnDirectHit, other.transform.position - hitpoint); // Add full explosionforce to that player
-       }
-       
+
+
+        hitColliders =
+            Physics.OverlapSphere(hitpoint, explosionRadius); // make a spherecast to se what is inside the explosion
+        float l = other.transform.position.z - hitpoint.z;
+
+        if (DirectHitOnPlayer)
+        {
+            Debug.Log("Add Full force to player i hit");
+            var hitAvatar = other.transform.gameObject.GetComponentInParent<Alteruna.Avatar>();
+            hitAvatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>()
+                .AddExplosionForce(hitpoint, fullExplosionforceOnDirectHit,
+                    l); // Add full explosionforce to that player
+        }
+
         foreach (var hitcol in hitColliders)
         {
             var distance = Vector3.Distance(hitpoint, hitcol.transform.position);
             var procentileDamage = explosionRadius - distance;
-            float damageToDeal = procentileDamage / explosionRadius * explosionForce; // calculate the damage/force to add on the object depending on how close to the explosion it is
+            float damageToDeal =
+                procentileDamage / explosionRadius *
+                explosionForce; // calculate the damage/force to add on the object depending on how close to the explosion it is
 
             Vector3 blastDir = hitcol.transform.position - this.rb.transform.position; // give a direction on the force
+            float blastDirz = blastDir.z;
 
             if (hitcol.gameObject.CompareTag("Player")) // Layer does not work for some reason?
             {
-                if (!DirectHitOnPlayer &&
-                    !avatarCollection.avatars[UserID]
-                        .IsMe) // the explosion hit a player and we did not get a direct hit. And the id is not the same as the person that shot the bullet
+                // if (!DirectHitOnPlayer &&
+                //     !avatarCollection.avatars[UserID]
+                //         .IsMe) // the explosion hit a player and we did not get a direct hit. And the id is not the same as the person that shot the bullet
+                // {
+                //     Debug.Log("The spherecast hit a playertag");
+                //     Debug.Log("The spherecast hit a player, distance: " + distance);
+                //     var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>();
+                //     avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>()
+                //         .AddExplosionForce(hitpoint, damageToDeal, blastDir);
+                // }
+
+                if (!DirectHitOnPlayer)
                 {
                     Debug.Log("The spherecast hit a playertag");
                     Debug.Log("The spherecast hit a player, distance: " + distance);
                     var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>();
                     avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>()
-                        .AddExplosionForce(hitpoint, damageToDeal, blastDir);
+                        .AddExplosionForce(hitpoint, damageToDeal, blastDirz);
                 }
             }
-            
-          if (hitcol.gameObject.layer == 9 && hitcol.GetComponent<RigidbodySynchronizable>()) // if the spherecast hit a object that is movable and have a RigidbodySynchronizable add a force to that object
-          {
-              Debug.Log("The spherecast hit an object with a RigidbodySynchronizable, add force: " + damageToDeal);
-               //Debug.Log("GameObject: " + hitcol.gameObject + ", Distance: " + distance + ", Damage: " + damageToDeal);
-               var hitRigidbodySynchronizable = hitcol.GetComponent<RigidbodySynchronizable>();
-               hitRigidbodySynchronizable.velocity += Vector3.up * damageToDeal + blastDir * damageToDeal;
-          }
+
+            if (hitcol.gameObject.layer == 9 &&
+                hitcol
+                    .GetComponent<
+                        RigidbodySynchronizable>()) // if the spherecast hit a object that is movable and have a RigidbodySynchronizable add a force to that object
+            {
+                Debug.Log("The spherecast hit an object with a RigidbodySynchronizable, add force: " + damageToDeal);
+                //Debug.Log("GameObject: " + hitcol.gameObject + ", Distance: " + distance + ", Damage: " + damageToDeal);
+                var hitRigidbodySynchronizable = hitcol.GetComponent<RigidbodySynchronizable>();
+                //hitRigidbodySynchronizable.velocity += Vector3.up * damageToDeal + blastDir * damageToDeal;
+                hitRigidbodySynchronizable.AddForce(0, damageToDeal, blastDirz * damageToDeal, ForceMode.Impulse);
+            }
         }
     }
+
     void AddForce(Vector3 Force)
     {
         rb.velocity += Force * Time.deltaTime;

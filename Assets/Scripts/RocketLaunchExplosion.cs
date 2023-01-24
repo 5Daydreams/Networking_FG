@@ -7,19 +7,17 @@ using UnityEngine;
 
 public class RocketLaunchExplosion : MonoBehaviour
 {
-    //private Spawner spawner;
     public Alteruna.Avatar avatar;
     private RigidbodySynchronizable rigidbodySynchronizable;
 
-    //private Vector3 ParticalSpawnPosition;
-    
+
     private float fullExplosionDamage;
-  // private Collider[] hitColliders;
-  // private float distance;
-  // private float blastRadius = 1f;
-    
+
+    [SerializeField] private float upForce = 5f;
+    [SerializeField] private PlayerHealth playerHp;
+
     private int hitPlayer;
-    
+
     private void Awake()
     {
         rigidbodySynchronizable = GetComponentInParent<RigidbodySynchronizable>();
@@ -27,23 +25,21 @@ public class RocketLaunchExplosion : MonoBehaviour
 
     void Start()
     {
-       
     }
 
     void Update()
     {
-       
     }
-    
+
     void OnTriggerEnter(Collider other)
     {
-      // Debug.Log("collided with something");
-      // if (other.CompareTag("RocketLauncherBullet"))
-      // {
-      //     Debug.Log("collided with bullet");
-      //     var spawner = other.GetComponent<RocketLauncherBullet>().spawner;
-      //     spawner.Despawn(other.gameObject);
-      // }
+        // Debug.Log("collided with something");
+        // if (other.CompareTag("RocketLauncherBullet"))
+        // {
+        //     Debug.Log("collided with bullet");
+        //     var spawner = other.GetComponent<RocketLauncherBullet>().spawner;
+        //     spawner.Despawn(other.gameObject);
+        // }
     }
     //public void AddExplosionForce1()// , float upwardsModifier, ForceMode forceMode
     //{
@@ -78,19 +74,15 @@ public class RocketLaunchExplosion : MonoBehaviour
     //   }
     //}
 
-    public void AddExplosionForce(Vector3 explosionPoint, float damage, Vector3 direction) 
+    public void AddExplosionForce(Vector3 explosionPoint, float damage, float direction)
     {
         if (avatar.IsMe)
         {
-           // PlayerHealth playerHp = avatar.GetComponentInChildren<PlayerHealth>();
-           // playerHp.DealDamage(20, playerHp);
             Debug.Log("Add force to player:" + damage);
             //this.rigidbodySynchronizable.velocity +=  Vector3.up * damage + direction * damage;
-            AddImpulse(Vector3.up * damage + direction * damage);
+            //AddImpulse(Vector3.up * damage + direction * damage);
+            rigidbodySynchronizable.AddForce(0, upForce, direction * damage, ForceMode.Impulse);
+            playerHp.DealDamage((int)damage,playerHp);
         }
-    }
-    void AddImpulse(Vector3 impulse)
-    {
-        rigidbodySynchronizable.velocity += impulse;
     }
 }

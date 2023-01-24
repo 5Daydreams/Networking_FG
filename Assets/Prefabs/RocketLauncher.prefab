@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 0}
+  upForce: 5
 --- !u!114 &990775678332715612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +131,14 @@ MonoBehaviour:
   Reliability: 1
   indexToSpawn: 0
   GunPipe: {fileID: 4698461746549513478}
+  camera: {fileID: 0}
+  maxRayLenght: 1000
+  maxBulletLength: 100
+  shootTimer: 3
   avatar: {fileID: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &7170351107618555085
 GameObject:
   m_ObjectHideFlags: 0
