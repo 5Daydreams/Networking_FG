@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1147139256255238753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2522135948732796672}
+  - component: {fileID: 99085459138728539}
+  - component: {fileID: 8865197422613308317}
+  - component: {fileID: 5399656732655294701}
+  - component: {fileID: 6053016764703252493}
+  m_Layer: 7
+  m_Name: TeamManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2522135948732796672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147139256255238753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &99085459138728539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147139256255238753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a38ea1d1b22428f449e12dcd85ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sync: {fileID: 5399656732655294701}
+  UI: {fileID: 6053016764703252493}
+  joinRedTeam: {fileID: 0}
+  joinBlueTeam: {fileID: 0}
+  avatar: {fileID: 0}
+--- !u!114 &8865197422613308317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147139256255238753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1709514741, guid: 0ae8d181602a00248a82f64a684a1c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a: afb99b4a-477a-4343-b447-d24b810ba634
+--- !u!114 &5399656732655294701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147139256255238753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03a09712cace1148a7cded70405514f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Multiplayer: {fileID: 0}
+  UID: {fileID: 0}
+  Reliability: 1
+  teamID: -1
+  redTeam: 0
+  blueTeam: 0
+  avatar: {fileID: 0}
+  renderer: {fileID: 0}
+--- !u!114 &6053016764703252493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147139256255238753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432cf6af6f31bb642809b2c1597f790c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonCanvas: {fileID: 0}
+  redTeamButton: {fileID: 0}
+  blueTeamButton: {fileID: 0}
+  redTeamSizeText: {fileID: 0}
+  blueTeamSizeText: {fileID: 0}

@@ -37,15 +37,19 @@ public class PlayerHealth : AttributesSync
     [SynchronizableField] public int previousDamageDealer;
     [SynchronizableField] public List<int> assistingPlayers = new List<int>();
 
+    [Header("Team Manager")]
+    [SerializeField] private TeamManagerSync teamManagerSync;
+
     AvatarCollection avatarCollection;
     Leaderboard leaderboard;
     PlayerRespawn playerRespawn;
-
+    GameModeManager gameModeManager;
     private void Awake()
     {
         avatarCollection = FindObjectOfType<AvatarCollection>();
         leaderboard = FindObjectOfType<Leaderboard>();
         playerRespawn = FindObjectOfType<PlayerRespawn>();
+        gameModeManager = FindObjectOfType<GameModeManager>();
         baseHealth = health;
         baseSpwanTime = spawnTimer;
     }
@@ -126,6 +130,7 @@ public class PlayerHealth : AttributesSync
         //UPDATEKDATEXT
         leaderboard.BroadcastRemoteMethod("UpdateScoreboard");
         BroadcastRemoteMethod("BrodcastCoroutine");
+        gameModeManager.UpdateTeamKills(teamManagerSync.teamID);
         //Brodcas
         //StartCoroutine(Spawn());
     }
@@ -139,7 +144,6 @@ public class PlayerHealth : AttributesSync
     IEnumerator Spawn()
     {
         dead = true;
-        rbUnity.useGravity = false;
         collider.enabled = false;
 
         for (int i = 0; i < disableMeshOnDeath.Length; i++)
@@ -155,18 +159,14 @@ public class PlayerHealth : AttributesSync
         //Set spwan position
         playerRespawn.Respawn(rb);
 
-        collider.enabled = true;
-        rbUnity.useGravity = true;
-
-        dead = false;
-
         health = baseHealth;
+        collider.enabled = true;
+        dead = false;
 
         for (int i = 0; i < disableMeshOnDeath.Length; i++)
         {
             disableMeshOnDeath[i].enabled = true;
         }
-
     }
 
     void ClearDamageDealers()
