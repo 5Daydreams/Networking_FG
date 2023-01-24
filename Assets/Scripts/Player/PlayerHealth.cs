@@ -38,17 +38,23 @@ public class PlayerHealth : AttributesSync
     [SynchronizableField] public int previousDamageDealer;
     [SynchronizableField] public List<int> assistingPlayers = new List<int>();
 
+    [Header("Team Manager")]
+    [SerializeField] private TeamManagerSync teamManagerSync;
+    int team = -1;
+
     AvatarCollection avatarCollection;
     Leaderboard leaderboard;
     PlayerRespawn playerRespawn;
-
+    GameModeManager gameModeManager;
     private void Awake()
     {
         avatarCollection = FindObjectOfType<AvatarCollection>();
         leaderboard = FindObjectOfType<Leaderboard>();
         playerRespawn = FindObjectOfType<PlayerRespawn>();
+        gameModeManager = GetComponent<GameModeManager>();
         baseHealth = health;
         baseSpwanTime = spawnTimer;
+        team = teamManagerSync.teamID;
     }
 
     private void Start()
@@ -127,6 +133,7 @@ public class PlayerHealth : AttributesSync
         //UPDATEKDATEXT
         leaderboard.BroadcastRemoteMethod("UpdateScoreboard");
         BroadcastRemoteMethod("BrodcastCoroutine");
+        gameModeManager.UpdateTeamKills(team);
         //Brodcas
         //StartCoroutine(Spawn());
     }

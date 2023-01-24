@@ -2086,6 +2086,7 @@ MonoBehaviour:
   localAvatar: {fileID: 3818068261183263210}
   previousDamageDealer: 0
   assistingPlayers: 
+  teamManagerSync: {fileID: 3109492653622154722}
 --- !u!1 &7802891528766714885
 GameObject:
   m_ObjectHideFlags: 0
