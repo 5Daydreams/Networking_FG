@@ -188,7 +188,7 @@ public class RocketLauncherBullet : AttributesSync
                {
                   Debug.Log("The spherecast hit me");
                   var avatar = hitcol.transform.gameObject.GetComponentInParent<Alteruna.Avatar>();
-                  avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddERocketJumpForce(hitpoint,blastDir);
+                  avatar.transform.gameObject.GetComponentInChildren<RocketLaunchExplosion>().AddERocketJumpForce(hitpoint,blastDir, UserID);
                }
 
               if (!DirectHitOnPlayer && avatarCollection.avatars[UserID]
