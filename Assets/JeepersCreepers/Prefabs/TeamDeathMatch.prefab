@@ -63,9 +63,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sync: {fileID: 7174724861667356215}
   winScore: 29
-  UI: {fileID: 7174724861667356214}
-  score: 0
-  scores: 0
 --- !u!114 &7174724861667356215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb29d7c9b69f5d4996d35a8711cd563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redTeamScoreText: {fileID: 7174724863329709163}
-  blueTeamScoreText: {fileID: 7174724861810054431}
+  redTeamScoreText: {fileID: 7174724861810054431}
+  blueTeamScoreText: {fileID: 7174724863329709163}
 --- !u!1 &7174724861810054430
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +126,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7174724862215329982}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -264,8 +261,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7174724863329709141}
   - {fileID: 7174724861810054429}
+  - {fileID: 7174724863329709141}
   m_Father: {fileID: 7174724861667356234}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -366,7 +363,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7174724862215329982}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
