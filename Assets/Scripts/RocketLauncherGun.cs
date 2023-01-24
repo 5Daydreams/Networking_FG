@@ -24,13 +24,14 @@ public class RocketLauncherGun : AttributesSync
    public Alteruna.Avatar avatar;
    
    [SerializeField] private LayerMask playerLayer;
-   
+   [SerializeField] PlayerHealth playerHealth;
 
-   private void Awake()
-   {
+
+    private void Awake()
+    {
        spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
        defaultShootTimer = shootTimer;
-   }
+    }
 
    void Start()
     {
@@ -42,7 +43,7 @@ public class RocketLauncherGun : AttributesSync
         {
             return;
         }
-        if (Input.GetKey(KeyCode.Mouse0) && !IsRealoading)
+        if (Input.GetKey(KeyCode.Mouse0) && !IsRealoading && !playerHealth.dead)
         {
            // DirectHit();
             SpawnBullet();

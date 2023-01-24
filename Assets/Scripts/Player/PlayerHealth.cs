@@ -17,7 +17,6 @@ public class PlayerHealth : AttributesSync
     public RigidbodySynchronizable rb;
     public Rigidbody rbUnity;
     public CapsuleCollider collider;
-    public GameObject gunSocket;
     public MeshRenderer[] disableMeshOnDeath;
     [SynchronizableField] public bool dead = false;
 
@@ -51,7 +50,7 @@ public class PlayerHealth : AttributesSync
         avatarCollection = FindObjectOfType<AvatarCollection>();
         leaderboard = FindObjectOfType<Leaderboard>();
         playerRespawn = FindObjectOfType<PlayerRespawn>();
-        gameModeManager = GetComponent<GameModeManager>();
+        gameModeManager = FindObjectOfType<GameModeManager>();
         baseHealth = health;
         baseSpwanTime = spawnTimer;
         team = teamManagerSync.teamID;
@@ -147,7 +146,6 @@ public class PlayerHealth : AttributesSync
     IEnumerator Spawn()
     {
         dead = true;
-        gunSocket.SetActive(false);
         collider.enabled = false;
 
         for (int i = 0; i < disableMeshOnDeath.Length; i++)
@@ -165,7 +163,6 @@ public class PlayerHealth : AttributesSync
 
         health = baseHealth;
         collider.enabled = true;
-        gunSocket.SetActive(true);
         dead = false;
 
         for (int i = 0; i < disableMeshOnDeath.Length; i++)

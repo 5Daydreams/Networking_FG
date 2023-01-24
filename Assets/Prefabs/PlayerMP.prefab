@@ -2071,10 +2071,10 @@ MonoBehaviour:
   rb: {fileID: 3039676429089814024}
   rbUnity: {fileID: 6760002208509685307}
   collider: {fileID: 8658296048782188329}
-  gunSocket: {fileID: 478653007715504923}
   disableMeshOnDeath:
   - {fileID: 2538953114544123408}
   - {fileID: 2538953113851718689}
+  - {fileID: 4423369474759186363}
   dead: 0
   playerLayer:
     serializedVersion: 2
@@ -2525,8 +2525,17 @@ PrefabInstance:
       propertyPath: shootTimer
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6827950676321742858, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 6976844592235478812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+--- !u!23 &4423369474759186363 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5874486892043834643, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+  m_PrefabInstance: {fileID: 7846583014915424936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5384430527520409450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2764645729660716482, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
