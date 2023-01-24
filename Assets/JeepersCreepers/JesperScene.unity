@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 148263920}
   - component: {fileID: 148263919}
   m_Layer: 0
-  m_Name: W
+  m_Name: Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -759,19 +759,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   DevClientIndex: 0
-  c: DevClient0
-  d: 0
   e: 0
   f: 0
   g: 0
   h: 0
   i: 0
-  j: 
-  k: 20010
+  j: 0
+  k: 42
   l: 0
   m: 20000
   n: 0
-  o: 
+  o: 0
+  p: 0
+  q: 
 --- !u!4 &1277740468
 Transform:
   m_ObjectHideFlags: 0
