@@ -93,14 +93,15 @@ public class RocketLaunchExplosion : MonoBehaviour
             //playerHp.DealDamage((int)damage,playerHp);
         }
     }
-    public void AddERocketJumpForce(Vector3 explosionPoint, Vector3 direction)
+    public void AddERocketJumpForce(Vector3 explosionPoint, Vector3 direction, int damageDealer)
     {
         if (avatar.IsMe)
         {
             Debug.Log("Add rocket jump force to player:" + rocketjumpUpForce);
             AddImpulse(Vector3.up * upForce + direction * rocketjumpUpDamage);
             //rigidbodySynchronizable.AddForce(0, rocketjumpUpForce, direction * rocketjumpForce, ForceMode.Impulse);
-            playerHp.DealDamage((int)rocketjumpUpDamage,playerHp);
+            avatarCollection.avatars[damageDealer].GetComponentInChildren<PlayerHealth>().DealDamage((int)rocketjumpUpDamage,playerHp);
+           // playerHp.DealDamage((int)rocketjumpUpDamage,playerHp);
         }
     }
     void AddImpulse(Vector3 impulse)
