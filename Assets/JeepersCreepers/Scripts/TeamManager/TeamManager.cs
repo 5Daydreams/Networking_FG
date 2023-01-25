@@ -73,6 +73,9 @@ public class TeamManager : MonoBehaviour
         int blueTeamSize = sync.GetBlueTeamSize();
 
         UI.UpdateTeamUI(redTeamSize, blueTeamSize);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     IEnumerator UpdateNewPlayer()
@@ -103,6 +106,9 @@ public class TeamManager : MonoBehaviour
         }
 
         UI.DisableUI();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         joinRedTeam.gameObject.SetActive(false);
         joinBlueTeam.gameObject.SetActive(false);

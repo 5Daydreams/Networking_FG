@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f4ae4200-0549-44c4-be92-693ce48e3880" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Networking_FG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/JohannasNewPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/JohannasNewPlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pickups/PickupObjects/HealthUp.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pickups/PickupObjects/HealthUp.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pickups/PickupObjects/Pickup_Base.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pickups/PickupObjects/Pickup_Base.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Nelson_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Powerups/HealthPickup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerups/PickupBox.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Powerups/HealthPickup.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PlayerMP.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerMP.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLaunchExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLaunchExplosion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherBullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RocketLauncherGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +27,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/DespawnBehavior.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/Singletons/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/UnparentByEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.8/Runtime/ShadowUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@1.6.0/Editor/Core/Build/ProjectUnlinkBuildWarning.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/8f/6daf9f6c/Void.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/OneDrive/Dokument/Player1/Player1/Assets/Scripts/Bomb.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -42,18 +42,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Standalone Player.UnitTests (batch mode)">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../NetworkingLecture\Networking_FG.exe" />
+      <option name="EXE_PATH" value="D:/NetworkingLecture\Networking_FG.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\NetworkingLecture" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -114,8 +115,7 @@
       <workItem from="1674162220126" duration="1859000" />
       <workItem from="1674199689608" duration="13388000" />
       <workItem from="1674484936479" duration="2502000" />
-      <workItem from="1674552637408" duration="1546000" />
-      <workItem from="1674556870495" duration="2948000" />
+      <workItem from="1674552637408" duration="22200000" />
     </task>
     <servers />
   </component>
@@ -125,17 +125,6 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

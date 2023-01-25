@@ -7,20 +7,33 @@ using UnityEngine;
 
 public class RocketLaunchExplosion : MonoBehaviour
 {
+    [Header("Player object")] 
     public Alteruna.Avatar avatar;
-    private RigidbodySynchronizable rigidbodySynchronizable;
-
-
-    private float fullExplosionDamage;
-
-    [SerializeField] private float upForce = 5f;
     [SerializeField] private PlayerHealth playerHp;
+    
+    [Header("Explosion settings on full hit")] 
+    [SerializeField] private int fullExplosionDamageOnDirectHit = 10;
+    [SerializeField] private float fullExplosionforceOnDirectHit = 6f;
 
+    [Header("Explosion settings in radius")]
+    [SerializeField] private int damageMultiplier = 2;
+    
+    [Header("Explosion settings for full hit/radius")]
+    [SerializeField] private float upForce = 8f;
+    
+    [Header("Explosion settings on rocketjump")] 
+    [SerializeField] private float rocketjumpForce = 5f;
+    [SerializeField] private float rocketjumpUpForce = 9f;
+    [SerializeField] private int rocketjumpDamage = 10;
+    
+    AvatarCollection avatarCollection;
+    private RigidbodySynchronizable rigidbodySynchronizable;
     private int hitPlayer;
 
     private void Awake()
     {
         rigidbodySynchronizable = GetComponentInParent<RigidbodySynchronizable>();
+        avatarCollection = FindObjectOfType<AvatarCollection>();
     }
 
     void Start()
@@ -74,15 +87,36 @@ public class RocketLaunchExplosion : MonoBehaviour
     //   }
     //}
 
-    public void AddExplosionForce(Vector3 explosionPoint, float damage, float direction)
+    public void AddExplosionForce(float damage, Vector3 direction, int damageDealer) //Explosionforce depending on where on the explosnradious you get hit
     {
         if (avatar.IsMe)
         {
-            Debug.Log("Add force to player:" + damage);
-            //this.rigidbodySynchronizable.velocity +=  Vector3.up * damage + direction * damage;
-            //AddImpulse(Vector3.up * damage + direction * damage);
-            rigidbodySynchronizable.AddForce(0, upForce, direction * damage, ForceMode.Impulse);
-            playerHp.DealDamage((int)damage,playerHp);
+            //rigidbodySynchronizable.AddForce(0, upForce, direction * damage, ForceMode.Impulse);
+            AddImpulse(Vector3.up * upForce + direction * damage);
+            avatarCollection.avatars[damageDealer].GetComponentInChildren<PlayerHealth>().DealDamage((int)damage * damageMultiplier,playerHp);
         }
+    }
+    public void AddExplosionForceOnDirectHit(Vector3 direction, int damageDealer)
+    {
+        if (avatar.IsMe)
+        {
+            //rigidbodySynchronizable.AddForce(0, upForce, direction * damage, ForceMode.Impulse);
+            AddImpulse(Vector3.up * upForce + direction * fullExplosionforceOnDirectHit);
+            avatarCollection.avatars[damageDealer].GetComponentInChildren<PlayerHealth>().DealDamage(fullExplosionDamageOnDirectHit,playerHp);
+        }
+    }
+    public void AddERocketJumpForce(Vector3 direction, int damageDealer)
+    {
+        if (avatar.IsMe)
+        {
+            Debug.Log("Add rocket jump force to player:" + rocketjumpForce);
+            AddImpulse(Vector3.up * rocketjumpUpForce + direction * rocketjumpForce);
+            //rigidbodySynchronizable.AddForce(0, rocketjumpUpForce, direction * rocketjumpForce, ForceMode.Impulse);
+            avatarCollection.avatars[damageDealer].GetComponentInChildren<PlayerHealth>().DealDamage(rocketjumpDamage,playerHp);
+        }
+    }
+    void AddImpulse(Vector3 impulse)
+    {
+        rigidbodySynchronizable.velocity += impulse;
     }
 }
