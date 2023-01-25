@@ -2308,6 +2308,7 @@ MonoBehaviour:
   blueTeam: 0
   avatar: {fileID: 3818068261183263210}
   renderer: {fileID: 2538953114544123408}
+  gunRenderer: {fileID: 4423369474759186363}
 --- !u!114 &3875609756760403202
 MonoBehaviour:
   m_ObjectHideFlags: 0
