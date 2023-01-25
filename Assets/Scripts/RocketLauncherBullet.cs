@@ -59,11 +59,14 @@ public class RocketLauncherBullet : AttributesSync
         {
             CustomDestroy();
         }
-
-        if (rb.velocity.magnitude < 0.01) // if the bullet is standing still destroy
+        if (rb.velocity.magnitude < 0.01)
         {
-            CustomDestroy();
+            rb.velocity = direction.normalized * bulletSpeed;
         }
+        // if (rb.velocity.magnitude < 0.01) // if the bullet is standing still destroy
+       // {
+       //     CustomDestroy();
+       // }
     }
 
     void OnTriggerEnter(Collider other)
