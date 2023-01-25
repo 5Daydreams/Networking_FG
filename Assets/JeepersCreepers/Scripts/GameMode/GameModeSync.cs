@@ -34,6 +34,20 @@ public class GameModeSync : AttributesSync
     [SynchronizableMethod]
     public void HandleUIChangeBlue()
     {
-        UI.UpdateRedScore(blueTeamScore);
+        UI.UpdateBlueScore(blueTeamScore);
+    }
+
+    public void ResetScores()
+    {
+        redTeamScore = 0;
+        blueTeamScore = 0;
+        BroadcastRemoteMethod("HandleUIReset");
+    }
+
+    [SynchronizableMethod]
+    public void HandleUIReset()
+    {
+        UI.UpdateRedScore(0);
+        UI.UpdateRedScore(0);
     }
 }
