@@ -36,57 +36,6 @@ public class RocketLaunchExplosion : MonoBehaviour
         avatarCollection = FindObjectOfType<AvatarCollection>();
     }
 
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        // Debug.Log("collided with something");
-        // if (other.CompareTag("RocketLauncherBullet"))
-        // {
-        //     Debug.Log("collided with bullet");
-        //     var spawner = other.GetComponent<RocketLauncherBullet>().spawner;
-        //     spawner.Despawn(other.gameObject);
-        // }
-    }
-    //public void AddExplosionForce1()// , float upwardsModifier, ForceMode forceMode
-    //{
-    //    Vector3 upVelocity = new Vector3(0, 10, 0);
-    //    rigidbodySynchronizable.velocity += upVelocity;
-    //}
-    //public void DoExplosion(Vector3 explosionPoint, float radius) // spelaren pos, blasradious
-    //{
-    //    var distance = Vector3.Distance(explosionPoint, transform.position);
-    //   var procentileDamage = distance / blastRadius;
-    //   float damageToDeal = explosionForce * procentileDamage;
-    //    
-    //   Vector3 blastDir = transform.position - explosionPoint;
-//
-    //   if (avatar.IsMe)
-    //   {
-    //       //Debug.Log("damageToDeal on player: " + damageToDeal);
-    //       
-    //       this.rigidbodySynchronizable.velocity +=  blastDir * 2 + Vector3.up * damageToDeal; // add force to the player
-    //       
-    //       hitColliders = Physics.OverlapSphere(explosionPoint, radius);
-    //       foreach (var hitCollider in hitColliders) // add force to the the other objects around the hit
-    //       {
-    //      
-    //           if (hitCollider.GetComponent<RigidbodySynchronizable>())
-    //           {
-    //               //Debug.Log("GameObject: " + hitCollider.gameObject + ", Distance: " + distance + ", Damage: " + damageToDeal );
-    //               var hitRigidbodySynchronizable = hitCollider.GetComponent<RigidbodySynchronizable>();
-    //               hitRigidbodySynchronizable.velocity += blastDir * 2 + Vector3.up * damageToDeal * Time.deltaTime;
-    //           }
-    //       }
-    //   }
-    //}
-
     public void AddExplosionForce(float damage, Vector3 direction, int damageDealer) //Explosionforce depending on where on the explosnradious you get hit
     {
         if (avatar.IsMe)
@@ -109,7 +58,6 @@ public class RocketLaunchExplosion : MonoBehaviour
     {
         if (avatar.IsMe)
         {
-            Debug.Log("Add rocket jump force to player:" + rocketjumpForce);
             AddImpulse(Vector3.up * rocketjumpUpForce + direction * rocketjumpForce);
             //rigidbodySynchronizable.AddForce(0, rocketjumpUpForce, direction * rocketjumpForce, ForceMode.Impulse);
             avatarCollection.avatars[damageDealer].GetComponentInChildren<PlayerHealth>().DealDamage(rocketjumpDamage,playerHp);
