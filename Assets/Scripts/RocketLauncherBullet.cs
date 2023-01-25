@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Alteruna;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using Avatar = UnityEngine.Avatar;
@@ -140,6 +141,10 @@ public class RocketLauncherBullet : AttributesSync
         foreach (var hitcol in hitColliders)
         {
             var distance = Vector3.Distance(hitpoint, hitcol.transform.position);
+            if (distance >= explosionRadius)
+            {
+                distance = explosionRadius - 0.1f;
+            }
             var procentileDamage = explosionRadius - distance;
             float damageToDeal = procentileDamage / explosionRadius * explosionMaxDamage; // calculate the damage/force to add on the object depending on how close to the explosion it is
 
