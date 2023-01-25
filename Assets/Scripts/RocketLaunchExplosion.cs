@@ -41,7 +41,7 @@ public class RocketLaunchExplosion : MonoBehaviour
         if (avatar.IsMe)
         {
             //rigidbodySynchronizable.AddForce(0, upForce, direction * damage, ForceMode.Impulse);
-            AddImpulse(Vector3.up * upForce + direction * damage);
+            AddImpulse(Vector3.up * upForce + direction * damage * 0.1f);
             avatarCollection.avatars[damageDealer].GetComponentInChildren<PlayerHealth>().DealDamage((int)damage * damageMultiplier,playerHp);
         }
     }

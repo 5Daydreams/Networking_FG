@@ -186,7 +186,8 @@ MonoBehaviour:
   bulletSpeed: 70
   bulletMaxLength: 300
   explosionRadius: 3.5
-  explosionMaxDamage: 100
+  explosionMaxDamage: 80
+  minDamage: 10
   showExplosionRadius: 1
   _beforeDestroy:
     m_PersistentCalls:
