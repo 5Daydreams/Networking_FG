@@ -877,7 +877,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2538953114182484416}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a6ccf3133cc7a68448d390876ea88bed, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -2066,7 +2066,7 @@ MonoBehaviour:
   UID: {fileID: 0}
   Reliability: 1
   health: 100
-  spawnTimer: 10
+  spawnTimer: 3
   baseSpwanTime: 0
   rb: {fileID: 3039676429089814024}
   rbUnity: {fileID: 6760002208509685307}
@@ -2274,6 +2274,7 @@ MonoBehaviour:
   joinRedTeam: {fileID: 3154959202715156046}
   joinBlueTeam: {fileID: 5946361356748325907}
   avatar: {fileID: 3818068261183263210}
+  gun: {fileID: 3613410115978162850}
 --- !u!114 &1931989476871106194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2443,19 +2444,27 @@ PrefabInstance:
       objectReference: {fileID: 3818068261183263210}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: upForce
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: playerHp
       value: 
       objectReference: {fileID: 6976844592235478812}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: rocketjumpForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: damageMultiplier
-      value: 5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+      propertyPath: rocketjumpDamage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: rocketjumpUpForce
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: rocketjumpUpDamage
@@ -2467,7 +2476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: fullExplosionforceOnDirectHit
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: fullExplosionDamageOnDirectHit
@@ -2559,7 +2568,7 @@ PrefabInstance:
       objectReference: {fileID: 3301388929789173678}
     - target: {fileID: 6827950676321742858, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: shootTimer
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6827950676321742858, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: playerHealth
@@ -2572,6 +2581,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4698461746549513478, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
   m_PrefabInstance: {fileID: 7846583014915424936}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3613410115978162850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6827950676321742858, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
+  m_PrefabInstance: {fileID: 7846583014915424936}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ee49766e7a482428e1b7b03ce11077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &4423369474759186363 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5874486892043834643, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
