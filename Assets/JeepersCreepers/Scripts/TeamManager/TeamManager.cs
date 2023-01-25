@@ -12,7 +12,7 @@ public class TeamManager : MonoBehaviour
     [SerializeField] private Button joinBlueTeam;
 
     [SerializeField] private Alteruna.Avatar avatar;
-
+    [SerializeField] private RocketLauncherGun gun;
     private int currentTeam;
 
     private Multiplayer multiplayer;
@@ -47,16 +47,6 @@ public class TeamManager : MonoBehaviour
         // Button Setup
         joinRedTeam.onClick.AddListener(() => { JoinTeam((int)Team.red); });
         joinBlueTeam.onClick.AddListener(() => { JoinTeam((int)Team.blue); });
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            int redTeamSize = sync.GetRedTeamSize();
-            int blueTeamSize = sync.GetBlueTeamSize();
-            UI.UpdateTeamUI(redTeamSize, blueTeamSize);
-        }
     }
 
     public void HandleJoined(Multiplayer multiplayer, User user)
@@ -109,6 +99,8 @@ public class TeamManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        gun.bJoinedTeam = true;
 
         joinRedTeam.gameObject.SetActive(false);
         joinBlueTeam.gameObject.SetActive(false);
