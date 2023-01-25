@@ -46,13 +46,21 @@ public class RocketLauncherBullet : AttributesSync
 
     void Start()
     {
-        rb.velocity = direction.normalized * bulletSpeed;
+        if (UserID == Multiplayer.Me.Index)
+        {
+            rb.velocity = direction.normalized * bulletSpeed;
+        }
         DirectHitOnPlayer = false;
     }
 
     void Update()
     {
         if (Vector3.Distance(startPosition, this.rb.transform.position) > bulletMaxLength)
+        {
+            CustomDestroy();
+        }
+
+        if (rb.velocity.magnitude < 0.01) // if the bullet is standing still destroy
         {
             CustomDestroy();
         }
@@ -111,7 +119,6 @@ public class RocketLauncherBullet : AttributesSync
         else
         {
             gameObject.SetActive(false);
-            //Destroy(this);// DONT ADD IT WILL BEAK
         }
     }
 
@@ -119,17 +126,12 @@ public class RocketLauncherBullet : AttributesSync
     {
         yield return new WaitForSeconds(delay);
         spawner.Despawn(parrentObject);
-        checkSpawnedObjects();
+        parrentObject.SetActive(false);
+        //checkSpawnedObjects();
     }
 
     void DoExplosion2(Vector3 hitpoint, Collider other)
     {
-        // Debug.Log("in avatar collection, avatar.is me [userid]: " + avatarCollection.avatars[UserID].IsMe);
-        // Debug.Log(" Bullet UserID: " + UserID);
-        //float l = other.transform.position.z - hitpoint.z;
-        //float l = other.transform.localPosition.z - hitpoint.z;
-        // Vector3 direction = other.transform.position - hitpoint;
-
         hitColliders = Physics.OverlapSphere(hitpoint, explosionRadius); // make a spherecast to se what is inside the explosion
         Vector3 direction = other.transform.position - hitpoint;
 
@@ -184,20 +186,5 @@ public class RocketLauncherBullet : AttributesSync
                 // }
             }
         }
-    }
-
-    void checkSpawnedObjects()
-    {
-       // spawner.ForceSync = true;
-       // spawner.SpawnedObjects.Clear();
-       // 
-       // 
-       // for (int i = 0; i < spawner.SpawnedObjects.Count ; i++)
-       // {
-       //     spawner.ObjectSpawned<this,parrentObject>();
-       //     spawner.SpawnedObjects.Remove();
-       //     
-       //     spawner.Despawn(parrentObject);
-       // }
     }
 }
