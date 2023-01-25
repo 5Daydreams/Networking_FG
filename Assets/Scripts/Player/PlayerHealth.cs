@@ -102,6 +102,7 @@ public class PlayerHealth : AttributesSync
 
         if (playerHit.health <= 0)
         {
+            gameModeManager.UpdateTeamKills(teamManagerSync.teamID);
             playerHit.Die(localAvatar.Possessor.Index);
         }
     }
@@ -130,7 +131,6 @@ public class PlayerHealth : AttributesSync
         //UPDATEKDATEXT
         leaderboard.BroadcastRemoteMethod("UpdateScoreboard");
         BroadcastRemoteMethod("BrodcastCoroutine");
-        gameModeManager.UpdateTeamKills(teamManagerSync.teamID);
         //Brodcas
         //StartCoroutine(Spawn());
     }
