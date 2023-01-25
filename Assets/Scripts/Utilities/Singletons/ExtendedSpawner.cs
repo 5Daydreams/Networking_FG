@@ -67,6 +67,11 @@ namespace Utilities.Singletons
                 SpawnableObjects.Add(_items[i].prefab);
             }
         }
+        
+        public GameObject SpawnByIndex(int index, Transform targetTransform)
+        {
+            return SpawnByIndex(index, targetTransform.position, targetTransform.rotation, targetTransform.localScale);
+        }
 
         public GameObject SpawnByIndex(int index, Vector3 position)
         {
