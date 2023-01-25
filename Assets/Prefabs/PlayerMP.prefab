@@ -818,10 +818,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4f23cfacf8a9549b9c36cc69b9db15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 7
+  walkSpeed: 10
   groundDrag: 7
   jumpForce: 8
-  jumpSpeed: 14
+  jumpSpeed: 12
   jumpCooldown: 0.25
   maxGroundSlideSpeed: 14
   maxSlopeSlideSpeed: 30
