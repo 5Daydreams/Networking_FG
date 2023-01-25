@@ -15977,6 +15977,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1897282107}
     - target: {fileID: 2804083514074426601, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
+      propertyPath: AvatarPrefab
+      value: 
+      objectReference: {fileID: 3818068261183263210, guid: 30e5315cddfb59742940edc0f0cbd728, type: 3}
+    - target: {fileID: 2804083514074426601, guid: fa697d1df77945a4c8f4faa33a9d1898, type: 3}
       propertyPath: AvatarSpawnLocations.Array.data[0]
       value: 
       objectReference: {fileID: 387938565}
