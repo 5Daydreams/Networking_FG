@@ -53,7 +53,6 @@ public class RocketLauncherGun : AttributesSync
             }
         }
     }
-
     void SpawnBullet()
     {
         RaycastHit Hit;
@@ -61,7 +60,6 @@ public class RocketLauncherGun : AttributesSync
 
         if (Physics.Raycast(ray, out Hit, maxRayLenght))
         {
-            //Debug.DrawRay(camera.transform.position, camera.transform.forward *100f, Color.red,1000f);
             HitPoint = Hit.point;
         }
         else
