@@ -65,7 +65,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &-6697538733031948515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,13 +181,13 @@ MonoBehaviour:
   Multiplayer: {fileID: 0}
   UID: {fileID: 0}
   Reliability: 1
-  direction: {x: 0, y: 0, z: 0}
-  bulletSpeed: 30
-  bulletMaxLength: 500
+  parrentObject: {fileID: 378792108265994139}
+  mesh: {fileID: 4705218720804603082}
+  bulletSpeed: 70
+  bulletMaxLength: 300
   explosionRadius: 3.5
-  fullExplosionforceOnDirectHit: 8
-  explosionForce: 20
-  explosionForceRocketJump: 2
+  explosionMaxDamage: 100
+  showExplosionRadius: 1
   _beforeDestroy:
     m_PersistentCalls:
       m_Calls:
@@ -239,11 +239,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  direction: {x: 0, y: 0, z: 0}
   spawner: {fileID: 0}
   UserID: 0
-  showExplosionRadius: 1
-  parrentObject: {fileID: 378792108265994139}
-  mesh: {fileID: 4705218720804603082}
 --- !u!136 &1334547894658874520
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -254,8 +252,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 0.8
+  m_Radius: 0.21
+  m_Height: 0.78
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3388498618426060182
