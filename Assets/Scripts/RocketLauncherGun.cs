@@ -20,7 +20,10 @@ public class RocketLauncherGun : AttributesSync
     private Ray ray;
     private Vector3 HitPoint;
     private Spawner spawner;
-    
+    private TeamManager teamManager;
+
+    public bool bJoinedTeam = false;
+
     private void Awake()
     {
         spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
@@ -34,7 +37,7 @@ public class RocketLauncherGun : AttributesSync
             return;
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && !IsRealoading && !playerHealth.dead)
+        if (Input.GetKey(KeyCode.Mouse0) && !IsRealoading && !playerHealth.dead && bJoinedTeam)
         {
             SpawnBullet();
             IsRealoading = true;

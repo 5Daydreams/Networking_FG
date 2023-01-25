@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Alteruna;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using Avatar = UnityEngine.Avatar;
@@ -17,6 +18,7 @@ public class RocketLauncherBullet : AttributesSync
     [SerializeField] private float bulletMaxLength = 50f;
     [SerializeField] private float explosionRadius = 10f;
     [SerializeField] private float explosionMaxDamage = 5f;
+    [SerializeField] private float minDamage = 1f;
 
     [Header("Debug")] [SerializeField] private bool showExplosionRadius = true;
 
@@ -109,7 +111,7 @@ public class RocketLauncherBullet : AttributesSync
         else
         {
             gameObject.SetActive(false);
-            // Destroy(this);// DONT ADD IT WILL BEAK
+            //Destroy(this);// DONT ADD IT WILL BEAK
         }
     }
 
@@ -117,6 +119,7 @@ public class RocketLauncherBullet : AttributesSync
     {
         yield return new WaitForSeconds(delay);
         spawner.Despawn(parrentObject);
+        checkSpawnedObjects();
     }
 
     void DoExplosion2(Vector3 hitpoint, Collider other)
@@ -138,9 +141,17 @@ public class RocketLauncherBullet : AttributesSync
         foreach (var hitcol in hitColliders)
         {
             var distance = Vector3.Distance(hitpoint, hitcol.transform.position);
+            if (distance >= explosionRadius)
+            {
+                distance = explosionRadius - 0.1f;
+            }
             var procentileDamage = explosionRadius - distance;
             float damageToDeal = procentileDamage / explosionRadius * explosionMaxDamage; // calculate the damage/force to add on the object depending on how close to the explosion it is
 
+            if (damageToDeal < minDamage)
+            {
+                damageToDeal = minDamage;
+            }
             Vector3 blastDir = hitcol.transform.position - this.rb.transform.position; // give a direction on the force
 
             if (hitcol.gameObject.CompareTag("Player")) // Layer does not work for some reason?
@@ -173,5 +184,20 @@ public class RocketLauncherBullet : AttributesSync
                 // }
             }
         }
+    }
+
+    void checkSpawnedObjects()
+    {
+       // spawner.ForceSync = true;
+       // spawner.SpawnedObjects.Clear();
+       // 
+       // 
+       // for (int i = 0; i < spawner.SpawnedObjects.Count ; i++)
+       // {
+       //     spawner.ObjectSpawned<this,parrentObject>();
+       //     spawner.SpawnedObjects.Remove();
+       //     
+       //     spawner.Despawn(parrentObject);
+       // }
     }
 }
