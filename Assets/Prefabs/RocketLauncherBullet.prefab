@@ -185,7 +185,7 @@ MonoBehaviour:
   mesh: {fileID: 4705218720804603082}
   bulletSpeed: 70
   bulletMaxLength: 300
-  explosionRadius: 3.5
+  explosionRadius: 5
   explosionMaxDamage: 60
   minDamage: 20
   showExplosionRadius: 1
