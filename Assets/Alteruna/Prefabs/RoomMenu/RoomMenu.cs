@@ -15,6 +15,7 @@ public class RoomMenu : CommunicationBridge
 	[SerializeField] private GameObject WANEntryPrefab;
 	[SerializeField] private GameObject CloudImage;
 	[SerializeField] private GameObject ContentContainer;
+	[SerializeField] private GameObject panel;
 	[SerializeField] private Button StartButton;
 	[SerializeField] private Button LeaveButton;
 
@@ -28,7 +29,6 @@ public class RoomMenu : CommunicationBridge
 	private int count;
 	private string _connectionMessage = "Connecting";
 	private float _statusTextTime;
-
 	private void Connected(Multiplayer multiplayer, Endpoint endpoint)
 	{
 		StartButton.interactable = true;
@@ -105,6 +105,8 @@ public class RoomMenu : CommunicationBridge
 		{
 			TitleText.text = "In Room " + room.Name;
 		}
+
+		panel.SetActive(false);
 	}
 
 	private void LeftRoom(Multiplayer multiplayer)
@@ -184,6 +186,7 @@ public class RoomMenu : CommunicationBridge
 			Multiplayer.RoomJoined.AddListener(JoinedRoom);
 			Multiplayer.RoomLeft.AddListener(LeftRoom);
 			StartButton.onClick.AddListener(() => { Multiplayer.JoinOnDemandRoom(); });
+			StartButton.onClick.AddListener(() => { SwitchUI(); });
 			LeaveButton.onClick.AddListener(() => { Multiplayer.CurrentRoom?.Leave(); });
 			
 			if (TitleText != null)
@@ -204,6 +207,11 @@ public class RoomMenu : CommunicationBridge
 
 		StartButton.interactable = false;
 		LeaveButton.interactable = false;
+	}
+
+	private void SwitchUI()
+    {
+		panel.SetActive(false);
 	}
 /*
 	private IEnumerator RefreshRooms()
