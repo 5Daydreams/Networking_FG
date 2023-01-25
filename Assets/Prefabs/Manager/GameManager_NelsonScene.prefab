@@ -7,9 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3269013316283677141, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3269013316581079539, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269013316581079539, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 3269013317769859943, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -105,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7523658412683625434, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
       propertyPath: m_Name
-      value: GameManager
+      value: GameManager_NelsonScene
       objectReference: {fileID: 0}
     - target: {fileID: 7636929067222576098, guid: fc5a1f2a39930034086a312b681edd7a, type: 3}
       propertyPath: AvatarPrefab
@@ -181,10 +189,12 @@ MonoBehaviour:
   SpawnableObjects:
   - {fileID: 378792108265994139, guid: 40f5366b81520b044a42e298fe12fb7d, type: 3}
   - {fileID: 3976542658383854217, guid: c77312c8c7ae18d45923c79335a37513, type: 3}
+  - {fileID: 7812032676191187901, guid: cba93f04cf6f65544912c6e562678c47, type: 3}
   ObjectSpawned:
     m_PersistentCalls:
       m_Calls: []
   ObjectDespawned:
     m_PersistentCalls:
       m_Calls: []
+  ForceSync: 1
   _items: []
