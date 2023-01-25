@@ -13,7 +13,7 @@ public class TeamManagerSync : AttributesSync
     private TeamManagerSync[] allPlayers;
     public Alteruna.Avatar avatar;
     public MeshRenderer renderer;
-
+    public MeshRenderer gunRenderer;
     public int GetRedTeamSize() { return redTeam; }
     public int GetBlueTeamSize() { return blueTeam; }
 
@@ -63,10 +63,12 @@ public class TeamManagerSync : AttributesSync
         {
             case (int)Team.red:
                 renderer.material.color = Color.red;
+                gunRenderer.material.color = Color.red;
                 break;
 
             case (int)Team.blue:
                 renderer.material.color = Color.blue;
+                gunRenderer.material.color = Color.blue;
                 break;
         }
     }
@@ -92,10 +94,12 @@ public class TeamManagerSync : AttributesSync
             {
                 case (int)Team.red:
                     player.renderer.material.color = Color.red;
+                    gunRenderer.material.color = Color.red;
                     break;
 
                 case (int)Team.blue:
                     player.renderer.material.color = Color.blue;
+                    gunRenderer.material.color = Color.blue;
                     break;
             }
         }
