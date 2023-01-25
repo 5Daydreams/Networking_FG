@@ -2452,7 +2452,7 @@ PrefabInstance:
       objectReference: {fileID: 6976844592235478812}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: rocketjumpForce
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: damageMultiplier
@@ -2464,7 +2464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: rocketjumpUpForce
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -2434147249923477179, guid: 1b2212d18d5ef7042ab480832e07c5a4, type: 3}
       propertyPath: rocketjumpUpDamage
