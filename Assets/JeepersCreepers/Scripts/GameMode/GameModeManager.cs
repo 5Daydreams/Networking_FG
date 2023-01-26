@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GameModeManager : MonoBehaviour
 {
-    // when player kills, bind event to update the players teams kills
     [SerializeField] private GameModeSync sync;
     [SerializeField] private int winScore;
     [SerializeField] private GameObject redWin;
@@ -20,7 +19,6 @@ public class GameModeManager : MonoBehaviour
                 int redScore = sync.GetRedTeamScore();
                 if (redScore >= winScore)
                 {
-                    // win condition
                     sync.HandleRedTeamScore();
                     StartCoroutine(WinCondition((int)Team.red));
                 }
@@ -34,7 +32,6 @@ public class GameModeManager : MonoBehaviour
                 int blueScore = sync.GetBlueTeamScore();
                 if (blueScore >= winScore)
                 {
-                    // win condition
                     sync.HandleBlueTeamScore();
                     StartCoroutine(WinCondition((int)Team.blue));
                 }
@@ -52,19 +49,26 @@ public class GameModeManager : MonoBehaviour
         {
             case (int)Team.red:
                 redWin.SetActive(true);
+                sync.HandleWinScreen((int)Team.red);
+
                 sync.ResetScores();
-                // reset score
-                // reset player positions?
-                // disable movement / shooting ?
+
                 yield return new WaitForSeconds(2);
-                // enable movement / shooting
+
                 redWin.SetActive(false);
+                sync.HandleWinScreen((int)Team.red);
                 break;
 
             case (int)Team.blue:
                 blueWin.SetActive(true);
+                sync.HandleWinScreen((int)Team.blue);
+
+                sync.ResetScores();
+
                 yield return new WaitForSeconds(2);
+
                 blueWin.SetActive(false);
+                sync.HandleWinScreen((int)Team.blue);
                 break;
         }
     }
